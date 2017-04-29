@@ -1,7 +1,16 @@
-Started GET "/" for 127.0.0.1 at 2017-04-29 17:59:49 -0300
+Started GET "/" for 127.0.0.1 at 2017-04-29 18:50:10 -0300
 Processing by Rails::WelcomeController#index as HTML
-  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.1/gems/railties-5.1.0/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.1/gems/railties-5.1.0/lib/rails/templates/rails/welcome/index.html.erb (2.5ms)
-Completed 200 OK in 192ms (Views: 6.8ms)
+  Parameters: {"internal"=>true}
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (3.1ms)
+Completed 200 OK in 14ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-29 18:55:54 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (2.7ms)
+Completed 200 OK in 14ms (Views: 5.9ms | ActiveRecord: 0.0ms)
 
 

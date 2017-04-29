@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bet.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bet.description %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @bet.deadline %>
+</p>
+
+<p>
+  <strong>Max participants:</strong>
+  <%= @bet.max_participants %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @bet.type %>
+</p>
+
+<p>
+  <strong>Min bet:</strong>
+  <%= @bet.min_bet %>
+</p>
+
+<p>
+  <strong>Max bet:</strong>
+  <%= @bet.max_bet %>
+</p>
+
+<%= link_to 'Edit', edit_bet_path(@bet) %> |
+<%= link_to 'Back', bets_path %>

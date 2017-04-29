@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  deadline: 2017-04-29
+  max_participants: 1
+  type: 
+  min_bet: 1
+  max_bet: 1
+
+two:
+  name: MyString
+  description: MyText
+  deadline: 2017-04-29
+  max_participants: 1
+  type: 
+  min_bet: 1
+  max_bet: 1

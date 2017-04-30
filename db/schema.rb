@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430220822) do
+ActiveRecord::Schema.define(version: 20170430233911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170430220822) do
     t.text     "description",      null: false
     t.date     "deadline",         null: false
     t.integer  "max_participants", null: false
-    t.string   "kind"
+    t.string   "kind",             null: false
     t.integer  "min_bet",          null: false
     t.integer  "max_bet",          null: false
     t.datetime "created_at",       null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170430220822) do
     t.datetime "updated_at", null: false
     t.integer  "bet_id"
     t.index ["bet_id"], name: "index_choices_on_bet_id", using: :btree
+    t.index ["value", "bet_id"], name: "index_choices_on_value_and_bet_id", unique: true, using: :btree
   end
 
   create_table "participations", force: :cascade do |t|

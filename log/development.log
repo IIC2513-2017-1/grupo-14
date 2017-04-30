@@ -2179,3 +2179,57 @@ Completed 422 Unprocessable Entity in 61ms (Views: 43.1ms | ActiveRecord: 1.6ms)
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(155231170572165660);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserRefToParticipations (20170430220758)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (30.5ms)[0m  [1m[35mALTER TABLE "participations" ADD "user_id" integer[0m
+  [1m[35m (99.0ms)[0m  [1m[35mCREATE  INDEX  "index_participations_on_user_id" ON "participations"  ("user_id")[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "participations" ADD CONSTRAINT "fk_rails_e80f5ca3a2"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "participations" ADD "choice_id" integer[0m
+  [1m[35m (25.5ms)[0m  [1m[35mCREATE  INDEX  "index_participations_on_choice_id" ON "participations"  ("choice_id")[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "participations" ADD CONSTRAINT "fk_rails_0ec96a14ab"
+FOREIGN KEY ("choice_id")
+  REFERENCES "choices" ("id")
+[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "participations" ADD "bet_id" integer[0m
+  [1m[35m (37.6ms)[0m  [1m[35mCREATE  INDEX  "index_participations_on_bet_id" ON "participations"  ("bet_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "participations" ADD CONSTRAINT "fk_rails_93eed5ae9e"
+FOREIGN KEY ("bet_id")
+  REFERENCES "bets" ("id")
+[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170430220758"]]
+  [1m[35m (18.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserRefToBets (20170430220805)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "bets" ADD "user_id" integer[0m
+  [1m[35m (29.5ms)[0m  [1m[35mCREATE  INDEX  "index_bets_on_user_id" ON "bets"  ("user_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "bets" ADD CONSTRAINT "fk_rails_87dbfdd206"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170430220805"]]
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserRefToChoices (20170430220817)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "choices" ADD "bet_id" integer[0m
+  [1m[35m (32.1ms)[0m  [1m[35mCREATE  INDEX  "index_choices_on_bet_id" ON "choices"  ("bet_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "choices" ADD CONSTRAINT "fk_rails_c0bd518c91"
+FOREIGN KEY ("bet_id")
+  REFERENCES "bets" ("id")
+[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170430220817"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUniqueToParticipations (20170430220822)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (32.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_participations_on_user_id_and_bet_id" ON "participations"  ("user_id", "bet_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170430220822"]]
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(155231170572165660)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m

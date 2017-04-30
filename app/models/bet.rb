@@ -9,8 +9,12 @@ class Bet < ApplicationRecord
 	validates_uniqueness_of :name, scope: [:deadline]
 	validate :deadline_is_in_future
 
+	belongs_to :user
+	has_many :choices
+	has_many :participations
+
 	def deadline_is_in_future
-		if deadline.present? or deadline < Date.today
+		if deadline.to_date.past? or deadline.today?
 			errors.add(:deadline, "can't be in the past")
 		end
 	end

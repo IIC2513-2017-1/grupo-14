@@ -17,7 +17,7 @@ class BetsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create bet" do
     assert_difference('Bet.count') do
-      post bets_url, params: { bet: { deadline: @bet.deadline, description: @bet.description, max_bet: @bet.max_bet, max_participants: @bet.max_participants, min_bet: @bet.min_bet, name: @bet.name, type: @bet.type } }
+      post bets_url, params: { bet: { deadline: @bet.deadline, description: @bet.description, kind: @bet.kind, max_bet: @bet.max_bet, max_participants: @bet.max_participants, min_bet: @bet.min_bet, name: @bet.name } }
     end
 
     assert_redirected_to bet_url(Bet.last)
@@ -34,7 +34,7 @@ class BetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update bet" do
-    patch bet_url(@bet), params: { bet: { deadline: @bet.deadline, description: @bet.description, max_bet: @bet.max_bet, max_participants: @bet.max_participants, min_bet: @bet.min_bet, name: @bet.name, type: @bet.type } }
+    patch bet_url(@bet), params: { bet: { deadline: @bet.deadline, description: @bet.description, kind: @bet.kind, max_bet: @bet.max_bet, max_participants: @bet.max_participants, min_bet: @bet.min_bet, name: @bet.name } }
     assert_redirected_to bet_url(@bet)
   end
 

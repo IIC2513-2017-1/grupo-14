@@ -31,7 +31,7 @@ class ParticipationsController < ApplicationController
         format.html { redirect_to @participation, notice: 'Participation was successfully created.' }
         format.json { render :show, status: :created, location: @participation }
       else
-        format.html { render :new }
+        format.html { render :new, status: 422 }
         format.json { render json: @participation.errors, status: :unprocessable_entity }
       end
     end

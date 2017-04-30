@@ -13,22 +13,22 @@
 
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, required: true %>
   </div>
 
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, required: true %>
   </div>
 
   <div class="field">
     <%= f.label :deadline %>
-    <%= f.date_select :deadline %>
+    <%= f.date_select :deadline, required: true %>
   </div>
 
   <div class="field">
     <%= f.label :max_participants %>
-    <%= f.number_field :max_participants %>
+    <%= f.number_field :max_participants, required: true %>
   </div>
 
   <div class="field">
@@ -38,12 +38,12 @@
 
   <div class="field">
     <%= f.label :min_bet %>
-    <%= f.number_field :min_bet %>
+    <%= f.number_field :min_bet, required: true %>
   </div>
 
   <div class="field">
     <%= f.label :max_bet %>
-    <%= f.number_field :max_bet %>
+    <%= f.number_field :max_bet, required: true %>
   </div>
 
   <div class="actions">

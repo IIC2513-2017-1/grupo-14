@@ -84,5 +84,6 @@ test:
 production:
   <<: *default
   database: Apuestas_production
+  host: localhost
   username: Apuestas
   password: <%= ENV['APUESTAS_DATABASE_PASSWORD'] %>

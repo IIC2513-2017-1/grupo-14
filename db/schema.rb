@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430203920) do
+ActiveRecord::Schema.define(version: 20170430220822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,30 +25,46 @@ ActiveRecord::Schema.define(version: 20170430203920) do
     t.integer  "max_bet",          null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "user_id"
     t.index ["name", "deadline"], name: "index_bets_on_name_and_deadline", unique: true, using: :btree
+    t.index ["user_id"], name: "index_bets_on_user_id", using: :btree
   end
 
   create_table "choices", force: :cascade do |t|
     t.string   "value",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "bet_id"
+    t.index ["bet_id"], name: "index_choices_on_bet_id", using: :btree
   end
 
   create_table "participations", force: :cascade do |t|
-    t.integer  "amount", null: false
+    t.integer  "amount",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "choice_id"
+    t.integer  "bet_id"
+    t.index ["bet_id"], name: "index_participations_on_bet_id", using: :btree
+    t.index ["choice_id"], name: "index_participations_on_choice_id", using: :btree
+    t.index ["user_id", "bet_id"], name: "index_participations_on_user_id_and_bet_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_participations_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name", null: false
-    t.string   "mail", null: false
-    t.string   "password", null: false
-    t.string   "role", null: false
+    t.string   "name",       null: false
+    t.string   "mail",       null: false
+    t.string   "password",   null: false
+    t.string   "role",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mail"], name: "index_users_on_mail", unique: true, using: :btree
     t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
   end
 
+  add_foreign_key "bets", "users"
+  add_foreign_key "choices", "bets"
+  add_foreign_key "participations", "bets"
+  add_foreign_key "participations", "choices"
+  add_foreign_key "participations", "users"
 end

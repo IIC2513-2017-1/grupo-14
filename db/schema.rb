@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170430203920) do
     t.text     "description",      null: false
     t.date     "deadline",         null: false
     t.integer  "max_participants", null: false
-    t.string   "kind",             null: false
+    t.string   "kind"
     t.integer  "min_bet",          null: false
     t.integer  "max_bet",          null: false
     t.datetime "created_at",       null: false
@@ -35,16 +35,16 @@ ActiveRecord::Schema.define(version: 20170430203920) do
   end
 
   create_table "participations", force: :cascade do |t|
-    t.integer  "amount"
+    t.integer  "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "mail"
-    t.string   "password"
-    t.string   "role"
+    t.string   "name", null: false
+    t.string   "mail", null: false
+    t.string   "password", null: false
+    t.string   "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mail"], name: "index_users_on_mail", unique: true, using: :btree

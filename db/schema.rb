@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170430180042) do
   end
 
   create_table "choices", force: :cascade do |t|
-    t.string   "value"
+    t.string   "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20170430180042) do
     t.string   "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
+    t.index ["mail"], name: "index_users_on_mail", unique: true, using: :btree
   end
 
 end

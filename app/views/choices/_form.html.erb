@@ -16,6 +16,11 @@
     <%= f.text_field :value, required: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :bet_id %>
+    <%= f.select :bet_id, Bet.all.collect { |bet| [ bet.name, bet.id ] }, { include_blank: true }, { required: true } %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

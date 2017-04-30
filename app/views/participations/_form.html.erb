@@ -16,7 +16,23 @@
     <%= f.number_field :amount, required: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.select :user_id, User.all.collect { |user| [ user.name, user.id ] }, { include_blank: true }, { required: true } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :choice_id %>
+    <%= f.select :choice_id, Choice.all.collect { |choice| [ choice.value, choice.id ] }, { include_blank: true }, { required: true } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bet_id %>
+    <%= f.select :bet_id, Bet.all.collect { |bet| [ bet.name, bet.id ] }, { include_blank: true }, { required: true } %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

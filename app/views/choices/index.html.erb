@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Value</th>
+      <th>Bet</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     <% @choices.each do |choice| %>
       <tr>
         <td><%= choice.value %></td>
+        <td><%= choice.bet.name %></td>
         <td><%= link_to 'Show', choice %></td>
         <td><%= link_to 'Edit', edit_choice_path(choice) %></td>
         <td><%= link_to 'Destroy', choice, method: :delete, data: { confirm: 'Are you sure?' } %></td>

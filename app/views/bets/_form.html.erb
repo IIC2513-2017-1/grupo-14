@@ -46,6 +46,11 @@
     <%= f.number_field :max_bet, required: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.select :user_id, User.all.collect { |user| [ user.name, user.id ] }, { include_blank: true }, { required: true } %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

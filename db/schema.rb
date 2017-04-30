@@ -10,25 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430180042) do
+ActiveRecord::Schema.define(version: 20170430203920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bets", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.date     "deadline"
-    t.integer  "max_participants"
-    t.string   "type"
-    t.integer  "min_bet"
-    t.integer  "max_bet"
+    t.string   "name",             null: false
+    t.text     "description",      null: false
+    t.date     "deadline",         null: false
+    t.integer  "max_participants", null: false
+    t.string   "kind",             null: false
+    t.integer  "min_bet",          null: false
+    t.integer  "max_bet",          null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["name", "deadline"], name: "index_bets_on_name_and_deadline", unique: true, using: :btree
   end
 
   create_table "choices", force: :cascade do |t|
-    t.string   "value", null: false
+    t.string   "value",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,8 +47,8 @@ ActiveRecord::Schema.define(version: 20170430180042) do
     t.string   "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
     t.index ["mail"], name: "index_users_on_mail", unique: true, using: :btree
+    t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
   end
 
 end

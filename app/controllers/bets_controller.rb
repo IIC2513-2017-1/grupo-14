@@ -31,7 +31,7 @@ class BetsController < ApplicationController
         format.html { redirect_to @bet, notice: 'Bet was successfully created.' }
         format.json { render :show, status: :created, location: @bet }
       else
-        format.html { render :new }
+        format.html { render :new, status: 422 }
         format.json { render json: @bet.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +69,6 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:name, :description, :deadline, :max_participants, :type, :min_bet, :max_bet)
+      params.require(:bet).permit(:name, :description, :deadline, :max_participants, :kind, :min_bet, :max_bet)
     end
 end

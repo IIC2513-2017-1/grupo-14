@@ -5,7 +5,7 @@ one:
   description: MyText
   deadline: 2017-04-30
   max_participants: 1
-  type: 
+  kind: MyString
   min_bet: 1
   max_bet: 1
 
@@ -14,6 +14,6 @@ two:
   description: MyText
   deadline: 2017-04-30
   max_participants: 1
-  type: 
+  kind: MyString
   min_bet: 1
   max_bet: 1

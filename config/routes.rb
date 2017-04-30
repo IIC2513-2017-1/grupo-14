@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :bets
   resources :participations
   get 'home/index'
 
-  resources :bets
   resources :choices
   resources :users
 

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170430233911) do
     t.text     "description",      null: false
     t.date     "deadline",         null: false
     t.integer  "max_participants", null: false
-    t.string   "kind",             null: false
+    t.string   "kind"
     t.integer  "min_bet",          null: false
     t.integer  "max_bet",          null: false
     t.datetime "created_at",       null: false

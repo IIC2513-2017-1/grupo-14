@@ -6,6 +6,6 @@ class User < ApplicationRecord
 	validates :name, presence: true, length: {minimum: 1}, allow_blank: false, uniqueness: true
 	
 	has_many :bets
-  has_many :participations
+	has_many :participations
 
 end

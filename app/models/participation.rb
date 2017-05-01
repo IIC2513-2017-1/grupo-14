@@ -15,13 +15,13 @@ class Participation < ApplicationRecord
 
 	def valid_choice
 		if bet_id != self.choice.bet_id
-			errors.add(:choice, "must belong to the specified bet")
+			errors.add(:choice_id, "must belong to the specified bet")
 		end
 	end
 
 	def amount_range
 		if amount < self.bet.min_bet or amount > self.bet.max_bet
-			errors.add(:amount, "out of range")
+			errors.add(:amount, "out of range specified in bet")
 		end
 	end
 end

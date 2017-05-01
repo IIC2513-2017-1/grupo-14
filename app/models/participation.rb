@@ -5,7 +5,19 @@ class Participation < ApplicationRecord
 	belongs_to :user
 	belongs_to :choice
 	belongs_to :bet
-	validate :amount_range
+	validate :amount_range, :valid_user, :valid_choice
+
+	def valid_user
+		if user_id == self.bet.user.id
+			errors.add(:user_id, "cannot be the creator of the bet")
+		end
+	end
+
+	def valid_choice
+		if bet_id != self.choice.bet_id
+			errors.add(:choice, "must belong to the specified bet")
+		end
+	end
 
 	def amount_range
 		if amount < self.bet.min_bet or amount > self.bet.max_bet

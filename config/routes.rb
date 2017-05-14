@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   resources :bets
   resources :participations
   resources :choices
   resources :users
+  resource :session, only: [:new, :create, :destroy]
   
   get 'home/index'
   root 'home#index'

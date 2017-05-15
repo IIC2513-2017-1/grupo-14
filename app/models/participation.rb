@@ -26,4 +26,10 @@ class Participation < ApplicationRecord
 			errors.add(:amount, "out of range specified in bet")
 		end
 	end
+
+	def valid_date
+		if self.bet.deadline.to_date.past?
+			errors.add("This bet's deadline has been met and you can no longer participate.")
+		end
+	end
 end

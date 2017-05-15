@@ -35,5 +35,14 @@
   <%= @bet.max_bet %>
 </p>
 
+<p>
+  <strong>Choices:</strong>
+  <ul>
+    <% @bet.choices.each do |choice| %>
+      <li><%= choice.value %></li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_bet_path(@bet) %> |
 <%= link_to 'Back', bets_path %>

@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+  include Secured
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in?, only: %i[edit update destroy]
+  before_action :is_current_user?, only: %i[edit update destroy]
 
   # GET /users
   # GET /users.json
@@ -70,5 +73,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :mail, :password, :password_confirmation, :role)
+    end
+
+    def is_current_user?
+      redirect_to(root_path, notice: 'Unauthorized access!') unless @user == current_user
     end
 end

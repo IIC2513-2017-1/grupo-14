@@ -12,6 +12,7 @@ class Bet < ApplicationRecord
 	belongs_to :user
 	has_many :choices
 	has_many :participations
+	accepts_nested_attributes_for :choices
 
 	def deadline_is_in_future
 		if deadline.to_date.past? or deadline.today?

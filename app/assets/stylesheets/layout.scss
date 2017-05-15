@@ -1,0 +1,89 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333;
+  padding-top: 85px;
+  background-color: #f5f8fa;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #666;
+  border-bottom: 1px solid #1b95e0;
+  box-shadow: 0px 0px 5px 1px #666;
+}
+
+main {
+  margin: 0 15px;
+}
+
+#logo img {
+  height: 50px;
+}
+#logo a:hover {
+    color: #61b8a2;
+    background: #666;
+}
+
+nav#main-menu, #logo {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+nav#main-menu {
+  margin-left: 10px;
+  a {
+    padding: 20px;
+    text-decoration: none;
+    color: #555;
+    font-size: 18px;
+    border-right: 1px solid #aaa;
+  }
+  a:nth-child(2n) {
+    color: #f5f8fa;
+  }
+  a:nth-child(2n+1) {
+    color: rgb(97, 203, 230);
+  }
+  a:hover {
+    color: #61b8a2;
+    background: #666;
+  }
+}
+
+#user-bar {
+  font-size: 12px;
+  position: absolute;
+  vertical-align: middle;
+  top: 15px;
+  right: 40px;
+  text-align: center;
+  height: 28px;
+  a {
+    text-decoration: none;
+    color: #555;
+    font-size: 18px;
+  }
+  a:nth-child(2n) {
+    color: rgb(97, 203, 230);
+  }
+  a:nth-child(2n+1) {
+    color: rgb(97, 203, 230);
+  }
+  a:hover {
+    color: white;
+    background: #666;
+  }
+}
+#user-bar .name {
+  color: white;
+
+}

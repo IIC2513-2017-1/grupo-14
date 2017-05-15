@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= f.label :kind %>
-    <%= f.text_field :kind %>
+    <%= f.text_field :kind, required: true %>
   </div>
 
   <div class="field">
@@ -46,7 +46,48 @@
     <%= f.number_field :max_bet, required: true %>
   </div>
 
+  <div class="values">
+    <div class="field">
+      <%= f.label "Choice" %>
+      <input required="required" type="text" name="bet[choices_attributes][][value]">
+    </div>
+    <div class="field">
+      <%= f.label "Choice" %>
+      <input required="required" type="text" name="bet[choices_attributes][][value]">
+    </div>
+  </div>
+  
+    <button class="add_form_field">Add another choice &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span></button>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+      var value_index
+      var max_fields      = 50;
+      var wrapper         = $(".values");
+      var add_button      = $(".add_form_field");
+    
+      var x = 1;
+      $(add_button).click(function(e){
+          e.preventDefault();
+          if(x < max_fields){
+              x++;
+              $(wrapper).append('<div class="field"><label>Choice</label><input required="required" type="text" name="bet[choices_attributes][][value]"><a href="#" class="delete">Delete</a></div>'); //add input box
+          }
+    else
+    {
+    alert("Can't add more choices")
+    }
+      });
+    
+      $(wrapper).on("click",".delete", function(e){
+          e.preventDefault(); $(this).parent('div').remove(); x--;
+      })
+  });
+</script>
+
+<!-- Fields generables obtenidos de http://www.sanwebcorner.com/2017/02/dynamically-generate-form-fields-using.html -->

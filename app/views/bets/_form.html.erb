@@ -49,11 +49,11 @@
   <div class="values">
     <div class="field">
       <%= f.label "Choice" %>
-      <input required="required" type="text" name="bet[choices][][value]">
+      <input required="required" type="text" name="bet[choices_attributes][][value]">
     </div>
     <div class="field">
       <%= f.label "Choice" %>
-      <input required="required" type="text" name="bet[choices][][value]">
+      <input required="required" type="text" name="bet[choices_attributes][][value]">
     </div>
   </div>
   
@@ -76,7 +76,7 @@
           e.preventDefault();
           if(x < max_fields){
               x++;
-              $(wrapper).append('<div class="field"><label>Choice</label><input required="required" type="text" name="bet[choices][][value]"><a href="#" class="delete">Delete</a></div>'); //add input box
+              $(wrapper).append('<div class="field"><label>Choice</label><input required="required" type="text" name="bet[choices_attributes][][value]"><a href="#" class="delete">Delete</a></div>'); //add input box
           }
     else
     {

@@ -12491,3 +12491,550 @@ Processing by BetsController#create as HTML
 Completed 422 Unprocessable Entity in 82ms (Views: 67.7ms | ActiveRecord: 2.7ms)
 
 
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-15 02:49:48 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+SyntaxError (/home/rodrigo/Documents/Repositories/grupo-14/app/controllers/bets_controller.rb:78: syntax error, unexpected ')', expecting =>
+id, choices: [:value], :value)
+                              ^):
+  
+app/controllers/bets_controller.rb:78: syntax error, unexpected ')', expecting =>
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.2ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.0ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (29.4ms)
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-15 02:50:13 -0400
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-15 02:50:23 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (13.6ms)
+  Rendered bets/new.html.erb within layouts/application (14.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 303ms (Views: 270.8ms | ActiveRecord: 7.7ms)
+
+
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (4.2ms)
+  Rendered bets/new.html.erb within layouts/application (4.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 61ms (Views: 43.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/bets" for 127.0.0.1 at 2017-05-15 02:50:52 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ilOyag57ToBxVHhwzctXSBuwUu3vi139y+pJl+E9B7XGeULCrbWiKVC0CAOqAKrAXwgKEHTCCZnqHWnTk70urw==", "bet"=>{"name"=>"Huehue", "description"=>"hsjdkvlksjdv", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"18", "max_participants"=>"4", "kind"=>"Car race", "min_bet"=>"4", "max_bet"=>"7", "choices"=>[{"value"=>"Door number q"}, {"value"=>"Gate f and a half"}]}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.8ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/bets_controller.rb:30:in `create'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.5ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (24.6ms)
+Started PUT "/__web_console/repl_sessions/0c1001e461c0b408985304e40fa9278e" for 127.0.0.1 at 2017-05-15 02:51:26 -0400
+Started PUT "/__web_console/repl_sessions/0c1001e461c0b408985304e40fa9278e" for 127.0.0.1 at 2017-05-15 02:51:27 -0400
+Started PUT "/__web_console/repl_sessions/0c1001e461c0b408985304e40fa9278e" for 127.0.0.1 at 2017-05-15 02:51:34 -0400
+Started POST "/bets" for 127.0.0.1 at 2017-05-15 02:51:55 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ilOyag57ToBxVHhwzctXSBuwUu3vi139y+pJl+E9B7XGeULCrbWiKVC0CAOqAKrAXwgKEHTCCZnqHWnTk70urw==", "bet"=>{"name"=>"Huehue", "description"=>"hsjdkvlksjdv", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"18", "max_participants"=>"4", "kind"=>"Car race", "min_bet"=>"4", "max_bet"=>"7", "choices"=>[{"value"=>"Door number q"}, {"value"=>"Gate f and a half"}]}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "Huehue"], ["deadline", Thu, 18 May 2017], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "bets" ("name", "description", "deadline", "max_participants", "kind", "min_bet", "max_bet", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Huehue"], ["description", "hsjdkvlksjdv"], ["deadline", Thu, 18 May 2017], ["max_participants", 4], ["kind", "Car race"], ["min_bet", 4], ["max_bet", 7], ["created_at", 2017-05-15 06:51:55 UTC], ["updated_at", 2017-05-15 06:51:55 UTC], ["user_id", 1]]
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 255ms (ActiveRecord: 16.5ms)
+
+
+  
+NameError (undefined local variable or method `choice_params' for #<BetsController:0x007fc7e882ceb0>
+Did you mean?  choice_path):
+  
+app/controllers/bets_controller.rb:35:in `block (2 levels) in create'
+app/controllers/bets_controller.rb:34:in `each'
+app/controllers/bets_controller.rb:34:in `block in create'
+app/controllers/bets_controller.rb:32:in `create'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (13.6ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (99.7ms)
+Started PUT "/__web_console/repl_sessions/ae51b5c21c530f5cf51b24f330e544c5" for 127.0.0.1 at 2017-05-15 02:52:29 -0400
+Started PUT "/__web_console/repl_sessions/ae51b5c21c530f5cf51b24f330e544c5" for 127.0.0.1 at 2017-05-15 02:52:31 -0400
+Started PUT "/__web_console/repl_sessions/ae51b5c21c530f5cf51b24f330e544c5" for 127.0.0.1 at 2017-05-15 02:52:40 -0400
+Started POST "/bets" for 127.0.0.1 at 2017-05-15 02:54:12 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ilOyag57ToBxVHhwzctXSBuwUu3vi139y+pJl+E9B7XGeULCrbWiKVC0CAOqAKrAXwgKEHTCCZnqHWnTk70urw==", "bet"=>{"name"=>"Huehue", "description"=>"hsjdkvlksjdv", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"18", "max_participants"=>"4", "kind"=>"Car race", "min_bet"=>"4", "max_bet"=>"7", "choices"=>[{"value"=>"Door number q"}, {"value"=>"Gate f and a half"}]}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "Huehue"], ["deadline", Thu, 18 May 2017], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (4.9ms)
+  Rendered bets/new.html.erb within layouts/application (6.1ms)
+Completed 422 Unprocessable Entity in 71ms (Views: 33.9ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/bets" for 127.0.0.1 at 2017-05-15 02:54:24 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LWqm+uE09bFR/eYDvfaYGoUDONJ6nTCcejGZKQqZIxJhQFZSQvoZGHAdlnDaPWWSwbtgL+HUZPhbxrlteBkKCA==", "bet"=>{"name"=>"Huehue", "description"=>"hsjdkvlksjdv", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"19", "max_participants"=>"4", "kind"=>"Car race", "min_bet"=>"4", "max_bet"=>"7", "choices"=>[{"value"=>"Choice a"}, {"value"=>"asdasdasd"}]}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "Huehue"], ["deadline", Fri, 19 May 2017], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "bets" ("name", "description", "deadline", "max_participants", "kind", "min_bet", "max_bet", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Huehue"], ["description", "hsjdkvlksjdv"], ["deadline", Fri, 19 May 2017], ["max_participants", 4], ["kind", "Car race"], ["min_bet", 4], ["max_bet", 7], ["created_at", 2017-05-15 06:54:24 UTC], ["updated_at", 2017-05-15 06:54:24 UTC], ["user_id", 1]]
+  [1m[35m (21.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 173ms (ActiveRecord: 26.6ms)
+
+
+  
+NameError (undefined local variable or method `choice_params' for #<BetsController:0x007fc7e0114a18>
+Did you mean?  choice_path):
+  
+app/controllers/bets_controller.rb:35:in `block (2 levels) in create'
+app/controllers/bets_controller.rb:34:in `each'
+app/controllers/bets_controller.rb:34:in `block in create'
+app/controllers/bets_controller.rb:32:in `create'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.6ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (85.1ms)
+Started POST "/bets" for 127.0.0.1 at 2017-05-15 02:54:56 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LWqm+uE09bFR/eYDvfaYGoUDONJ6nTCcejGZKQqZIxJhQFZSQvoZGHAdlnDaPWWSwbtgL+HUZPhbxrlteBkKCA==", "bet"=>{"name"=>"Huehue", "description"=>"hsjdkvlksjdv", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"19", "max_participants"=>"4", "kind"=>"Car race", "min_bet"=>"4", "max_bet"=>"7", "choices"=>[{"value"=>"Choice a"}, {"value"=>"asdasdasd"}]}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "Huehue"], ["deadline", Fri, 19 May 2017], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (9.2ms)
+  Rendered bets/new.html.erb within layouts/application (10.4ms)
+Completed 422 Unprocessable Entity in 103ms (Views: 49.7ms | ActiveRecord: 8.5ms)
+
+
+Started POST "/bets" for 127.0.0.1 at 2017-05-15 02:55:09 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IY56AjBTo5AxicYkBd0s5bpjntqnRsfei7l2KwM/47ZtpIqqk51PORBptldiFtFt/tvGJzwPk7qqTlZvcb/KrA==", "bet"=>{"name"=>"Huehue", "description"=>"hsjdkvlksjdv", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"20", "max_participants"=>"4", "kind"=>"Car race", "min_bet"=>"4", "max_bet"=>"7", "choices"=>[{"value"=>"Choice a"}, {"value"=>"Choice 1"}]}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "Huehue"], ["deadline", Sat, 20 May 2017], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "bets" ("name", "description", "deadline", "max_participants", "kind", "min_bet", "max_bet", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Huehue"], ["description", "hsjdkvlksjdv"], ["deadline", Sat, 20 May 2017], ["max_participants", 4], ["kind", "Car race"], ["min_bet", 4], ["max_bet", 7], ["created_at", 2017-05-15 06:55:09 UTC], ["updated_at", 2017-05-15 06:55:09 UTC], ["user_id", 1]]
+  [1m[35m (27.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 34.2ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/bets_controller.rb:35:in `block (2 levels) in create'
+app/controllers/bets_controller.rb:34:in `each'
+app/controllers/bets_controller.rb:34:in `block in create'
+app/controllers/bets_controller.rb:32:in `create'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.7ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.4ms)
+Started POST "/bets" for 127.0.0.1 at 2017-05-15 03:01:07 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IY56AjBTo5AxicYkBd0s5bpjntqnRsfei7l2KwM/47ZtpIqqk51PORBptldiFtFt/tvGJzwPk7qqTlZvcb/KrA==", "bet"=>{"name"=>"Huehue", "description"=>"hsjdkvlksjdv", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"20", "max_participants"=>"4", "kind"=>"Car race", "min_bet"=>"4", "max_bet"=>"7", "choices"=>[{"value"=>"Choice a"}, {"value"=>"Choice 1"}]}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: choices
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "Huehue"], ["deadline", Sat, 20 May 2017], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (7.1ms)
+  Rendered bets/new.html.erb within layouts/application (9.1ms)
+Completed 422 Unprocessable Entity in 88ms (Views: 37.5ms | ActiveRecord: 7.2ms)
+
+
+Started POST "/bets" for 127.0.0.1 at 2017-05-15 03:01:15 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/gXvXEGD6qchP4BbazSk2Ooa1rCN/yP4whTv1mdoDc6yLx/04k0GDgDf8CgM/1lQrqKOTRa2d5zj48+SFegk1A==", "bet"=>{"name"=>"Huehue", "description"=>"hsjdkvlksjdv", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"21", "max_participants"=>"4", "kind"=>"Car race", "min_bet"=>"4", "max_bet"=>"7", "choices"=>[{"value"=>"Choice a"}, {"value"=>"Choice 1"}]}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: choices
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "Huehue"], ["deadline", Sun, 21 May 2017], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "bets" ("name", "description", "deadline", "max_participants", "kind", "min_bet", "max_bet", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Huehue"], ["description", "hsjdkvlksjdv"], ["deadline", Sun, 21 May 2017], ["max_participants", 4], ["kind", "Car race"], ["min_bet", 4], ["max_bet", 7], ["created_at", 2017-05-15 07:01:15 UTC], ["updated_at", 2017-05-15 07:01:15 UTC], ["user_id", 1]]
+  [1m[35m (29.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bets/31
+Completed 302 Found in 41ms (ActiveRecord: 31.8ms)
+
+
+Started GET "/bets/31" for 127.0.0.1 at 2017-05-15 03:01:15 -0400
+Processing by BetsController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mBet Load (0.3ms)[0m  [1m[34mSELECT  "bets".* FROM "bets" WHERE "bets"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  Rendering bets/show.html.erb within layouts/application
+  Rendered bets/show.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 59ms (Views: 54.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-15 03:01:21 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 46ms (Views: 44.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-15 03:01:21 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 35ms (Views: 33.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/choices" for 127.0.0.1 at 2017-05-15 03:01:23 -0400
+Processing by ChoicesController#index as HTML
+  Rendering choices/index.html.erb within layouts/application
+  [1m[36mChoice Load (0.6ms)[0m  [1m[34mSELECT "choices".* FROM "choices"[0m
+  Rendered choices/index.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 72ms (Views: 61.6ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/choices" for 127.0.0.1 at 2017-05-15 03:01:23 -0400
+Processing by ChoicesController#index as HTML
+  Rendering choices/index.html.erb within layouts/application
+  [1m[36mChoice Load (0.5ms)[0m  [1m[34mSELECT "choices".* FROM "choices"[0m
+  Rendered choices/index.html.erb within layouts/application (3.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-15 03:02:26 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 55ms (Views: 53.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-15 03:02:26 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 33ms (Views: 30.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-15 03:02:30 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (0.7ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/index.html.erb within layouts/application (76.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 104ms (Views: 100.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-15 03:02:30 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (1.0ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/index.html.erb within layouts/application (40.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 80ms (Views: 75.7ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-15 03:02:33 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (8.8ms)
+  Rendered bets/new.html.erb within layouts/application (10.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 71ms (Views: 52.3ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-15 03:02:33 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (7.3ms)
+  Rendered bets/new.html.erb within layouts/application (9.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 39ms (Views: 35.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/bets" for 127.0.0.1 at 2017-05-15 03:02:54 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+WEI6CHn1uXWEi7gAlotDoYuPZZjVnN03hSn7mSQ91C1S/hAgik6TPfyXpNlkdCGwpZla/gfJxD/44eqFhDeSg==", "bet"=>{"name"=>"Mi apuesta", "description"=>"apuestita bonita", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"17", "max_participants"=>"4", "kind"=>"Car race", "min_bet"=>"3", "max_bet"=>"8", "choices_attributes"=>[{"value"=>"Choice a"}, {"value"=>"Choice b"}]}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "Mi apuesta"], ["deadline", Wed, 17 May 2017], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChoice Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "choices" WHERE "choices"."value" = $1 AND "choices"."bet_id" IS NULL LIMIT $2[0m  [["value", "Choice a"], ["LIMIT", 1]]
+  [1m[36mChoice Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "choices" WHERE "choices"."value" = $1 AND "choices"."bet_id" IS NULL LIMIT $2[0m  [["value", "Choice b"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "bets" ("name", "description", "deadline", "max_participants", "kind", "min_bet", "max_bet", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Mi apuesta"], ["description", "apuestita bonita"], ["deadline", Wed, 17 May 2017], ["max_participants", 4], ["kind", "Car race"], ["min_bet", 3], ["max_bet", 8], ["created_at", 2017-05-15 07:02:54 UTC], ["updated_at", 2017-05-15 07:02:54 UTC], ["user_id", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "choices" ("value", "created_at", "updated_at", "bet_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["value", "Choice a"], ["created_at", 2017-05-15 07:02:54 UTC], ["updated_at", 2017-05-15 07:02:54 UTC], ["bet_id", 32]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "choices" ("value", "created_at", "updated_at", "bet_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["value", "Choice b"], ["created_at", 2017-05-15 07:02:54 UTC], ["updated_at", 2017-05-15 07:02:54 UTC], ["bet_id", 32]]
+  [1m[35m (35.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bets/32
+Completed 302 Found in 58ms (ActiveRecord: 39.6ms)
+
+
+Started GET "/bets/32" for 127.0.0.1 at 2017-05-15 03:02:54 -0400
+Processing by BetsController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mBet Load (0.4ms)[0m  [1m[34mSELECT  "bets".* FROM "bets" WHERE "bets"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  Rendering bets/show.html.erb within layouts/application
+  Rendered bets/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 41ms (Views: 38.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-15 03:02:59 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 43ms (Views: 39.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-15 03:03:00 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 33ms (Views: 31.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/choices" for 127.0.0.1 at 2017-05-15 03:03:01 -0400
+Processing by ChoicesController#index as HTML
+  Rendering choices/index.html.erb within layouts/application
+  [1m[36mChoice Load (0.5ms)[0m  [1m[34mSELECT "choices".* FROM "choices"[0m
+  [1m[36mBet Load (0.6ms)[0m  [1m[34mSELECT  "bets".* FROM "bets" WHERE "bets"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "bets".* FROM "bets" WHERE "bets"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  Rendered choices/index.html.erb within layouts/application (9.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 75ms (Views: 72.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/choices" for 127.0.0.1 at 2017-05-15 03:03:01 -0400
+Processing by ChoicesController#index as HTML
+  Rendering choices/index.html.erb within layouts/application
+  [1m[36mChoice Load (0.9ms)[0m  [1m[34mSELECT "choices".* FROM "choices"[0m
+  [1m[36mBet Load (0.6ms)[0m  [1m[34mSELECT  "bets".* FROM "bets" WHERE "bets"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "bets".* FROM "bets" WHERE "bets"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  Rendered choices/index.html.erb within layouts/application (8.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 36ms (Views: 33.5ms | ActiveRecord: 1.8ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (216.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Apuestas_development"[0m
+  [1m[35m (222.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Apuestas_test"[0m
+  [1m[35m (618.3ms)[0m  [1m[35mCREATE DATABASE "Apuestas_development" ENCODING = 'unicode'[0m
+  [1m[35m (607.6ms)[0m  [1m[35mCREATE DATABASE "Apuestas_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (78.2ms)[0m  [1m[35mCREATE TABLE "bets" ("id" serial primary key, "name" character varying NOT NULL, "description" text NOT NULL, "deadline" date NOT NULL, "max_participants" integer NOT NULL, "kind" character varying, "min_bet" integer NOT NULL, "max_bet" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer)[0m
+  [1m[35m (42.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_bets_on_name_and_deadline" ON "bets" USING btree ("name", "deadline")[0m
+  [1m[35m (42.4ms)[0m  [1m[35mCREATE  INDEX  "index_bets_on_user_id" ON "bets" USING btree ("user_id")[0m
+  [1m[35m (87.7ms)[0m  [1m[35mCREATE TABLE "choices" ("id" serial primary key, "value" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "bet_id" integer)[0m
+  [1m[35m (30.8ms)[0m  [1m[35mCREATE  INDEX  "index_choices_on_bet_id" ON "choices" USING btree ("bet_id")[0m
+  [1m[35m (31.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_choices_on_value_and_bet_id" ON "choices" USING btree ("value", "bet_id")[0m
+  [1m[35m (32.2ms)[0m  [1m[35mCREATE TABLE "participations" ("id" serial primary key, "amount" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "choice_id" integer, "bet_id" integer)[0m
+  [1m[35m (40.9ms)[0m  [1m[35mCREATE  INDEX  "index_participations_on_bet_id" ON "participations" USING btree ("bet_id")[0m
+  [1m[35m (42.1ms)[0m  [1m[35mCREATE  INDEX  "index_participations_on_choice_id" ON "participations" USING btree ("choice_id")[0m
+  [1m[35m (42.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_participations_on_user_id_and_bet_id" ON "participations" USING btree ("user_id", "bet_id")[0m
+  [1m[35m (41.9ms)[0m  [1m[35mCREATE  INDEX  "index_participations_on_user_id" ON "participations" USING btree ("user_id")[0m
+  [1m[35m (76.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying NOT NULL, "mail" character varying NOT NULL, "role" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "password_digest" character varying)[0m
+  [1m[35m (42.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_mail" ON "users" USING btree ("mail")[0m
+  [1m[35m (41.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_name" ON "users" USING btree ("name")[0m
+  [1m[35m (10.6ms)[0m  [1m[35mALTER TABLE "bets" ADD CONSTRAINT "fk_rails_87dbfdd206"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (10.5ms)[0m  [1m[35mALTER TABLE "choices" ADD CONSTRAINT "fk_rails_c0bd518c91"
+FOREIGN KEY ("bet_id")
+  REFERENCES "bets" ("id")
+[0m
+  [1m[35m (10.9ms)[0m  [1m[35mALTER TABLE "participations" ADD CONSTRAINT "fk_rails_93eed5ae9e"
+FOREIGN KEY ("bet_id")
+  REFERENCES "bets" ("id")
+[0m
+  [1m[35m (9.7ms)[0m  [1m[35mALTER TABLE "participations" ADD CONSTRAINT "fk_rails_0ec96a14ab"
+FOREIGN KEY ("choice_id")
+  REFERENCES "choices" ("id")
+[0m
+  [1m[35m (10.6ms)[0m  [1m[35mALTER TABLE "participations" ADD CONSTRAINT "fk_rails_e80f5ca3a2"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (87.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (9.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170515001016)[0m
+  [1m[35m (10.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170430203920),
+(20170430220805),
+(20170430180042),
+(20170430220817),
+(20170430220822),
+(20170430233911),
+(20170429221337),
+(20170430220758),
+(20170429220950);
+
+[0m
+  [1m[35m (75.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-05-15 07:05:07 UTC], ["updated_at", 2017-05-15 07:05:07 UTC]]
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (89.1ms)[0m  [1m[35mCREATE TABLE "bets" ("id" serial primary key, "name" character varying NOT NULL, "description" text NOT NULL, "deadline" date NOT NULL, "max_participants" integer NOT NULL, "kind" character varying, "min_bet" integer NOT NULL, "max_bet" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer)[0m
+  [1m[35m (41.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_bets_on_name_and_deadline" ON "bets" USING btree ("name", "deadline")[0m
+  [1m[35m (241.4ms)[0m  [1m[35mCREATE  INDEX  "index_bets_on_user_id" ON "bets" USING btree ("user_id")[0m
+  [1m[35m (98.6ms)[0m  [1m[35mCREATE TABLE "choices" ("id" serial primary key, "value" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "bet_id" integer)[0m
+  [1m[35m (41.8ms)[0m  [1m[35mCREATE  INDEX  "index_choices_on_bet_id" ON "choices" USING btree ("bet_id")[0m
+  [1m[35m (53.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_choices_on_value_and_bet_id" ON "choices" USING btree ("value", "bet_id")[0m
+  [1m[35m (42.9ms)[0m  [1m[35mCREATE TABLE "participations" ("id" serial primary key, "amount" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "choice_id" integer, "bet_id" integer)[0m
+  [1m[35m (42.1ms)[0m  [1m[35mCREATE  INDEX  "index_participations_on_bet_id" ON "participations" USING btree ("bet_id")[0m
+  [1m[35m (42.6ms)[0m  [1m[35mCREATE  INDEX  "index_participations_on_choice_id" ON "participations" USING btree ("choice_id")[0m
+  [1m[35m (42.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_participations_on_user_id_and_bet_id" ON "participations" USING btree ("user_id", "bet_id")[0m
+  [1m[35m (42.0ms)[0m  [1m[35mCREATE  INDEX  "index_participations_on_user_id" ON "participations" USING btree ("user_id")[0m
+  [1m[35m (87.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying NOT NULL, "mail" character varying NOT NULL, "role" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "password_digest" character varying)[0m
+  [1m[35m (42.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_mail" ON "users" USING btree ("mail")[0m
+  [1m[35m (42.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_name" ON "users" USING btree ("name")[0m
+  [1m[35m (10.5ms)[0m  [1m[35mALTER TABLE "bets" ADD CONSTRAINT "fk_rails_87dbfdd206"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (10.6ms)[0m  [1m[35mALTER TABLE "choices" ADD CONSTRAINT "fk_rails_c0bd518c91"
+FOREIGN KEY ("bet_id")
+  REFERENCES "bets" ("id")
+[0m
+  [1m[35m (10.9ms)[0m  [1m[35mALTER TABLE "participations" ADD CONSTRAINT "fk_rails_93eed5ae9e"
+FOREIGN KEY ("bet_id")
+  REFERENCES "bets" ("id")
+[0m
+  [1m[35m (9.9ms)[0m  [1m[35mALTER TABLE "participations" ADD CONSTRAINT "fk_rails_0ec96a14ab"
+FOREIGN KEY ("choice_id")
+  REFERENCES "choices" ("id")
+[0m
+  [1m[35m (10.6ms)[0m  [1m[35mALTER TABLE "participations" ADD CONSTRAINT "fk_rails_e80f5ca3a2"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (87.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (9.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170515001016)[0m
+  [1m[35m (10.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170430203920),
+(20170430220805),
+(20170430180042),
+(20170430220817),
+(20170430220822),
+(20170430233911),
+(20170429221337),
+(20170430220758),
+(20170429220950);
+
+[0m
+  [1m[35m (53.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-05-15 07:05:08 UTC], ["updated_at", 2017-05-15 07:05:08 UTC]]
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m

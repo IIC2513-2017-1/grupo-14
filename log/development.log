@@ -5645,3 +5645,817 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 37ms (Views: 35.9ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(155231170572165660);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddPasswordDigestToUser (20170515001016)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (82.1ms)[0m  [1m[35mALTER TABLE "users" ADD "password_digest" character varying[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1000]]
+  [1m[36mUser Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."mail" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["mail", "a@a.aa"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."name" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["name", "asdasdasd"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (3.9ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$10$TkAmueYET/3boM8Syf9uBuziFfSuEXsBMS1ecORCQ0qMe5Hw1b2WO"], ["updated_at", 2017-05-15 00:12:11 UTC], ["id", 1]]
+  [1m[35m (21.5ms)[0m  [1m[35mALTER TABLE "users" DROP "password"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170515001016"]]
+  [1m[35m (13.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (23.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(155231170572165660)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:12:34 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 264ms (Views: 250.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-05-14 20:12:36 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (27.1ms)
+Completed 200 OK in 88ms (Views: 47.6ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-05-14 20:12:36 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 36ms (Views: 34.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-05-14 20:13:38 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 47ms (Views: 44.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-05-14 20:13:38 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 43ms (Views: 40.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-05-14 20:13:59 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 41ms (Views: 39.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:14:14 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 35ms (Views: 34.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:14:17 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 63ms (Views: 61.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:14:17 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 32ms (Views: 30.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2017-05-14 20:14:22 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"65mDSR7WzcycE5eVHiXW0bR3VECnxwWksLs6sB5b9qJSb9oaX/PMizDsGFA1ZRhuB2rDrPdy0O2DGKjO/xYphg==", "session"=>{"name"=>"asdasdasd", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "asdasdasd"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 89ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:14:22 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered home/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 34ms (Views: 32.3ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2017-05-14 20:15:02 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"mtiUi2fH7mSnF/PAz5dU8hPuaXKUa6TmzQeAoW4W0MUjLs3YJuLvIwvofAXk15pNoPP+nsTeca/+pBLfj1sP4Q=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:15:02 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 39ms (Views: 37.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:18:52 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 29ms (Views: 27.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:23:10 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 29ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:23:24 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 33ms (Views: 32.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:27:48 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 31ms (Views: 29.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:27:50 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 51ms (Views: 50.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:27:50 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 39ms (Views: 38.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2017-05-14 20:28:01 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3Wlj1QjyfpgQzx4sXhWQkBLFHlmA34aLV/6pb3JamV8dg3HsAiI3wWOHvQVHI4WwMsEL3wgfSD0DYrx7GP9kBQ==", "session"=>{"name"=>"asdasdasd", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "asdasdasd"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 84ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:28:01 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 27ms (Views: 26.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:28:06 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 39ms (Views: 37.6ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2017-05-14 20:29:03 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7YmraXP4aaBkVlnIrLS6ntleSniq07A3SSgG0MIx3IQtY7lQeSgg+Rce+uG1gq+++Vpf/iITfoEdtBPEqJQh3g=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:29:03 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 29ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:29:06 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 47ms (Views: 45.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:29:06 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 32ms (Views: 31.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2017-05-14 20:29:08 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZJKgaiRNh5CJ2KkQGPFSnzP0xnHrKPAhYWgLIgcopcPJHp7jFnTLb4h8404fFunIPIyrJU0plVQOCtVn9EYBLg==", "session"=>{"name"=>"", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", ""], ["LIMIT", 1]]
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:29:08 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 35ms (Views: 33.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:29:23 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 38ms (Views: 37.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2017-05-14 20:29:25 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/aqUscfK+9TUXEcv3og6IIC33cXkWcKkXNwANM9Eg2dQJqo49fO3K9X4DXHZb4F3j8+wkUJYp9Ezvt5xPConig==", "session"=>{"name"=>"", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", ""], ["LIMIT", 1]]
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:29:25 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 36ms (Views: 34.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2017-05-14 20:30:38 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gLzn1B9MRLcyvxDY0Yyir3tr3lrln4P+wGsXZrLudS4tMNldLXUISDMbWobWaxn4dBOzDkOe5ouvCckjQYDRww==", "session"=>{"name"=>"", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", ""], ["LIMIT", 1]]
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:30:38 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 43ms (Views: 42.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:31:23 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 50ms (Views: 48.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:31:23 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 40ms (Views: 38.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:32:04 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/rodrigo/Documents/Repositories/grupo-14/app/views/layouts/application.html.erb:14: syntax error, unexpected tIDENTIFIER, expecting ')'
+nd=( link_to 'Home' root_index );@output_buffer.safe_append=
+                              ^):
+  
+app/views/layouts/application.html.erb:14: syntax error, unexpected tIDENTIFIER, expecting ')'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.1ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (24.8ms)
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:32:16 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 263ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `root_index' for #<#<Class:0x007f265c735eb8>:0x007f265dcae4c0>):
+    11:   <body>
+    12:   	<header>
+    13:   		<div id="user_bar">
+    14:   			<%= link_to 'Home', root_index %>
+    15:   			<% if current_user %>
+    16: 				Current user: <%= current_user.name %><br>
+    17: 				<%= link_to 'Logout', session_url, method: :delete%><br>
+  
+app/views/layouts/application.html.erb:14:in `_app_views_layouts_application_html_erb___3436742843483261568_69901379469080'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.2ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.5ms)
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:32:58 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 56ms (Views: 54.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:33:01 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 74ms (Views: 72.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:33:01 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 47ms (Views: 45.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:37:53 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 39ms (Views: 38.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2017-05-14 20:37:53 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 35ms (Views: 33.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2017-05-14 20:37:58 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZsS10T0plhzFCmLwYFnz8N0vvabv2LbXb9Fla5kBNYzLSItYDxDa48SuKK5nvkin0lfQ8knZ06IAs7suam+RYQ==", "session"=>{"name"=>"asdasdasd", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "asdasdasd"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 88ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:37:59 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 29ms (Views: 27.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-14 20:38:01 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (17.2ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  Rendered bets/index.html.erb within layouts/application (24.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 84ms (Views: 34.5ms | ActiveRecord: 19.8ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-14 20:38:01 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (0.6ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  Rendered bets/index.html.erb within layouts/application (2.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 43ms (Views: 40.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 20:38:03 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (3.4ms)
+  Rendered bets/new.html.erb within layouts/application (6.2ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 3.6ms)
+
+
+  
+SyntaxError (/home/rodrigo/Documents/Repositories/grupo-14/app/views/bets/_form.html.erb:54: syntax error, unexpected '=', expecting ')'
+put_buffer.append=( :user_id = current_user.id );@output_buf
+                              ^):
+  
+app/views/bets/_form.html.erb:54: syntax error, unexpected '=', expecting ')'
+app/views/bets/new.html.erb:3:in `_app_views_bets_new_html_erb___3197535414120765963_69901465741800'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.4ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.4ms)
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 20:43:49 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/_form.html.erb (34.6ms)
+  Rendered bets/new.html.erb within layouts/application (35.5ms)
+Completed 200 OK in 67ms (Views: 64.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 20:45:19 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (0.9ms)
+  Rendered bets/new.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/rodrigo/Documents/Repositories/grupo-14/app/views/bets/_form.html.erb:54: syntax error, unexpected tIDENTIFIER, expecting ')'
+ppend=( @user_id  current_user.id );@output_buffer.safe_appe
+                              ^):
+  
+app/views/bets/_form.html.erb:54: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/bets/new.html.erb:3:in `_app_views_bets_new_html_erb___3197535414120765963_69901466316160'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.9ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.0ms)
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 20:45:30 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/_form.html.erb (8.0ms)
+  Rendered bets/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 42ms (Views: 39.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 20:56:20 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (6.7ms)
+  Rendered bets/new.html.erb within layouts/application (7.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 86ms (Views: 61.2ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/bets" for 127.0.0.1 at 2017-05-14 20:56:37 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SjdnLmi4s+4rAeb6RIMUw877FeyQXRZq1QBerMvBMBnnu1mnWoH/ESqlrKRDZK+UwYN4uDZccx+6YoDpOK+U9A==", "bet"=>{"name"=>"asdasdasdasd", "description"=>"asdasdasdasdbasdn", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"17", "max_participants"=>"4", "kind"=>"sdfdfv", "min_bet"=>"20", "max_bet"=>"100"}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "asdasdasdasd"], ["deadline", Wed, 17 May 2017], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (9.0ms)
+  Rendered bets/new.html.erb within layouts/application (10.6ms)
+Completed 422 Unprocessable Entity in 138ms (Views: 54.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-14 20:58:09 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (0.5ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  Rendered bets/index.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 53ms (Views: 43.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:58:14 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 42ms (Views: 40.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-05-14 20:58:14 -0400
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 34ms (Views: 33.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-14 20:58:16 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (0.4ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  Rendered bets/index.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 67ms (Views: 65.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-14 20:58:16 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (1.0ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  Rendered bets/index.html.erb within layouts/application (3.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 33ms (Views: 30.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 20:58:18 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/_form.html.erb (8.4ms)
+  Rendered bets/new.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 62ms (Views: 47.8ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 20:58:18 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/_form.html.erb (7.9ms)
+  Rendered bets/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 41ms (Views: 38.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/bets" for 127.0.0.1 at 2017-05-14 20:59:14 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FFL5SYxVVSYiaYkubIrzOB/odNVdXXS7cFjPsl8U20W53sfAvmwZ2SPNw3BrbUhvEJAZgftcEc4fOhH3rHp/qA==", "bet"=>{"name"=>"asdjajkfqe", "description"=>"masdjajsdj", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"17", "max_participants"=>"5", "kind"=>"sdawqwf", "min_bet"=>"10", "max_bet"=>"100"}, "user_id"=>"1", "commit"=>"Create Bet"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "asdjajkfqe"], ["deadline", Wed, 17 May 2017], ["LIMIT", 1]]
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  Rendering bets/new.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/_form.html.erb (15.3ms)
+  Rendered bets/new.html.erb within layouts/application (16.8ms)
+Completed 422 Unprocessable Entity in 85ms (Views: 70.7ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-14 21:00:59 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (0.3ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  Rendered bets/index.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 28ms (Views: 25.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 21:01:02 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (1.1ms)
+  Rendered bets/new.html.erb within layouts/application (2.3ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/rodrigo/Documents/Repositories/grupo-14/app/views/bets/_form.html.erb:49: syntax error, unexpected ')', expecting keyword_end
+d :user_id, current_user.id) );@output_buffer.safe_append='
+                              ^
+/home/rodrigo/Documents/Repositories/grupo-14/app/views/bets/_form.html.erb:56: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/bets/_form.html.erb:49: syntax error, unexpected ')', expecting keyword_end
+app/views/bets/_form.html.erb:56: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/bets/new.html.erb:3:in `_app_views_bets_new_html_erb___3197535414120765963_69901383126060'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.0ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (29.2ms)
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 21:01:28 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/_form.html.erb (120.2ms)
+  Rendered bets/new.html.erb within layouts/application (122.4ms)
+Completed 500 Internal Server Error in 126ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `hidden_field_tag' for #<ActionView::Helpers::FormBuilder:0x007f2658374300>
+Did you mean?  hidden_field):
+    46:     <%= f.number_field :max_bet, required: true %>
+    47:   </div>
+    48: 
+    49:   <%= f.hidden_field_tag(:user_id, current_user.id) %>
+    50: 
+    51:   <div class="actions">
+    52:     <%= f.submit %>
+  
+app/views/bets/_form.html.erb:49:in `block in _app_views_bets__form_html_erb___4095702429152433410_69901332813580'
+app/views/bets/_form.html.erb:1:in `_app_views_bets__form_html_erb___4095702429152433410_69901332813580'
+app/views/bets/new.html.erb:3:in `_app_views_bets_new_html_erb___3197535414120765963_69901332873700'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.2ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (30.3ms)
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 21:01:55 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (2.1ms)
+  Rendered bets/new.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/rodrigo/Documents/Repositories/grupo-14/app/views/bets/_form.html.erb:49: syntax error, unexpected ',', expecting ')'
+nd=( f.hidden_field (:user_id, current_user.id) );@output_bu
+                              ^
+/home/rodrigo/Documents/Repositories/grupo-14/app/views/bets/_form.html.erb:49: syntax error, unexpected ')', expecting keyword_end
+ (:user_id, current_user.id) );@output_buffer.safe_append='
+                              ^
+/home/rodrigo/Documents/Repositories/grupo-14/app/views/bets/_form.html.erb:56: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/bets/_form.html.erb:49: syntax error, unexpected ',', expecting ')'
+app/views/bets/_form.html.erb:49: syntax error, unexpected ')', expecting keyword_end
+app/views/bets/_form.html.erb:56: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/bets/new.html.erb:3:in `_app_views_bets_new_html_erb___3197535414120765963_69901380773700'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.5ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.5ms)
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 21:02:11 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/_form.html.erb (7.0ms)
+  Rendered bets/new.html.erb within layouts/application (9.0ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `merge' for 1:Integer):
+    46:     <%= f.number_field :max_bet, required: true %>
+    47:   </div>
+    48: 
+    49:   <%= f.hidden_field :user_id, current_user.id %>
+    50: 
+    51:   <div class="actions">
+    52:     <%= f.submit %>
+  
+app/views/bets/_form.html.erb:49:in `block in _app_views_bets__form_html_erb___4095702429152433410_69901381734860'
+app/views/bets/_form.html.erb:1:in `_app_views_bets__form_html_erb___4095702429152433410_69901381734860'
+app/views/bets/new.html.erb:3:in `_app_views_bets_new_html_erb___3197535414120765963_69901381779580'
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/rodrigo/.rvm/gems/ruby-2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.6ms)
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 21:03:03 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/_form.html.erb (13.2ms)
+  Rendered bets/new.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 55ms (Views: 52.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/bets" for 127.0.0.1 at 2017-05-14 21:03:20 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jSWYXvWiukw21i+YQoOvm2JMsbh6E4T+LWhTF+6bJJAgqabXx5v2szdyZcZFZBTMbTTc7NwS4YtCCo1SHfWAfQ==", "bet"=>{"name"=>"Horse Race", "description"=>"sefsjfksefjhsjdkcl", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"17", "max_participants"=>"2", "kind"=>"Horserace", "min_bet"=>"2", "max_bet"=>"22", "user_id"=>"1"}, "commit"=>"Create Bet"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "Horse Race"], ["deadline", Wed, 17 May 2017], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (15.7ms)[0m  [1m[32mINSERT INTO "bets" ("name", "description", "deadline", "max_participants", "kind", "min_bet", "max_bet", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "Horse Race"], ["description", "sefsjfksefjhsjdkcl"], ["deadline", Wed, 17 May 2017], ["max_participants", 2], ["kind", "Horserace"], ["min_bet", 2], ["max_bet", 22], ["created_at", 2017-05-15 01:03:20 UTC], ["updated_at", 2017-05-15 01:03:20 UTC], ["user_id", 1]]
+  [1m[35m (33.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bets/1
+Completed 302 Found in 81ms (ActiveRecord: 50.4ms)
+
+
+Started GET "/bets/1" for 127.0.0.1 at 2017-05-14 21:03:20 -0400
+Processing by BetsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBet Load (0.3ms)[0m  [1m[34mSELECT  "bets".* FROM "bets" WHERE "bets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering bets/show.html.erb within layouts/application
+  Rendered bets/show.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 49ms (Views: 39.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-14 21:03:30 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (0.4ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/index.html.erb within layouts/application (4.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 47ms (Views: 44.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-14 21:03:30 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (0.4ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/index.html.erb within layouts/application (12.9ms)
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 48ms (Views: 45.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 21:06:20 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (7.3ms)
+  Rendered bets/new.html.erb within layouts/application (8.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 79ms (Views: 46.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 21:06:20 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (4.2ms)
+  Rendered bets/new.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 38ms (Views: 36.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/bets" for 127.0.0.1 at 2017-05-14 21:06:32 -0400
+Processing by BetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J0IHT61LFRXfxQZiEjpXZD+GzzILAUZ1N459AqJRGkKKzjnGn3JZ6t5hTDwV3ewzMP6iZq0AIwBY7KNHUT++rw==", "bet"=>{"name"=>"asdasfebeb ", "description"=>"sdfbejtbeklbe", "deadline(1i)"=>"2017", "deadline(2i)"=>"5", "deadline(3i)"=>"17", "max_participants"=>"5", "kind"=>"febertbk", "min_bet"=>"2", "max_bet"=>"5"}, "commit"=>"Create Bet"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBet Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "bets" WHERE "bets"."name" = $1 AND "bets"."deadline" = $2 LIMIT $3[0m  [["name", "asdasfebeb "], ["deadline", Wed, 17 May 2017], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "bets" ("name", "description", "deadline", "max_participants", "kind", "min_bet", "max_bet", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "asdasfebeb "], ["description", "sdfbejtbeklbe"], ["deadline", Wed, 17 May 2017], ["max_participants", 5], ["kind", "febertbk"], ["min_bet", 2], ["max_bet", 5], ["created_at", 2017-05-15 01:06:32 UTC], ["updated_at", 2017-05-15 01:06:32 UTC], ["user_id", 1]]
+  [1m[35m (35.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/bets/2
+Completed 302 Found in 52ms (ActiveRecord: 37.4ms)
+
+
+Started GET "/bets/2" for 127.0.0.1 at 2017-05-14 21:06:32 -0400
+Processing by BetsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBet Load (0.8ms)[0m  [1m[34mSELECT  "bets".* FROM "bets" WHERE "bets"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering bets/show.html.erb within layouts/application
+  Rendered bets/show.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 42ms (Views: 38.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-14 21:06:53 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (0.5ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/index.html.erb within layouts/application (7.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 57ms (Views: 54.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2017-05-14 21:06:54 -0400
+Processing by BetsController#index as HTML
+  Rendering bets/index.html.erb within layouts/application
+  [1m[36mBet Load (0.6ms)[0m  [1m[34mSELECT "bets".* FROM "bets"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered bets/index.html.erb within layouts/application (5.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 39ms (Views: 36.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 21:06:56 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (9.3ms)
+  Rendered bets/new.html.erb within layouts/application (11.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 58ms (Views: 55.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bets/new" for 127.0.0.1 at 2017-05-14 21:06:56 -0400
+Processing by BetsController#new as HTML
+  Rendering bets/new.html.erb within layouts/application
+  Rendered bets/_form.html.erb (13.0ms)
+  Rendered bets/new.html.erb within layouts/application (14.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 45ms (Views: 43.4ms | ActiveRecord: 0.3ms)
+
+

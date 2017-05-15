@@ -9,6 +9,26 @@
   </head>
 
   <body>
-    <%= yield %>
+  	<header>
+  		<div id="user_bar">
+  			<%= link_to 'Home', root_url %><br>
+  			<% if current_user %>
+				Current user: <%= current_user.name %><br>
+				<%= link_to 'Logout', session_url, method: :delete%><br>
+			<% else %>
+				<%= link_to 'Log in', new_session_url %><br>
+				<%= link_to 'Sign up', new_user_url %>
+			<% end %>
+  		</div>
+  	</header>
+  	<main>
+  		<% [:alert, :notice].each do |flash_type| %>
+        	<% if (flash_message = flash[flash_type]).present? %>
+          		<div class="<%= flash_type %>"><%= flash_message %></div>
+        	<% end %>
+      	<% end %>
+
+    	<%= yield %>
+    </main>
   </body>
 </html>

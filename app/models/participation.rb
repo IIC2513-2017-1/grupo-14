@@ -10,6 +10,8 @@ class Participation < ApplicationRecord
 	def valid_user
 		if user_id == self.bet.user.id
 			errors.add(:user_id, "cannot be the creator of the bet")
+		elsif self.bet.user.role != 'regular'
+			errors.add(:user_id, "must be a regular user")
 		end
 	end
 

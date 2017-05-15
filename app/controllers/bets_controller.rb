@@ -25,6 +25,7 @@ class BetsController < ApplicationController
   # POST /bets.json
   def create
     @bet = Bet.new(bet_params)
+    @bet.user_id = current_user.id
 
     respond_to do |format|
       if @bet.save
@@ -69,6 +70,6 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:name, :description, :deadline, :max_participants, :kind, :min_bet, :max_bet,:user_id)
+      params.require(:bet).permit(:name, :description, :deadline, :max_participants, :kind, :min_bet, :max_bet, :user_id)
     end
 end

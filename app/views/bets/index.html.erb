@@ -13,6 +13,7 @@
       <th>Min bet</th>
       <th>Max bet</th>
       <th>Username</th>
+      <th>Options</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,6 +29,7 @@
         <td><%= bet.min_bet %></td>
         <td><%= bet.max_bet %></td>
         <td><%= bet.user.name %></td>
+        <td><%= bet.choices.count %></td>
         <td><%= link_to 'Show', bet %></td>
         <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
         <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>

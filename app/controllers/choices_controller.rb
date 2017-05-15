@@ -21,6 +21,16 @@ class ChoicesController < ApplicationController
   def edit
   end
 
+  def create_1
+    params[:choices].each do |choice_params|
+      @choice = Choice.new(choice_params)
+      if not @choice.save
+        format.html { render :new, status: 422 }
+        format.json { render json: @choice.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /choices
   # POST /choices.json
   def create

@@ -7,7 +7,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   color: #333;
   padding-top: 85px;
-  background-color: #f5f8fa;
+  background-color: rgba(16, 29, 130, 0.62);
 }
 
 header {
@@ -86,4 +86,13 @@ nav#main-menu {
 #user-bar .name {
   color: white;
 
+}
+
+#sign_form{
+  text-align: center;
+  margin: auto;
+  width: 30%;
+  border-radius: 10px 10px 10px 10px;
+  background: rgb(97, 203, 230);
+  padding: 30px;
 }

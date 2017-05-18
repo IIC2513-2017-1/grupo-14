@@ -27,6 +27,12 @@ u = User.create(
   password: '123456',
   role: 'admin'
 )
+u = User.create(
+  name: 'Juan2',
+  mail: 'hola2@12.cl',
+  password: '123456',
+  role: 'regular'
+)
 
 # Create bets
 user_ids = User.pluck(:id)

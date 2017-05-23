@@ -1,24 +1,29 @@
-<p id="notice"><%= notice %></p>
+<%if current_user%>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+	<p>
+	  <strong>Name:</strong>
+	  <%= @user.name %>
+	</p>
 
-<p>
-  <strong>Mail:</strong>
-  <%= @user.mail %>
-</p>
+	<p>
+	  <strong>Mail:</strong>
+	  <%= @user.mail %>
+	</p>
+	<% if is_admin %>
+		<p>
+		  <strong>Role:</strong>
+		  <%= @user.role %>
+		</p>
+	<% end%>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+	<%= link_to 'Edit', edit_user_path(@user) if @user == current_user  or is_admin%> |
+	<%= link_to 'Back', users_path %>
+<%else%>
+  <h1>You have to log in to see the users</h1>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+  <%= link_to 'Log in', new_session_path %>
+  <br>
 
-<%= link_to 'Edit', edit_user_path(@user) if @user == current_user %> |
-<%= link_to 'Back', users_path %>
+  <%= link_to 'Sign up', new_user_path %>
+<%end%>

@@ -29,6 +29,11 @@ main {
   height: 50px;
 }
 
+#logo a:hover {
+     color: #61b8a2;
+     background: #666;
+ }
+
 nav#main-menu, #logo {
   display: inline-block;
   vertical-align: middle;

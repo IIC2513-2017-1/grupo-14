@@ -10,4 +10,12 @@ class User < ApplicationRecord
 	has_many :bets
 	has_many :participations
 
+	has_many :friendships
+	has_many :friends, through: :friendships, source: :friend
+
+	has_many :incoming_requests, foreign_key: :recipient_id, class_name: 'FriendshipRequest'
+	has_many :outgoing_requests, foreign_key: :sender_id, class_name: 'FriendshipRequest'
+	has_many :request_targets, through: :outgoing_requests, source: :recipient
+	has_many :request_senders, through: :incoming_requests, source: :sender
+
 end

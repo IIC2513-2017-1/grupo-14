@@ -43,13 +43,12 @@
 		</ul>
 	</p>
 
+	<% if not current_user.friends.include?(@user) %>
+		<p>
+			<a href="#">Send friend request</a>
+		</p>
+	<% end %>
+
 	<%= link_to 'Edit', edit_user_path(@user) if @user == current_user or is_admin %> |
 	<%= link_to 'Back', users_path %>
-<%else%>
-  <h1>You have to log in to see the users</h1>
-
-  <%= link_to 'Log in', new_session_path %>
-  <br>
-
-  <%= link_to 'Sign up', new_user_path %>
 <%end%>

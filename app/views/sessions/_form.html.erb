@@ -1,6 +1,4 @@
-<div id="signin_form">
-
-	<%= form_for(:session, url: session_url) do |f| %>
+	<%= form_for(:session, url: session_url, :html => {:id => 'signin_form'}) do |f| %>
 		<div class="field">
 			<%= f.label 'Username' %>
 			<%= f.text_field :name %>
@@ -12,8 +10,6 @@
 		</div>
 
 		<div class="actions">
-			<%= f.submit "Log in" %>
+			<%= f.submit "Login" %>
 		</div>
 	<% end %>
-
-</div>

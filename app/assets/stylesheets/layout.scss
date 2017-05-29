@@ -7,7 +7,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   color: #333;
   padding-top: 85px;
-  background-color: rgba(16, 29, 130, 0.62);
+  background-color: rgb(232, 231, 227);
 }
 
 header {
@@ -98,4 +98,14 @@ nav#main-menu {
   text-align: left;
   color: white;
   height: 60px;
+}
+
+tr:nth-of-type(even) {
+  background-color: rgb(204, 202, 197);
+}
+tr:nth-of-type(odd) {
+  background-color: rgb(169, 213, 216);
+}
+tr {
+  border-top-right-radius: 10px;
 }

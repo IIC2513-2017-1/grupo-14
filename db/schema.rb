@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515001016) do
+ActiveRecord::Schema.define(version: 20170528021724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,20 @@ ActiveRecord::Schema.define(version: 20170515001016) do
     t.integer  "bet_id"
     t.index ["bet_id"], name: "index_choices_on_bet_id", using: :btree
     t.index ["value", "bet_id"], name: "index_choices_on_value_and_bet_id", unique: true, using: :btree
+  end
+
+  create_table "friendship_requests", force: :cascade do |t|
+    t.integer  "sender_id",    null: false
+    t.integer  "recipient_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "friend_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "participations", force: :cascade do |t|

@@ -48,14 +48,11 @@ nav#main-menu {
     font-size: 18px;
     border-right: 1px solid #aaa;
   }
-  a:nth-child(2n) {
+  a {
     color: #f5f8fa;
   }
-  a:nth-child(2n+1) {
-    color: rgb(97, 203, 230);
-  }
   a:hover {
-    color: #61b8a2;
+    color: rgb(97, 203, 230);
     background: #666;
   }
 }
@@ -87,17 +84,17 @@ nav#main-menu {
   color: white;
 }
 
-#sign_form .field, #sign_form .actions {
+#signin_form .field, #signin_form .actions {
   float: left;
   padding-right: 5px;
 }
-#sign_form .actions{
+#signin_form .actions{
   color: rgb(97, 203, 230);
   padding-top: 15px;
 
 }
 
-#sign_form{
+#signin_form{
   text-align: left;
   color: white;
   height: 60px;

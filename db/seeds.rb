@@ -17,7 +17,7 @@ User.destroy_all
    name: Faker::Name.unique.first_name,
    mail: Faker::Internet.unique.email,
    password: Faker::Internet.password,
-   role: 'regular',
+   role: 'regular'
   )
 end
 

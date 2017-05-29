@@ -28,18 +28,18 @@
           <div class="name">Welcome, <%= link_to current_user.name, current_user %>
           </div>
 				<%= link_to 'Logout', session_url, method: :delete%><br>
-			<% else %>
-        <table>
-          <tbody>
-            <td>
-              <%= render 'sessions/form', session: @session %>
-            </td>
-            <td>
-              <%= link_to 'Sign up', new_user_url %>
-            </td>
-          </tbody>
-        </table>
-			<% end %>
+  			<% else %>
+          <table>
+            <tbody>
+              <td>
+                <%= render 'sessions/form', session: @session %>
+              </td>
+              <td>
+                <%= link_to 'Sign up', new_user_url %>
+              </td>
+            </tbody>
+          </table>
+  			<% end %>
   		</div>
 
   	</header>

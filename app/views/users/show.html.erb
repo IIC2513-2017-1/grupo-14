@@ -2,6 +2,13 @@
 	<p id="notice"><%= notice %></p>
 
 	<p>
+		<% if @user.avatar.file.nil? %>
+			<img src=<%= image_url('default_avatar.png') %> id='profile-avatar'>
+		<% else %>
+			<img src=<%= @user.avatar.url %> id='profile-avatar'>
+		<% end %>
+	</p>
+	<p>
 	  <strong>Name:</strong>
 	  <%= @user.name %>
 	</p>

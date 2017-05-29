@@ -7,7 +7,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   color: #333;
   padding-top: 85px;
-  background-color: rgba(16, 29, 130, 0.62);
+  background-color: rgb(232, 231, 227);
 }
 
 header {
@@ -58,16 +58,16 @@ nav#main-menu {
 }
 
 #user-bar {
-  font-size: 12px;
+  font-size: 15px;
   position: absolute;
   vertical-align: middle;
-  top: 15px;
+  align-content: right;
+  top: 10px;
   right: 15px;
   text-align: center;
   a {
     text-decoration: none;
     color: #555;
-    font-size: 18px;
   }
   a:nth-child(2n) {
     color: rgb(97, 203, 230);
@@ -78,24 +78,64 @@ nav#main-menu {
   a:hover {
     color: white;
     background: #666;
+
+  }
+  a {
+    font-size: 15px;
   }
 }
 #user-bar .name {
   color: white;
+  padding-top: 11px;
 }
 
 #signin_form .field, #signin_form .actions {
   float: left;
   padding-right: 5px;
+  vertical-align: center;
 }
 #signin_form .actions{
   color: rgb(97, 203, 230);
   padding-top: 15px;
-
 }
 
 #signin_form{
   text-align: left;
   color: white;
   height: 60px;
+}
+
+.index-table{
+  border-collapse: collapse;
+  border: 1px solid;
+  tr:nth-of-type(even) {
+    background-color: rgb(239, 239, 239);
+  }
+  tr:nth-of-type(odd) {
+    background-color: rgb(167, 214, 232);
+  }
+  tr, td {
+    border: 1px solid;
+  }
+  th {
+    font-size: 14px;
+  }
+}
+
+.actions input[type=submit] {
+  background-color: #1b95e0; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.field input {
+  border-radius: 5px;
+  border: none;
+  height: 20px
 }

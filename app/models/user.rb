@@ -10,7 +10,7 @@ class User < ApplicationRecord
 	has_many :bets
 	has_many :participations
 
-	has_many :friendships
+	has_many :friendships, foreign_key: :user_id, class_name: 'Friendship'
 	has_many :friends, through: :friendships, source: :friend
 
 	has_many :incoming_requests, foreign_key: :recipient_id, class_name: 'FriendshipRequest'

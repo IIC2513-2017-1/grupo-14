@@ -25,7 +25,7 @@ class FriendshipRequestsController < ApplicationController
   def destroy
     request = FriendshipRequest.find(params[:id])
     request.destroy
-    redirect_to root_path, notice: "Friend request to #{request.recipient.name} cancelled."
+    redirect_to root_path, notice: "Friend request from #{request.sender.name} rejected."
   end
 
   private

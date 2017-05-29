@@ -35,7 +35,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Faker, a port of Data::Faker from Perl, is used to easily generate
 # fake data: names, addresses, phone numbers, etc.
 gem 'faker', '~> 1.7.3'
-
+# Allow for the upload of files, e.g. images for user avatars
+gem 'carrierwave', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

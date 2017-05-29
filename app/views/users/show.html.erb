@@ -20,7 +20,8 @@
 		<strong>Friends:</strong>
 		<ul>
 			<% @user.friends.each do |friend| %>
-			<% friend.name %>
+			<%= friend.name %>
+			<%= destroy_friendship_button(friend) %>
 			<% end %>
 		</ul>
 	</p>
@@ -39,6 +40,9 @@
 		<ul>
 			<% @user.request_senders.each do |request| %>
 			<%= request.name %>
+			<% if @user == current_user %>
+				<%= accept_friendship_button(request) %> | <%= reject_friendship_button(request) %>
+			<% end %>
 			<% end %>
 		</ul>
 	</p>

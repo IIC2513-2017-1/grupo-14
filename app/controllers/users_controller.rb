@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   include Secured
   helper_method :is_not_regular
   helper_method :is_admin
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :logged_in?, only: %i[edit update destroy]
   before_action :is_current_user?, only: %i[edit update destroy]
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        MailConfirmationMailer.new_user_email(@user)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -86,6 +88,8 @@ class UsersController < ApplicationController
     end
 
     def is_admin
-      current_user.role == 'admin'
+      if current_user
+        current_user.role == 'admin'
+      end
     end
 end

@@ -4,7 +4,14 @@ Rails.application.routes.draw do
   resources :bets
   resources :participations
   resources :choices
-  resources :users
+  resources :users do
+  	resources :friendship_requests, only: [:create]
+  	resources :friendships, only: [:create]
+  end
+
+  resources :friendship_requests, only: [:destroy]
+  resources :friendships, only: [:destroy]
+
   resource :session, only: [:new, :create, :destroy]
 
   get 'home/index'

@@ -20,7 +20,8 @@
 		<strong>Friends:</strong>
 		<ul>
 			<% @user.friends.each do |friend| %>
-			<% friend.name %>
+			<%= friend.name %>
+			<%= destroy_friendship_button(friend) %>
 			<% end %>
 		</ul>
 	</p>
@@ -28,8 +29,8 @@
 	<p>
 		<strong>Pending friend requests:</strong>
 		<ul>
-			<% @user.request_targets.each do |target| %>
-			<% target.name %>
+			<% @user.request_targets.each do |request| %>
+			<%= request.name %>
 			<% end %>
 		</ul>
 	</p>
@@ -37,17 +38,16 @@
 	<p>
 		<strong>Received friend requests:</strong>
 		<ul>
-			<% @user.request_senders.each do |sender| %>
-			<% sender.name %>
+			<% @user.request_senders.each do |request| %>
+			<%= request.name %>
+			<% if @user == current_user %>
+				<%= accept_friendship_button(request) %> | <%= reject_friendship_button(request) %>
+			<% end %>
 			<% end %>
 		</ul>
 	</p>
 
-	<% if not current_user.friends.include?(@user) %>
-		<p>
-			<a href="#">Send friend request</a>
-		</p>
-	<% end %>
+	<%= request_button(@user) %>
 
 	<%= link_to 'Edit', edit_user_path(@user) if @user == current_user or is_admin %> |
 	<%= link_to 'Back', users_path %>

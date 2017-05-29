@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   helper_method :is_admin
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in?, only: %i[edit update destroy]
+  before_action :logged_in?, only: %i[index edit update destroy]
   before_action :is_current_user?, only: %i[edit update destroy]
 
   # GET /users
@@ -25,12 +25,18 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user.name.clear
+    @user.mail.clear
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
+
+    if not is_admin
+      @user[:role] = 'regular'
+    end
 
     respond_to do |format|
       if @user.save
@@ -47,6 +53,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
+    user_params.delete(:password) if params[:user][:password].blank?
+    user_params.delete(:password_confirmation) if params[:user][:password_confirmation].blank?
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -76,11 +86,13 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :mail, :password, :password_confirmation, :role)
+      user_params = params.require(:user).permit(:name, :mail, :password, :password_confirmation, :role).reject { |k, v| v.blank? }
+
+      user_params
     end
 
     def is_current_user?
-      redirect_to(root_path, notice: 'Unauthorized access!') unless @user == current_user or is_admin
+      redirect_to(root_path, alert: 'Unauthorized access!') unless @user == current_user or is_admin
     end
 
     def is_not_regular

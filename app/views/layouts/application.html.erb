@@ -16,21 +16,29 @@
         <% end %>
       </div>
 
-      <% if current_user %>
         <nav id="main-menu">
-          <i class="fa fa-users" aria-hidden="true"></i><%= link_to 'Users', users_path %>
+          <% if current_user %>
+            <%= link_to 'Users', users_path %>
+          <% end %>
           <%= link_to 'Bets', bets_path %>
         </nav>
-      <% end %>
 
       <div id="user-bar">
   			<% if current_user %>
-          <div class="name">Welcome, <%= current_user.name %>
+          <div class="name">Welcome, <%= link_to current_user.name, current_user %>
           </div>
 				<%= link_to 'Logout', session_url, method: :delete%><br>
 			<% else %>
-        <%= render 'sessions/form', session: @session %>
-        <%= link_to 'Sign up', new_user_url %>
+        <table>
+          <tbody>
+            <td>
+              <%= render 'sessions/form', session: @session %>
+            </td>
+            <td>
+              <%= link_to 'Sign up', new_user_url %>
+            </td>
+          </tbody>
+        </table>
 			<% end %>
   		</div>
 

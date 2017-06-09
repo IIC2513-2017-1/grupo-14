@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Bets</h1>
+<%= link_to 'New Bet', new_bet_path, class: "round_button" if current_user %>
 
 <table class="index-table">
   <thead>
@@ -37,7 +38,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Bet', new_bet_path %>

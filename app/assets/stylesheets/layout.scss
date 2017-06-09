@@ -27,6 +27,8 @@ main {
 
 #logo img {
   height: 50px;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 
 #logo a:hover {
@@ -44,16 +46,16 @@ nav#main-menu {
   a {
     padding: 20px;
     text-decoration: none;
-    color: #555;
+    color: #f5f8fa;
     font-size: 18px;
     border-right: 1px solid #aaa;
-  }
-  a {
-    color: #f5f8fa;
-  }
-  a:hover {
+    &:hover {
     color: rgb(97, 203, 230);
     background: #666;
+    }
+    &:last-child {
+      border-right: none;
+    }
   }
 }
 
@@ -75,13 +77,12 @@ nav#main-menu {
   a:nth-child(2n+1) {
     color: rgb(97, 203, 230);
   }
-  a:hover {
-    color: white;
-    background: #666;
-
-  }
   a {
     font-size: 15px;
+    &:hover {
+    color: white;
+    background: #666;
+    }
   }
 }
 #user-bar .name {
@@ -127,7 +128,24 @@ nav#main-menu {
 }
 
 .actions input[type=submit] {
-  background-color: #1b95e0; /* Green */
+  background-color: #1b95e0;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 15px;
+  &:hover {
+  background-color: white;
+  color: #1b95e0;
+  }
+}
+
+
+button {
+  background-color: #1b95e0;
   border: none;
   color: white;
   padding: 5px 10px;
@@ -138,13 +156,39 @@ nav#main-menu {
   font-size: 15px;
 }
 
+.round_button {
+  background-color: #1b95e0;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+a.delete {
+  color: white;
+  background-color: red;
+  border: none;
+  padding: 3px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
 .field input {
   border-radius: 5px;
   border: none;
-  height: 20px
+  height: 20px;
+  padding: 2px 4px;
 }
 
 #profile-avatar {
   width: 150px;
   height: 150px;
+  border: 1px solid grey;
 }

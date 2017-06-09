@@ -1,3 +1,14 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.user-image {
+  width: 150px;
+  height: 150px;
+  border: 1px solid grey;
+}
+
+.block {
+	display: inline-block;
+	vertical-align: middle;
+	padding-right: 10px;
+}

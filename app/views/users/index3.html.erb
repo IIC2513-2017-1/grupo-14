@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<% if current_user %>
+  <h1>Users</h1>
+
+  <table class="index-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Mail</th>
+        <% #Solo mostrar al admin o moderador, hacer una funcion en el controlador para preguntar#%>
+        <% if is_not_regular %>
+          <th>Role</th>
+        <%end%>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user %></td>
+          <td><%= user.mail %></td>
+          <% if is_not_regular %>
+            <td><%= user.role %></td>
+          <%end%>        
+          <td><%= link_to 'Edit', edit_user_path(user) if user == current_user or is_admin %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } if user == current_user or is_admin%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%end%>

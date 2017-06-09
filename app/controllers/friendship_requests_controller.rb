@@ -14,9 +14,9 @@ class FriendshipRequestsController < ApplicationController
     user = User.find(params[:user_id])
     friend_request = user.incoming_requests.build(sender_id: current_user.id)
     if friend_request.save
-      redirect_to root_path, notice: "Friend request sent to #{user.name}."
+      redirect_back(fallback_location: root_path, notice: "Friend request sent to #{user.name}.")
     else
-      redirect_to root_path, alert: 'Friend request could not be sent.'
+      redirect_back(fallback_location: root_path, alert: 'Friend request could not be sent.')
     end
   end
 
@@ -25,7 +25,11 @@ class FriendshipRequestsController < ApplicationController
   def destroy
     request = FriendshipRequest.find(params[:id])
     request.destroy
-    redirect_to root_path, notice: "Friend request from #{request.sender.name} rejected."
+    if request.sender == current_user
+      redirect_back(fallback_location: root_path, notice: "Friend request to #{request.recipient.name} cancelled.")
+    else
+      redirect_back(fallback_location: root_path, notice: "Friend request from #{request.sender.name} rejected.")
+    end
   end
 
   private

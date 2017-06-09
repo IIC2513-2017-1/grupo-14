@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   helper_method :is_admin
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in?
+  before_action :logged_in?, only: [:show, :edit, :update, :destroy]
   before_action :is_current_user?, only: %i[edit update destroy]
 
   # GET /users
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         MailConfirmationMailer.new_user_email(@user).deliver_later
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Please check your email inbox for a confirmation mail.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: 422 }
@@ -86,9 +86,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      user_params = params.require(:user).permit(:name, :mail, :password, :password_confirmation, :role, :avatar).reject { |k, v| v.blank? }
-
-      user_params
+      params.require(:user).permit(:name, :mail, :password, :password_confirmation, :role, :avatar).reject { |k, v| v.blank? }
     end
 
     def is_current_user?

@@ -46,7 +46,15 @@ module UsersHelper
 			relation.friend_id == user.id
 		end
 		if friendship
-			link_to 'Remove', friendship_path(friendship), method: 'delete'
+			link_to '(Unfriend)', friendship_path(friendship), method: 'delete'
+		end
+	end
+
+	def profile_picture(user)
+		if user.avatar.file.nil?
+			return image_url('default_avatar.png')
+		else
+			return user.avatar.url
 		end
 	end
 end

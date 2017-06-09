@@ -20,13 +20,13 @@ class FriendshipsController < ApplicationController
         request_2 = FriendshipRequest.find_by(sender: user, recipient: current_user)
         request_1.destroy if request_1
         request_2.destroy if request_2
-        redirect_to root_path, notice: "You and #{user.name} are now friends!"
+        redirect_back(fallback_location: root_path, notice: "You and #{user.name} are now friends!")
       else
         friendship.destroy
-        redirect_to root_path, notice: "There was an error creating the friendship"
+        redirect_back(fallback_location: root_path, notice: "There was an error creating the friendship")
       end
     else
-      redirect_to root_path, alert: 'Friend request could not be sent.'
+      redirect_back(fallback_location: root_path, notice: "There was an error creating the friendship")
     end
   end
 
@@ -41,7 +41,7 @@ class FriendshipsController < ApplicationController
     if reciprocal_friendship
       reciprocal_friendship.destroy
     end
-    redirect_to root_path, notice: "Friendship with #{friend.name} ended."
+    redirect_back(fallback_location: root_path, notice: "Friendship with #{friend.name} ended.")
   end
 
   private

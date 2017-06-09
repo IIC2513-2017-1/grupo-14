@@ -2,11 +2,7 @@
 	<p id="notice"><%= notice %></p>
 
 	<p>
-		<% if @user.avatar.file.nil? %>
-			<img src=<%= image_url('default_avatar.png') %> id='profile-avatar'>
-		<% else %>
-			<img src=<%= @user.avatar.url %> id='profile-avatar'>
-		<% end %>
+		<img src=<%= profile_picture(@user) %> id='profile-avatar'>
 	</p>
 	<p>
 	  <strong>Name:</strong>
@@ -27,7 +23,7 @@
 		<strong>Friends:</strong>
 		<ul>
 			<% @user.friends.each do |friend| %>
-			<%= friend.name %>
+			<%= link_to friend.name, friend %>
 			<%= destroy_friendship_button(friend) %>
 			<% end %>
 		</ul>

@@ -2,9 +2,13 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   resources :bets do
+    resource :winners
     resources :participations, only: [:new, :create]
   end
+
   resources :participations, only: [:destroy]
+  
+  resources :choices
   resources :users do
   	resources :friendship_requests, only: [:create]
   	resources :friendships, only: [:create]

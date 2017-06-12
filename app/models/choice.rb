@@ -4,4 +4,5 @@ class Choice < ApplicationRecord
 
 	belongs_to :bet, optional: true
 	has_many :participation
+	has_one :winner
 end

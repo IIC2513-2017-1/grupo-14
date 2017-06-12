@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :amount %>
+    <%= f.label 'Amount (min: ' + @bet.min_bet.to_s + ', max: ' + @bet.max_bet.to_s + ')' %>
     <%= f.number_field :amount, required: true %>
   </div>
 

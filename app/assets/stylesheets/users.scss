@@ -19,11 +19,7 @@
   border: 1px solid grey;
 }
 
-.profile {
-	border: 1px solid black;
-}
-
-.profile_content {
+.profile_content, .requests {
 	display: inline-block;
 	vertical-align: top;
 	p {
@@ -40,8 +36,8 @@ color: #555;
 	}
 }
 
-.user_profile p {
-	font-size: 16px;
+.profile_content p {
+	font-size: 15px;
 	text-align: left;
 }
 
@@ -69,11 +65,33 @@ color: #555;
 			text-align: left;
 		}
 		input {
-			text-align: center;
+			text-align: left;
 		}
 	}
 }
 
-.request {
+p.request {
+		text-align: right;
+		font-size: 15px;
+}
+
+.multiimage {
+	h4 {
+		text-align: center;
+	}
+	.block {
+		padding: 5px;
+		border-radius: 5px;
+		a {
+			text-decoration: none;
+			color: #555;
+		}
+		&:hover {
+		background: #666;
+		a {
+			color: white;
+		}
+		}
+	}
 
 }

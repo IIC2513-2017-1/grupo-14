@@ -1,3 +1,7 @@
+<div class="bet_show">
+
+<%= participate_button(@bet) %>
+
 <p>
   <strong>Name:</strong>
   <%= @bet.name %>
@@ -24,12 +28,12 @@
 </p>
 
 <p>
-  <strong>Min bet:</strong>
+  <strong>Minimum bet:</strong>
   <%= @bet.min_bet %>
 </p>
 
 <p>
-  <strong>Max bet:</strong>
+  <strong>Maximum bet:</strong>
   <%= @bet.max_bet %>
 </p>
 
@@ -42,14 +46,11 @@
   </ul>
 </p>
 
-<%= participate_button(@bet) %>
-
 <p>
-  <strong>Participations:</strong>
+  <strong>Participants:</strong>
   <ul>
     <% @bet.participations.each do |parti| %>
-      <li><%= parti.user.name %></li>
-      <li><%= parti.choice.value %></li>
+      <li><%= parti.user.name %> (<%= parti.amount %> points)</li>
     <% end %>
   </ul>
 </p>
@@ -60,5 +61,6 @@
     <%= @bet.winner.choice.value %>
   </p>
 <%else%>
-  <%= close_button(@bet) %> |
+  <%= close_button(@bet) %>
 <%end%>
+</div>

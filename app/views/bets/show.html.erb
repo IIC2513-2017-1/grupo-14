@@ -59,8 +59,9 @@
     <strong>Winner choice:</strong>
     <%= @bet.winner.choice.value %>
   </p>
+<%else%>
+  <%= close_button(@bet) %> |
 <%end%>
 
-<%= close_button(@bet) %> |
 <%= link_to 'Edit', edit_bet_path(@bet) %> |
 <%= link_to 'Back', bets_path %>

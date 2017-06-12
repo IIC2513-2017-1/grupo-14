@@ -1,63 +1,71 @@
 <%if current_user%>
-	<%= link_to 'Edit profile', edit_user_path(@user), class: 'round_button' if @user == current_user or is_admin %>
+	<div class="user_profile">
 
-	<p>
-		<img src=<%= profile_picture(@user) %> id='profile-avatar'>
-	</p>
-	<p>
-	  <strong>Name:</strong>
-	  <%= @user.name %>
-	</p>
+			<div class='profile_container'>
+				<div class="profile_content">
+					<img src=<%= profile_picture(@user) %> id='profile-avatar'>
+					<p id="username">
+					  <strong><%= @user.name %></strong>
+					</p>
 
-	<p>
-	  <strong>Mail:</strong>
-	  <%= @user.mail %>
-	</p>
+					<p>
+					  <strong>Mail:</strong>
+					  <%= @user.mail %>
+					</p>
+				</div>
+			</div>
 
-	<p>
-	  <strong>Balance:</strong>
-	  <%= @user.balance %>
-	</p>
+		<div class="profile_container">
+			<div class="profile_content">
+			<p>
+			  <strong>Balance:</strong>
+			  <%= @user.balance %>
+			</p>
 
-	<% if is_admin %>
-		<p>
-		  <strong>Role:</strong>
-		  <%= @user.role %>
-		</p>
-	<% end %>
-	<p>
-		<strong>Friends:</strong>
-		<ul>
-			<% @user.friends.each do |friend| %>
-			<%= link_to friend.name, friend %>
-			<%= destroy_friendship_button(friend) %>
+			<% if is_admin %>
+				<p>
+				  <strong>Role:</strong>
+				  <%= @user.role %>
+				</p>
 			<% end %>
-		</ul>
-	</p>
+			<p>
+				<strong>Friends:</strong>
+				<% @user.friends.each do |friend| %>
+				<p class='friend'>
+				<%= link_to friend.name, friend %>
+				<%= destroy_friendship_button(friend) %>
+				</p>
+				<% end %>
+			</p>
+			</div>
 
-	<% if current_user and @user == current_user %>
-	<p>
-		<strong>Pending friend requests:</strong>
-		<ul>
-			<% @user.request_targets.each do |request| %>
-			<%= request.name %> <%= request_button(request) %>
+			<% if current_user and @user == current_user %>
+			<div class="profile_content">
+			<p>
+				<strong>Pending friend requests:</strong>
+				<% @user.request_targets.each do |request| %>
+				<p class="request"><%= request.name %> <%= request_button(request) %></p>
+				<% end %>
+			</p>
+
+			<p>
+				<strong>Received friend requests:</strong>
+					<% @user.request_senders.each do |request| %>
+					<p><%= request.name %>
+					<% if @user == current_user %>
+						<%= accept_friendship_button(request) %> | <%= reject_friendship_button(request) %>
+					</p>
+					<% end %>
+					<% end %>
+			</p>
+			</div>
 			<% end %>
-		</ul>
-	</p>
 
-	<p>
-		<strong>Received friend requests:</strong>
-		<ul>
-			<% @user.request_senders.each do |request| %>
-			<%= request.name %>
-			<% if @user == current_user %>
-				<%= accept_friendship_button(request) %> | <%= reject_friendship_button(request) %>
-			<% end %>
-			<% end %>
-		</ul>
-	</p>
-	<% end %>
 
-	<%= request_button(@user) %>
+			</div>
+		<%= edit_profile(@user) %>
+		<%= request_button(@user) %>
+		</div>
+	</div>
 
-<%end%>
+<% end %>

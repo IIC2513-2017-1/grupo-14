@@ -14,6 +14,7 @@ module BetsHelper
 		else
 			link_to 'Participate', new_bet_participation_path(bet), class: 'round_button'
 		end
+	end
 
 	def close_button(bet)
 	 	return unless current_user 

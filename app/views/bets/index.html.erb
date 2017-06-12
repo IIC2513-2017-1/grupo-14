@@ -7,13 +7,14 @@
       <th>Name</th>
       <th>Description</th>
       <th>Deadline</th>
-      <th>Max participants</th>
+      <th>Available spaces</th>
       <th>Kind</th>
       <th>Min bet</th>
       <th>Max bet</th>
-      <th>Username</th>
-      <th>Options</th>
-      <th colspan="2"></th>
+      <th>Creator</th>
+      <% if current_user and current_user.role == 'admin' %>
+        <th colspan="1"></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -23,14 +24,14 @@
         <td><%= link_to bet.name, bet %></td>
         <td><%= bet.description %></td>
         <td><%= bet.deadline %></td>
-        <td><%= bet.max_participants %></td>
+        <td><%= bet.max_participants - bet.participations.count %></td>
         <td><%= bet.kind %></td>
         <td><%= bet.min_bet %></td>
         <td><%= bet.max_bet %></td>
         <td><%= bet.user.name %></td>
-        <td><%= bet.choices.count %></td>
-        <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
-        <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user and current_user.role == 'admin' %>
+          <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

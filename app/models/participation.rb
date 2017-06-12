@@ -5,12 +5,12 @@ class Participation < ApplicationRecord
 	belongs_to :user
 	belongs_to :choice
 	belongs_to :bet
-	validate :amount_range, :valid_user, :valid_choice
+	validate :amount_range, :valid_user, :valid_choice, :sufficient_balance
 
 	def valid_user
 		if user_id == self.bet.user.id
 			errors.add(:user_id, "cannot be the creator of the bet")
-		elsif self.bet.user.role != 'regular'
+		elsif user.role != 'regular'
 			errors.add(:user_id, "must be a regular user")
 		end
 	end
@@ -29,11 +29,13 @@ class Participation < ApplicationRecord
 
 	def valid_date
 		if self.bet.deadline.to_date.past?
-			errors.add("This bet's deadline has been met and you can no longer participate.")
+			errors.add(:bet, "deadline has been met and you can no longer participate.")
 		end
 	end
 
-	def can_participate
-		self.user.balance > self.amount
+	def sufficient_balance
+		if self.user.balance < self.amount
+			errors.add(:user, "has insufficient balance.")
+		end
 	end
 end

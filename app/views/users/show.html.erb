@@ -35,11 +35,12 @@
 		</ul>
 	</p>
 
+	<% if current_user and @user == current_user %>
 	<p>
 		<strong>Pending friend requests:</strong>
 		<ul>
 			<% @user.request_targets.each do |request| %>
-			<%= request.name %>
+			<%= request.name %> <%= request_button(request) %>
 			<% end %>
 		</ul>
 	</p>
@@ -55,6 +56,7 @@
 			<% end %>
 		</ul>
 	</p>
+	<% end %>
 
 	<%= request_button(@user) %>
 

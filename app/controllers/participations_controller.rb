@@ -1,4 +1,6 @@
 class ParticipationsController < ApplicationController
+  include Secured
+  before_action :logged_in?, only: %i[new create edit update destroy]
   before_action :set_participation, only: [:show, :edit, :update, :destroy]
 
   # GET /participations
@@ -14,7 +16,8 @@ class ParticipationsController < ApplicationController
 
   # GET /participations/new
   def new
-    @participation = Participation.new
+    @bet = Bet.find(params[:bet_id])
+    @participation = @bet.participations.build
   end
 
   # GET /participations/1/edit
@@ -24,11 +27,16 @@ class ParticipationsController < ApplicationController
   # POST /participations
   # POST /participations.json
   def create
-    @participation = Participation.new(participation_params)
+    @bet = Bet.find(params[:bet_id])
+    params[:participation][:user_id] = current_user.id
+    @participation = @bet.participations.build(participation_params)
 
     respond_to do |format|
       if @participation.save
-        format.html { redirect_to @participation, notice: 'Participation was successfully created.' }
+        user = @participation.user
+        user.balance -= @participation.amount
+        user.save
+        format.html { redirect_to @bet, notice: 'You are now participating in this bet.' }
         format.json { render :show, status: :created, location: @participation }
       else
         format.html { render :new, status: 422 }
@@ -42,7 +50,7 @@ class ParticipationsController < ApplicationController
   def update
     respond_to do |format|
       if @participation.update(participation_params)
-        format.html { redirect_to @participation, notice: 'Participation was successfully updated.' }
+        format.html { redirect_to @bet, notice: 'Participation was successfully updated.' }
         format.json { render :show, status: :ok, location: @participation }
       else
         format.html { render :edit }
@@ -54,9 +62,13 @@ class ParticipationsController < ApplicationController
   # DELETE /participations/1
   # DELETE /participations/1.json
   def destroy
+    @bet = @participation.bet
+    user = @participation.user
+    user.balance += @participation.amount
+    user.save
     @participation.destroy
     respond_to do |format|
-      format.html { redirect_to participations_url, notice: 'Participation was successfully destroyed.' }
+      format.html { redirect_to @bet, notice: 'You are no longer participating in this bet.' }
       format.json { head :no_content }
     end
   end

@@ -8,9 +8,9 @@ module UsersHelper
 			relation.sender_id == current_user.id
 		end
 		if sent_request
-			link_to 'Cancel friend request', friendship_request_path(sent_request), method: 'delete'
+			link_to 'Cancel friend request', friendship_request_path(sent_request), method: 'delete', class: 'delete'
 		else
-			link_to 'Send friend request', user_friendship_requests_path(user), method: 'post'
+			link_to 'Send friend request', user_friendship_requests_path(user), method: 'post', class: 'round_button'
 		end
 	end
 

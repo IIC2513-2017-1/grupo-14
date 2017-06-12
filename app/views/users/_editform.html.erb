@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, value: '' %>
   </div>
 
   <div class="field">
     <%= f.label :mail %>
-    <%= f.email_field :mail %>
+    <%= f.email_field :mail, value: '' %>
   </div>
 
   <div class="field">
@@ -30,6 +30,16 @@
     <div class="field">
       <%= f.label :role %>
       <%= f.select :role, ['regular', 'admin', 'mod'] %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
     </div>
   <% end %>
 

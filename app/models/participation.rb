@@ -32,4 +32,8 @@ class Participation < ApplicationRecord
 			errors.add("This bet's deadline has been met and you can no longer participate.")
 		end
 	end
+
+	def can_participate
+		self.user.balance > self.amount
+	end
 end

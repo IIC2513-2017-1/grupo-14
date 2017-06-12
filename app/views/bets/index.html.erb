@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Bets</h1>
 <%= link_to 'New Bet', new_bet_path, class: "round_button" if current_user %>
 
@@ -15,14 +13,14 @@
       <th>Max bet</th>
       <th>Username</th>
       <th>Options</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @bets.each do |bet| %>
       <tr>
-        <td><%= bet.name %></td>
+        <td><%= link_to bet.name, bet %></td>
         <td><%= bet.description %></td>
         <td><%= bet.deadline %></td>
         <td><%= bet.max_participants %></td>
@@ -31,7 +29,6 @@
         <td><%= bet.max_bet %></td>
         <td><%= bet.user.name %></td>
         <td><%= bet.choices.count %></td>
-        <td><%= link_to 'Show', bet %></td>
         <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
         <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

@@ -1,5 +1,5 @@
 <%if current_user%>
-	<p id="notice"><%= notice %></p>
+	<%= link_to 'Edit profile', edit_user_path(@user), class: 'round_button' if @user == current_user or is_admin %>
 
 	<p>
 		<img src=<%= profile_picture(@user) %> id='profile-avatar'>
@@ -13,6 +13,12 @@
 	  <strong>Mail:</strong>
 	  <%= @user.mail %>
 	</p>
+
+	<p>
+	  <strong>Balance:</strong>
+	  <%= @user.balance %>
+	</p>
+
 	<% if is_admin %>
 		<p>
 		  <strong>Role:</strong>
@@ -52,6 +58,4 @@
 
 	<%= request_button(@user) %>
 
-	<%= link_to 'Edit', edit_user_path(@user) if @user == current_user or is_admin %> |
-	<%= link_to 'Back', users_path %>
 <%end%>

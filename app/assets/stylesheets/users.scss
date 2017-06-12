@@ -12,3 +12,68 @@
 	vertical-align: middle;
 	padding-right: 10px;
 }
+
+#profile-avatar {
+  width: 150px;
+  height: 150px;
+  border: 1px solid grey;
+}
+
+.profile {
+	border: 1px solid black;
+}
+
+.profile_content {
+	display: inline-block;
+	vertical-align: top;
+	p {
+		margin: 20px;
+	}
+}
+
+.friend > a {
+text-decoration: none;
+color: #555;
+	&:hover {
+	color: white;
+	background: #666;
+	}
+}
+
+.user_profile p {
+	font-size: 16px;
+	text-align: left;
+}
+
+
+.user_profile {
+	text-align: center;
+}
+
+#username {
+	margin-top: 5px;
+	text-align: center
+}
+
+#profile-avatar {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.user_edit_page {
+	text-align: center;
+
+	.form_content {
+		display: inline-block;
+		label {
+			text-align: left;
+		}
+		input {
+			text-align: center;
+		}
+	}
+}
+
+.request {
+
+}

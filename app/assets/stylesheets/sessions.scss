@@ -1,3 +1,19 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#signin_form .field, #signin_form .actions {
+  float: left;
+  padding-right: 5px;
+  vertical-align: middle;
+}
+#signin_form .actions{
+  color: rgb(97, 203, 230);
+  padding-top: 15px;
+}
+
+#signin_form{
+  text-align: left;
+  color: white;
+  height: 60px;
+}

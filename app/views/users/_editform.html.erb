@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+<div class="form_content">
+
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name, value: '' %>
@@ -21,12 +23,17 @@
     <%= f.email_field :mail, value: '' %>
   </div>
 
+  <%= f.label :avatar %>
+</div>
+
+<div class='avatar_field'>
   <div class="field">
-    <%= f.label :avatar %>
     <%= f.file_field :avatar %>
   </div>
+</div>
 
   <% if is_admin %>
+  <div class="form_content">
     <div class="field">
       <%= f.label :role %>
       <%= f.select :role, ['regular', 'admin', 'mod'] %>
@@ -41,6 +48,7 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
     </div>
+  </div>
   <% end %>
 
   <div class="actions">

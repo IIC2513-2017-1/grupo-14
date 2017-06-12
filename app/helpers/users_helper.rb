@@ -57,4 +57,12 @@ module UsersHelper
 			return user.avatar.url
 		end
 	end
+
+	def edit_profile(user)
+		return unless current_user
+		if user == current_user or is_admin
+			link_to 'Edit profile', edit_user_path(user), class: 'round_button'
+		end
+	end
+
 end

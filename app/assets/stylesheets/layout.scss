@@ -92,22 +92,6 @@ nav#main-menu {
   padding-top: 11px;
 }
 
-#signin_form .field, #signin_form .actions {
-  float: left;
-  padding-right: 5px;
-  vertical-align: middle;
-}
-#signin_form .actions{
-  color: rgb(97, 203, 230);
-  padding-top: 15px;
-}
-
-#signin_form{
-  text-align: left;
-  color: white;
-  height: 60px;
-}
-
 .index-table{
   text-align: center;
   margin: auto;
@@ -139,12 +123,12 @@ nav#main-menu {
   display: inline-block;
   border-radius: 5px;
   font-size: 15px;
+  cursor: pointer;
   &:hover {
   background-color: white;
   color: #1b95e0;
   }
 }
-
 
 button {
   background-color: #1b95e0;
@@ -182,7 +166,7 @@ button {
   }
 }
 
-a.delete {
+.delete {
   color: white;
   background-color: red;
   border: none;
@@ -193,7 +177,7 @@ a.delete {
   border-radius: 5px;
   font-size: 15px;
   &:hover {
-  background-color: red;
+  background-color: grey;
   color: white;
   }
 }
@@ -203,12 +187,6 @@ a.delete {
   border: none;
   height: 20px;
   padding: 2px 4px;
-}
-
-#profile-avatar {
-  width: 150px;
-  height: 150px;
-  border: 1px solid grey;
 }
 
 #app_name {

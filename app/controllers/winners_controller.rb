@@ -16,7 +16,10 @@ class WinnersController < ApplicationController
 
     respond_to do |format|
       if @winner.save
-        format.html { redirect_to @winner, notice: 'Participation was successfully created.' }
+      	@bet.participations.each do |participation|
+      		MailConfirmationMailer.close_bet_email(participation,@bet,@winner).deliver_later
+      	end
+        format.html { redirect_to @bet, notice: 'Winner choice was successfully selected .' }
         format.json { render :show, status: :created, location: @winner }
       else
         format.html { render :new, status: 422 }
@@ -30,7 +33,7 @@ class WinnersController < ApplicationController
   def destroy
     @winner.destroy
     respond_to do |format|
-      format.html { redirect_to winners_url, notice: 'Participation was successfully destroyed.' }
+      format.html { redirect_to winners_url, notice: 'Winner was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -43,6 +46,6 @@ class WinnersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def winner_params
-      params.require(:winner).permit(:bet_id)
+      params.require(:winner).permit(:bet_id,:choice_id)
     end
 end

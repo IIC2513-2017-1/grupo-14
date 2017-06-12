@@ -44,6 +44,23 @@
   </ul>
 </p>
 
+<p>
+  <strong>Participations:</strong>
+  <ul>
+    <% @bet.participations.each do |parti| %>
+      <li><%= parti.user.name %></li>
+      <li><%= parti.choice.value %></li>
+    <% end %>
+  </ul>
+</p>
+
+<% if has_winner(@bet)%>
+  <p>
+    <strong>Winner choice:</strong>
+    <%= @bet.winner.choice.value %>
+  </p>
+<%end%>
+
 <%= close_button(@bet) %> |
 <%= link_to 'Edit', edit_bet_path(@bet) %> |
 <%= link_to 'Back', bets_path %>

@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Participation.destroy_all
+Winner.destroy_all
 Choice.destroy_all
 Bet.destroy_all
 User.destroy_all
@@ -21,7 +22,7 @@ User.destroy_all
   )
 end
 
-u = User.create(
+x = User.create(
   name: 'Juan',
   mail: 'hola@12.cl',
   password: '123456',
@@ -29,7 +30,13 @@ u = User.create(
 )
 u = User.create(
   name: 'Juan2',
-  mail: 'hola2@12.cl',
+  mail: 'juanfra.campos2@gmail.com',
+  password: '123456',
+  role: 'regular'
+)
+m = User.create(
+  name: 'Juan4',
+  mail: 'jfcampos1@uc.cl',
   password: '123456',
   role: 'regular'
 )
@@ -49,14 +56,14 @@ user_ids = User.pluck(:id)
   )
 end
 
-Bet.create(
+v = Bet.create(
     name: 'Hoollaa',
     description: Faker::StarWars.quote,
     deadline: Date.yesterday,
     max_participants: Faker::Number.digit,
     kind: Faker::StarWars.wookie_sentence,
-    min_bet: Faker::Number.digit,
-    max_bet: Faker::Number.number(4),
+    min_bet: 10,
+    max_bet: 5000,
     user_id: user_ids.sample
   )
 
@@ -68,3 +75,31 @@ bet_ids = Bet.pluck(:id)
     bet_id: bet_ids.sample
   )
 end
+
+10.times do
+  Choice.create(
+    value: Faker::Book.title,
+    bet_id: v.id
+  )
+end
+n = Choice.create(
+    value: Faker::Book.title,
+    bet_id: v.id
+  )
+j = Choice.create(
+    value: Faker::Book.title,
+    bet_id: v.id
+  )
+
+Participation.create(
+  amount: 500,
+  user_id: u.id,
+  bet_id: v.id,
+  choice_id: n.id
+  )
+Participation.create(
+  amount: 500,
+  user_id: m.id,
+  bet_id: v.id,
+  choice_id: j.id
+  )

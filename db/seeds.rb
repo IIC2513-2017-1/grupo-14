@@ -49,6 +49,17 @@ user_ids = User.pluck(:id)
   )
 end
 
+Bet.create(
+    name: 'Hoollaa',
+    description: Faker::StarWars.quote,
+    deadline: Date.yesterday,
+    max_participants: Faker::Number.digit,
+    kind: Faker::StarWars.wookie_sentence,
+    min_bet: Faker::Number.digit,
+    max_bet: Faker::Number.number(4),
+    user_id: user_ids.sample
+  )
+
 
 bet_ids = Bet.pluck(:id)
 10.times do

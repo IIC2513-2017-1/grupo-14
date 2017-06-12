@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'sessions/new'
 
-  resources :bets
+  resources :bets do
+    resource :winners
+  end
   resources :participations
   resources :choices
   resources :users do

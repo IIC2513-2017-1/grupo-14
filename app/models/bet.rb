@@ -7,12 +7,12 @@ class Bet < ApplicationRecord
 	validates :min_bet, presence: true, allow_blank: false,
 	numericality: { greater_than: 0, greater_than_or_equal_to: :min_bet }
 	validates_uniqueness_of :name, scope: [:deadline]
-	validate :deadline_is_in_future
 
 	belongs_to :user
 	has_many :choices
 	has_many :participations
 	accepts_nested_attributes_for :choices
+	has_one :winner
 
 	def deadline_is_in_future
 		if deadline.to_date.past? or deadline.today?

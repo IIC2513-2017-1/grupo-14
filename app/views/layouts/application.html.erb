@@ -43,14 +43,20 @@
   		</div>
 
   	</header>
+
   	<main>
   		<% [:alert, :notice].each do |flash_type| %>
-        	<% if (flash_message = flash[flash_type]).present? %>
-          		<div class="<%= flash_type %>"><%= flash_message %></div>
-        	<% end %>
+      	<% if (flash_message = flash[flash_type]).present? %>
+        		<div id="<%= flash_type %>"><%= flash_message %></div>
       	<% end %>
+    	<% end %>
 
     	<%= yield %>
     </main>
+
+    <footer>
+      <hr>
+      <div id='app_name'>© Ludopath 2017</div>
+    </footer>
   </body>
 </html>

@@ -10,8 +10,8 @@ class Bet < ApplicationRecord
 	validate :deadline_is_in_future
 
 	belongs_to :user
-	has_many :choices
-	has_many :participations
+	has_many :choices, dependent: :destroy
+	has_many :participations, dependent: :destroy
 	accepts_nested_attributes_for :choices
 
 	def deadline_is_in_future

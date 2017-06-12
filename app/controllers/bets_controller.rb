@@ -2,6 +2,7 @@ class BetsController < ApplicationController
   include Secured
   before_action :logged_in?, only: %i[new create edit update destroy]
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
+  before_action :is_owner?, only: [:edit, :update]
 
   # GET /bets
   # GET /bets.json
@@ -69,6 +70,10 @@ class BetsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bet
       @bet = Bet.find(params[:id])
+    end
+
+    def is_owner?
+      redirect_to @bet, alert: "Unauthorized access!" unless @bet.user == current_user or current_user.role != 'regular'
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

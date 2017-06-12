@@ -25,8 +25,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user.name.clear
-    @user.mail.clear
   end
 
   # POST /users
@@ -37,6 +35,8 @@ class UsersController < ApplicationController
     if not is_admin
       @user[:role] = 'regular'
     end
+
+    @user.balance = 10000
 
     respond_to do |format|
       if @user.save
@@ -53,9 +53,6 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-
-    user_params.delete(:password) if params[:user][:password].blank?
-    user_params.delete(:password_confirmation) if params[:user][:password_confirmation].blank?
 
     respond_to do |format|
       if @user.update(user_params)
@@ -86,7 +83,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :mail, :password, :password_confirmation, :role, :avatar).reject { |k, v| v.blank? }
+      params.require(:user).permit(:name, :mail, :password, :password_confirmation, :role, :avatar, :balance).reject { |k, v| v.blank? }
     end
 
     def is_current_user?
@@ -102,4 +99,5 @@ class UsersController < ApplicationController
         current_user.role == 'admin'
       end
     end
+
 end

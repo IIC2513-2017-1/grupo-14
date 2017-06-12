@@ -33,7 +33,19 @@ div {
 }
 
 #notice {
-  color: green;
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+#alert {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
 }
 
 .field_with_errors {

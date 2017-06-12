@@ -17,7 +17,8 @@ User.destroy_all
    name: Faker::Name.unique.first_name,
    mail: Faker::Internet.unique.email,
    password: Faker::Internet.password,
-   role: 'regular'
+   role: 'regular',
+   balance: 10000
   )
 end
 
@@ -25,13 +26,23 @@ u = User.create(
   name: 'Juan',
   mail: 'hola@12.cl',
   password: '123456',
-  role: 'admin'
+  role: 'admin',
+  balance: 10000
 )
 u = User.create(
   name: 'Juan2',
   mail: 'hola2@12.cl',
   password: '123456',
-  role: 'regular'
+  role: 'regular',
+  balance: 10000
+)
+
+u = User.create(
+  name: 'Rorro',
+  mail: 'hola3@12.cl',
+  password: 'asdasd',
+  role: 'regular',
+  balance: 10000
 )
 
 # Create bets
@@ -51,9 +62,11 @@ end
 
 
 bet_ids = Bet.pluck(:id)
-10.times do
-  Choice.create(
-  	value: Faker::Book.title,
-    bet_id: bet_ids.sample
-  )
+bet_ids.each do |bet_id|
+  3.times do
+    Choice.create(
+    	value: Faker::Book.title,
+      bet_id: bet_id
+    )
+  end
 end

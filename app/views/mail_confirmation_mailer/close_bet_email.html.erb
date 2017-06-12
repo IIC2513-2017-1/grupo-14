@@ -1,0 +1,18 @@
+<p>
+  Dear <%= @user.name %>,
+</p>
+
+<p>
+  The bet <%= @bet.name %> has been closed<br/>
+  <%if @winner %>
+  	Congratulations!! You win the bet<br/>
+  <%else%>
+  	Sorry you lose the bet<br/>
+  <%end%>
+  To login to the site and see the results, just follow this link: <%= @url %>.
+</p>
+
+<p>
+  Best regards,<br/>
+  Ludopath's staff
+</p>

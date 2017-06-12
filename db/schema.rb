@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529075322) do
+ActiveRecord::Schema.define(version: 20170612020145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,9 +78,20 @@ ActiveRecord::Schema.define(version: 20170529075322) do
     t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
   end
 
+  create_table "winners", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "bet_id"
+    t.integer  "choice_id"
+    t.index ["bet_id"], name: "index_winners_on_bet_id", using: :btree
+    t.index ["choice_id"], name: "index_winners_on_choice_id", using: :btree
+  end
+
   add_foreign_key "bets", "users"
   add_foreign_key "choices", "bets"
   add_foreign_key "participations", "bets"
   add_foreign_key "participations", "choices"
   add_foreign_key "participations", "users"
+  add_foreign_key "winners", "bets"
+  add_foreign_key "winners", "choices"
 end

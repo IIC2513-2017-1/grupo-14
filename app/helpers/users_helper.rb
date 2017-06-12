@@ -22,7 +22,7 @@ module UsersHelper
 			relation.sender_id == user.id
 		end
 		if received_request
-			link_to 'Accept', user_friendships_path(user), method: 'post'
+			link_to 'Accept', user_friendships_path(user), method: 'post', class: 'round_button'
 		end
 	end
 
@@ -34,7 +34,7 @@ module UsersHelper
 			relation.sender_id == user.id
 		end
 		if received_request
-			link_to 'Reject', friendship_request_path(received_request), method: 'delete'
+			link_to 'Reject', friendship_request_path(received_request), method: 'delete', class: 'round_button'
 		end
 	end
 

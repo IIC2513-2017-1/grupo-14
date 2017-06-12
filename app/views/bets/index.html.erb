@@ -5,10 +5,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
       <th>Deadline</th>
       <th>Available spaces</th>
-      <th>Kind</th>
       <th>Min bet</th>
       <th>Max bet</th>
       <th>Creator</th>
@@ -19,13 +17,11 @@
   </thead>
 
   <tbody>
-    <% @bets.each do |bet| %>
+    <% @bets.sort_by {|bet| bet.deadline}.each do |bet| %>
       <tr>
         <td><%= link_to bet.name, bet %></td>
-        <td><%= bet.description %></td>
         <td><%= bet.deadline %></td>
         <td><%= bet.max_participants - bet.participations.count %></td>
-        <td><%= bet.kind %></td>
         <td><%= bet.min_bet %></td>
         <td><%= bet.max_bet %></td>
         <td><%= bet.user.name %></td>

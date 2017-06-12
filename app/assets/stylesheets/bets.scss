@@ -1,3 +1,66 @@
 // Place all the styles related to the Bets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.index-table {
+	a {
+		text-decoration: none;
+		color: blue;
+		&:hover {
+		color: white;
+		background: #666;
+		}
+	}
+}
+
+.index-table{
+  text-align: center;
+  margin: auto;
+  width: auto;
+  padding: 20px;
+  border-collapse: collapse;
+  border: 2px solid #666;
+  tr:nth-of-type(even) {
+    background-color: rgb(239, 239, 239);
+  }
+  tr:nth-of-type(odd) {
+    background-color: rgb(167, 214, 232);
+  }
+  tr, td {
+    border-bottom: 2px solid #666;
+  }
+  th {
+    font-size: 14px;
+  }
+}
+
+.bet_show {
+	p {
+		margin: 10px;
+	}
+	ul {
+		margin: 10px;
+	}
+}
+
+#new_bet_page {
+	text-align: center;
+
+	.form_content {
+		display: inline-block;
+		label {
+			text-align: left;
+		}
+		.field > input, textarea {
+			text-align: left;
+			width: 100%;
+		}
+	}
+	.extra_choice {
+		width: 100%;
+	 input {
+		display: inline-block;
+		width: auto;	
+	}
+	}
+}

@@ -25,7 +25,7 @@
 
       <div id="user-bar">
   			<% if current_user %>
-          <div class="name">Welcome, <%= link_to current_user.name, current_user %>
+          <div class="name">Welcome, <%= link_to current_user.name, current_user %><br>Balance: <%= current_user.balance %>
           </div>
 				<%= link_to 'Logout', session_url, method: :delete%><br>
   			<% else %>

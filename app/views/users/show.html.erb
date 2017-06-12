@@ -19,7 +19,7 @@
 			<div class="profile_content">
 			<p>
 			  <strong>Balance:</strong>
-			  <%= @user.balance %>
+			  <%= @user.balance %> points
 			</p>
 
 			<% if is_admin %>
@@ -51,9 +51,9 @@
 			<p>
 				<strong>Received friend requests:</strong>
 					<% @user.request_senders.each do |request| %>
-					<p><%= request.name %>
+					<p class="request"><%= request.name %>
 					<% if @user == current_user %>
-						<%= accept_friendship_button(request) %> | <%= reject_friendship_button(request) %>
+						<%= accept_friendship_button(request) %> <%= reject_friendship_button(request) %>
 					</p>
 					<% end %>
 					<% end %>

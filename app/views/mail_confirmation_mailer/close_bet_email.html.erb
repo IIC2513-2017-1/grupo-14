@@ -4,7 +4,7 @@
 
 <p>
   The bet <%= @bet.name %> has been closed<br/>
-  <%if @winner %>
+  <%if @winner == @choice %>
   	Congratulations!! You win the bet<br/>
   <%else%>
   	Sorry you lose the bet<br/>

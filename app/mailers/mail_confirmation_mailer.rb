@@ -6,11 +6,12 @@ class MailConfirmationMailer < ApplicationMailer
     	mail subject: "Welcome to Ludopath #{user.name}", to: user.mail
     end
 
-    def close_bet_email(user,bet, winner)
-    	@user = user
+    def close_bet_email(participation,bet, winner)
+    	@user = participation.user
+        @choice = participation.choice.value
     	@bet = bet
     	@url  = 'http://localhost:3000'
-    	@winner = winner
-    	mail subject: "Closed Bet #{bet.name}", to: user.mail
+    	@winner = winner.choice.value
+    	mail subject: "Closed Bet #{bet.name}", to: participation.user.mail
     end
 end

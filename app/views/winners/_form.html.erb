@@ -1,0 +1,23 @@
+<%= form_for([@bet, @winner]) do |f| %>
+  <% if @winner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@winner.errors.count, "error") %> prohibited this winner from being saved:</h2>
+
+      <ul>
+      <% @winner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :choice_id %>
+    <%= f.select :choice_id, @bet.choices.collect { |choice| [ choice.value, choice.id ] }, { include_blank: true }, { required: true } %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

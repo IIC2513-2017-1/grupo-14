@@ -5,14 +5,14 @@ class WinnersController < ApplicationController
   # GET /participations/new
   def new
   	@bet = Bet.find(params[:bet_id])
-    @winner = @bet.winner.build
+    @winner = @bet.build_winner
   end
 
   # POST /participations
   # POST /participations.json
   def create
   	@bet = Bet.find(params[:bet_id])
-    @winner = @bet.winner.build(winner_params)
+    @winner = @bet.build_winner(winner_params)
 
     respond_to do |format|
       if @winner.save

@@ -50,7 +50,7 @@ module UsersHelper
 			relation.friend_id == user.id
 		end
 		if friendship
-			link_to '(Unfriend)', friendship_path(friendship), method: 'delete'
+			link_to '(Unfriend)', friendship_path(friendship), method: 'delete', data: {confirm: "Are you sure of unfriend #{user.name}?"}
 		end
 	end
 

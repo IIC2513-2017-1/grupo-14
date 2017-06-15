@@ -33,22 +33,22 @@
 </div>
 
   <% if is_admin %>
-  <div class="form_content">
-    <div class="field">
-      <%= f.label :role %>
-      <%= f.select :role, ['regular', 'admin', 'mod'] %>
-    </div>
+    <div class="form_content">
+      <div class="field">
+        <%= f.label :role %>
+        <%= f.select :role, ['regular', 'admin', 'mod'] %>
+      </div>
 
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </div>
     </div>
-  </div>
   <% end %>
 
   <div class="actions">

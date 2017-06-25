@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   helper_method :is_admin
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in?, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in?, only: [:index, :show, :edit, :update, :destroy]
   before_action :is_current_user?, only: %i[edit update destroy]
 
   # GET /users

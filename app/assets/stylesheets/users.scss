@@ -76,23 +76,30 @@ p.request {
 }
 
 .multiimage {
+	p {
+		text-align: center;
+		margin: 0;
+	}
+	a {
+		text-decoration: none;
+	}
 	h4 {
 		text-align: center;
 	}
 	.block {
 		padding: 5px;
 		border-radius: 5px;
-		h4{
+		h4, p{
 			margin-top: 5px;
 			margin-bottom: 5px;
 		}
-		a {
+		h4, p {
 			text-decoration: none;
 			color: #555;
 		}
 		&:hover {
 		background: #666;
-		a {
+		h4, p {
 			color: white;
 		}
 		}

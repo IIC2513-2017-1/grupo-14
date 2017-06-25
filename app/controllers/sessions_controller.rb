@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name])
     if user&.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      redirect_back(fallback_location: root_path, notice: 'Login successful.')
+      redirect_to root_path, notice: 'Login successful.'
     else
-      redirect_back(fallback_location: root_path, alert: 'Wrong username or password.')
+      redirect_to root_path, alert: 'Wrong username or password.'
     end
   end
 

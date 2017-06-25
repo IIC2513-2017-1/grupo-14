@@ -1,0 +1,47 @@
+<div class="bet_show">
+<p>
+  <strong>Description:</strong>
+  <%= bet.description %>
+</p>
+
+<p>
+  <strong>Choices:</strong>
+  <ul>
+    <% bet.choices.each do |choice| %>
+      <li><%= choice.value %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Max participants:</strong>
+  <%= bet.max_participants %>
+</p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= bet.kind %>
+</p>
+
+<% if bet.participations.count > 0 %>
+<p>
+  <strong>Participants:</strong>
+  <ul>
+    <% bet.participations.each do |parti| %>
+      <li><%= parti.user.name %> (<%= parti.amount %> points)</li>
+    <% end %>
+  </ul>
+</p>
+<% end %>
+
+<%= participate_button(bet) %>
+
+<% if has_winner(bet)%>
+  <p>
+    <strong>Winner choice:</strong>
+    <%= bet.winner.choice.value %>
+  </p>
+<%else%>
+  <%= close_button(bet) %>
+<%end%>
+</div>

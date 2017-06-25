@@ -1,6 +1,6 @@
 $(document).ready(function() {
       var value_index
-      var max_fields      = 50;
+      var max_fields      = 20;
       var wrapper         = $(".values");
       var add_button      = $(".add_form_field");
     

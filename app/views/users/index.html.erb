@@ -2,14 +2,14 @@
   <h1>Users</h1>
   <div class = "multiimage">
     <% @users.sort_by {|user| user.name}.each do |user| %>
-      <div class = "block">
-          <%= link_to user do %>
-            <img src=<%=profile_picture(user)%> class = "user-image">
-          <% end %>          
-          <h4><%= link_to user.name, user %></h4>
+      <%= link_to user do %>
+        <div class = "block">
+          <img src=<%=profile_picture(user)%> class = "user-image">
+          <h4><%= user.name %></h4>
           <% if is_not_regular %>
-            <td><%= user.role %></td>  
-          <%end%>        
-      </div>
+            <p><%= user.role %></p>
+          <%end%>
+        </div>
+      <% end %>          
     <%end%>
 <%end%>

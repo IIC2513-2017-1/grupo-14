@@ -39,7 +39,7 @@
 			</p>
 			</div>
 
-			<% if current_user and @user == current_user %>
+			<% if current_user and (@user == current_user or is_admin) %>
 			<div class="profile_content">
 			<p>
 				<strong>Pending friend requests:</strong>

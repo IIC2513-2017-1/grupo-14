@@ -36,7 +36,7 @@ class ParticipationsController < ApplicationController
         user = @participation.user
         user.balance -= @participation.amount
         user.save
-        format.html { redirect_to @bet, notice: 'You are now participating in this bet.' }
+        format.html { redirect_to bets_url, notice: 'You are now participating in this bet.' }
         format.json { render :show, status: :created, location: @participation }
       else
         format.html { render :new, status: 422 }
@@ -50,7 +50,7 @@ class ParticipationsController < ApplicationController
   def update
     respond_to do |format|
       if @participation.update(participation_params)
-        format.html { redirect_to @bet, notice: 'Participation was successfully updated.' }
+        format.html { redirect_back(fallback_location: @bet, notice: 'Participation was successfully updated.') }
         format.json { render :show, status: :ok, location: @participation }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class ParticipationsController < ApplicationController
     user.save
     @participation.destroy
     respond_to do |format|
-      format.html { redirect_to @bet, notice: 'You are no longer participating in this bet.' }
+      format.html { redirect_back(fallback_location: @bet, notice: 'You are no longer participating in this bet.') }
       format.json { head :no_content }
     end
   end

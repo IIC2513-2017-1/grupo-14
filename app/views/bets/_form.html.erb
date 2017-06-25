@@ -1,7 +1,6 @@
 <% content_for :javascript_includes do %>
-  <%= javascript_include_tag "assets/javascripts/choice_button.js" %>
+  <%= javascript_include_tag "choice_button.js" %>
 <% end %>
-
 <%= form_for(bet) do |f| %>
   <% if bet.errors.any? %>
     <div id="error_explanation">
@@ -63,7 +62,7 @@
     </div>
   </div>
   
-    <button class="add_form_field">Add another choice &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span></button>
+    <button class="add_form_field round_button">Add another choice &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span></button>
 
   <div class="actions">
     <%= f.submit %>

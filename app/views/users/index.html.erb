@@ -1,7 +1,12 @@
 <% if current_user %>
   <h1>Users</h1>
   <div class = "multiimage">
-    <% @users.sort_by {|user| user.name}.each do |user| %>
+    <% if is_not_regular %>
+      <% sorted = @users.sort_by {|user| [user.role, user.name]} %>
+    <% else %>
+      <% sorted = @users.sort_by {|user| user.name} %>
+    <% end %>
+    <% sorted.each do |user| %>
       <%= link_to user do %>
         <div class = "block">
           <img src=<%=profile_picture(user)%> class = "user-image">

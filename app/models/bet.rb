@@ -14,6 +14,8 @@ class Bet < ApplicationRecord
 	accepts_nested_attributes_for :choices
 	has_one :winner
 
+	scope :applicable, -> { where("deadline > ?", Date.today) }
+
 	def deadline_is_in_future
 		if deadline.to_date.past? or deadline.today?
 			errors.add(:deadline, "can't be in the past")

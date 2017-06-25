@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Apuestas</title>
+    <title>Ludopath</title>
     <%= csrf_meta_tags %>
-
+    <%= favicon_link_tag 'logo.png' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :javascript_includes %>
   </head>
 
   <body>
@@ -45,10 +46,8 @@
   	</header>
 
   	<main>
-  		<% [:alert, :notice].each do |flash_type| %>
-      	<% if (flash_message = flash[flash_type]).present? %>
-        		<div id="<%= flash_type %>"><%= flash_message %></div>
-      	<% end %>
+  		<% flash.each do |type, message| %>
+    		<div id="<%= type %>"><%= message %></div>
     	<% end %>
 
     	<%= yield %>

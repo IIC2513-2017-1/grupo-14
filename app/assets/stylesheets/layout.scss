@@ -149,15 +149,22 @@ button {
   color: white;
   background-color: red;
   border: none;
-  padding: 3px 6px;
+  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
   font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   &:hover {
   background-color: grey;
   color: white;
+  }
+  &.choice {
+    padding: 3px 6px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 }
 

@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.content {
-	width: 90%;
-	padding-left: 5%;
-}
-
 .bet_list {
 	.bet_block {
 		margin-top: 0px;
@@ -21,6 +16,13 @@
 		border-bottom-right-radius: 10px;
 		border-bottom-left-radius: 10px;
 		text-align: center;
+		&:hover {
+			background-color: #333333;
+			color: white;
+			td {
+				border-color: white;
+			}
+		}
 		table, tr, td {
 			border: none;
 		}
@@ -42,9 +44,9 @@
 	}
 	.details {
 		background-color: #f9f9f7;
-		border-left: 1px solid black;
-		border-bottom: 1px solid black;
-		border-right: 1px solid black;
+		border-left: 1px solid grey;
+		border-bottom: 1px solid grey;
+		border-right: 1px solid grey;
 		border-bottom-right-radius: 10px;
 		border-bottom-left-radius: 10px;
 		display: none;

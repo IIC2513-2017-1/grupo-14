@@ -17,3 +17,15 @@
  *= require font-awesome
  */
 .alert {color: red;}
+
+#content {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.flash {
+	min-width: 20%;
+	width: auto;
+	margin: auto;
+}

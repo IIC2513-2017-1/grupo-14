@@ -77,7 +77,6 @@ class UsersController < ApplicationController
   end
 
   def new_event
-    @user = 
       client = Signet::OAuth2::Client.new({
         client_id: Rails.application.secrets.google_client_id,
         client_secret: Rails.application.secrets.google_client_secret,
@@ -110,7 +109,6 @@ class UsersController < ApplicationController
         service.insert_event('primary', event)
 
       end
-
   end
 
   private

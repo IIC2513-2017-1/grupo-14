@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   helper_method :is_admin
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in?, only: [:index, :show, :edit, :update, :destroy]
+  before_action :logged_in?, only: [:index, :show, :edit, :update, :destroy, :new_event]
   before_action :not_logged_in?, only: [:new, :create]
   before_action :is_current_user?, only: %i[edit update destroy]
 
@@ -77,6 +77,7 @@ class UsersController < ApplicationController
   end
 
   def new_event
+    @user = 
       client = Signet::OAuth2::Client.new({
         client_id: Rails.application.secrets.google_client_id,
         client_secret: Rails.application.secrets.google_client_secret,
@@ -88,19 +89,28 @@ class UsersController < ApplicationController
       service = Google::Apis::CalendarV3::CalendarService.new
       service.authorization = client
 
-      
-      today = Date.today
+      @user.bets.each do |bet|
 
-      event = Google::Apis::CalendarV3::Event.new({
-        start: Google::Apis::CalendarV3::EventDateTime.new(date: today),
-        end: Google::Apis::CalendarV3::EventDateTime.new(date: today + 1),
-        summary: 'New event!'
-      })
+        event = Google::Apis::CalendarV3::Event.new({
+          start: Google::Apis::CalendarV3::EventDateTime.new(date: bet.deadline),
+          end: Google::Apis::CalendarV3::EventDateTime.new(date: bet.deadline + 1),
+          summary: bet.name
+        })
+        service.insert_event('primary', event)
 
-      calendar = service.list_calendar_lists.items.first
-      service.insert_event('primary', event)
+      end
 
-      redirect_to events_url(calendar_id: calendar)
+      @user.participations.each do |participation|
+
+        event = Google::Apis::CalendarV3::Event.new({
+          start: Google::Apis::CalendarV3::EventDateTime.new(date: participation.bet.deadline),
+          end: Google::Apis::CalendarV3::EventDateTime.new(date: participation.bet.deadline + 1),
+          summary: participation.bet.name
+        })
+        service.insert_event('primary', event)
+
+      end
+
   end
 
   private

@@ -15,6 +15,7 @@ class Bet < ApplicationRecord
 	has_one :winner
 
 	scope :applicable, -> { where("deadline > ?", Date.today) }
+	scope :not_owned, lambda { |user| where("user_id != ?", user.id) unless ['admin', 'mod'].include?(user.role) }
 
 	def deadline_is_in_future
 		if deadline.to_date.past? or deadline.today?

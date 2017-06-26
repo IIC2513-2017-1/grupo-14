@@ -1,7 +1,6 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 .user-image {
   width: 150px;
   height: 150px;
@@ -20,19 +19,11 @@
   border: 1px solid grey;
 }
 
-.profile_content {
+.profile_content, .requests {
 	display: inline-block;
 	vertical-align: top;
 	p {
-		margin-top: 15px;
-		margin-bottom: 15px;
-	}
-}
-
-p.request {
-	margin: 0;
-	a:nth-child(1) {
-		margin-left: 15px;
+		margin: 20px;
 	}
 }
 
@@ -65,37 +56,35 @@ color: #555;
 	margin-bottom: 10px;
 }
 
-.user_form_page {
-	.bet_summary {
-		margin-top: 20px;
-		.column {
-			vertical-align: top;
-			display: inline-block;
-			width: 40%;
-			margin-right: 4%;
-			margin-left: 4%;
-			text-align: center;
-			.column_title {
-				border-top-right-radius: 10px;
-				border-top-left-radius: 10px;
-				background-color: #3f9619;
-				color: #fffee5;
-				padding: 5px;
-				padding-left: 10px;
-				text-align: left;
-			}
-			.column_content {
-				background-color: #f9f9f7;
-				padding-top: 10px;
-				padding-bottom: 10px;
-				min-height: 20px;
-				border-bottom: 1px solid;
-				border-left: 1px solid;
-				border-right: 1px solid;
-				border-color: grey;
-				border-bottom-right-radius: 10px;
-				border-bottom-left-radius: 10px;
-			}
+.bet_summary {
+	margin-top: 20px;
+	.column {
+		vertical-align: top;
+		display: inline-block;
+		width: 40%;
+		margin-right: 4%;
+		margin-left: 4%;
+		text-align: center;
+		.column_title {
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+			background-color: #3f9619;
+			color: #fffee5;
+			padding: 5px;
+			padding-left: 10px;
+			text-align: left;
+		}
+		.column_content {
+			background-color: #f9f9f7;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			min-height: 20px;
+			border-bottom: 1px solid;
+			border-left: 1px solid;
+			border-right: 1px solid;
+			border-color: grey;
+			border-bottom-right-radius: 10px;
+			border-bottom-left-radius: 10px;
 		}
 	}
 }
@@ -160,9 +149,10 @@ p.request {
 		}
 		&:hover {
 		background: #666;
-			h4, p {
-				color: white;
-			}
+		h4, p {
+			color: white;
+		}
 		}
 	}
+
 }

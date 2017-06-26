@@ -12,18 +12,17 @@ Rails.application.routes.draw do
   resources :users do
   	resources :friendship_requests, only: [:create]
   	resources :friendships, only: [:create]
+    member do
+      get :sync_calendar
+      get :redirect
+      get :callback
+    end
   end
 
   resources :friendship_requests, only: [:destroy]
   resources :friendships, only: [:destroy]
 
   resource :session, only: [:new, :create, :destroy]
-
-  get '/redirect', to: 'google_token#redirect', as: 'redirect'
-  get '/callback', to: 'google_token#callback', as: 'callback'
-  get '/calendars', to: 'google_token#calendars', as: 'calendars'
-  get '/events', to: 'google_token#events', as: 'events'
-  get '/new_event', to: 'google_token#new_event', as: 'new_event'
 
   get 'home/index'
   root 'home#index'

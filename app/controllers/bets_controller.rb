@@ -59,6 +59,9 @@ class BetsController < ApplicationController
   # DELETE /bets/1
   # DELETE /bets/1.json
   def destroy
+    @bet.participations.each do |part|
+      part.destroy
+    end
     @bet.destroy
     respond_to do |format|
       format.html { redirect_to bets_url, notice: 'Bet was successfully destroyed.' }

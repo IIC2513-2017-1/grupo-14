@@ -46,7 +46,7 @@ class Participation < ApplicationRecord
 
 	def return_balance
       user = self.user
-      user.balance += (self.amount/2)
+      user.balance += self.amount
       user.save
     end
 

@@ -1,4 +1,7 @@
 class WinnersController < ApplicationController
+  include Secured
+  
+  before_action :logged_in?
   before_action :set_winner, only: [:destroy]
 
   

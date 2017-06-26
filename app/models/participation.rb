@@ -7,6 +7,8 @@ class Participation < ApplicationRecord
 	belongs_to :bet
 	validate :amount_range, :valid_user, :valid_choice, :sufficient_balance
 
+	scope :applicable, -> { joins(:bet).where('"bets"."deadline" > ?', [Date.today]) }
+
 	def valid_user
 		if user_id == self.bet.user.id
 			errors.add(:user_id, "cannot be the creator of the bet")

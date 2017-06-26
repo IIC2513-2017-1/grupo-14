@@ -72,7 +72,7 @@ module UsersHelper
 	def calendar_link(user)
 		return unless current_user
 		if user == current_user
-			link_to 'Synchronise calendar', sync_calendar_user_path(@user), class: 'round_button'
+			link_to 'Synchronise calendar', redirect_user_path(@user), class: 'round_button'
 		end
 	end
 end

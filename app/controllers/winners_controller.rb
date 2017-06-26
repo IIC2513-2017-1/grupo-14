@@ -19,7 +19,11 @@ class WinnersController < ApplicationController
 
     respond_to do |format|
       if @winner.save
+        sumar_total
       	@bet.participations.each do |participation|
+          ganado = participation.amount * (porcentaje + 1)
+          participation.user.balance += ganado.round
+          participation.user.save
       		MailConfirmationMailer.close_bet_email(participation,@bet,@winner).deliver_later
       	end
         format.html { redirect_to @bet, notice: 'Winner choice was successfully selected .' }
@@ -50,5 +54,21 @@ class WinnersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def winner_params
       params.require(:winner).permit(:bet_id,:choice_id)
+    end
+
+    def sumar_total
+      total = 0
+      not_amount = 0
+      ganadores = 0
+      @bet.participations.each do |participation|
+        total = total + participation.amount
+        if participation.choice.value == @winner.choice.value
+          not_amount = not_amount + participation.amount
+          ganadores = ganadores + 1
+        end
+      end
+      recaudado = total - not_amount
+      porcentaje = recaudado/total
+
     end
 end

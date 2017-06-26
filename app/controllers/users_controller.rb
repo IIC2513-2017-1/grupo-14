@@ -77,6 +77,7 @@ class UsersController < ApplicationController
   end
 
   def sync_calendar
+
       client = Signet::OAuth2::Client.new({
         client_id: Rails.application.secrets.google_client_id,
         client_secret: Rails.application.secrets.google_client_secret,
@@ -88,28 +89,74 @@ class UsersController < ApplicationController
       service = Google::Apis::CalendarV3::CalendarService.new
       service.authorization = client
 
-      @user.bets.each do |bet|
+      @event_list = service.list_events('primary')
 
-        event = Google::Apis::CalendarV3::Event.new({
-          start: Google::Apis::CalendarV3::EventDateTime.new(date: bet.deadline),
-          end: Google::Apis::CalendarV3::EventDateTime.new(date: bet.deadline + 1),
-          summary: bet.name
-        })
-        service.insert_event('primary', event)
+
+      @user.bets.each do |bet|
+        is_repeated = false
+        @event_list.items.each do |check|
+          if check.summary == bet.name and check.start.date.to_date == bet.deadline.to_date
+            is_repeated = true
+          end
+        end
+        unless is_repeated
+          event = Google::Apis::CalendarV3::Event.new({
+            start: Google::Apis::CalendarV3::EventDateTime.new(date: bet.deadline),
+            end: Google::Apis::CalendarV3::EventDateTime.new(date: bet.deadline + 1),
+            summary: bet.name
+          })
+          service.insert_event('primary', event)
+        end
       end
 
       @user.participations.each do |participation|
-
-        event = Google::Apis::CalendarV3::Event.new({
-          start: Google::Apis::CalendarV3::EventDateTime.new(date: participation.bet.deadline),
-          end: Google::Apis::CalendarV3::EventDateTime.new(date: participation.bet.deadline + 1),
-          summary: participation.bet.name
-        })
-        service.insert_event('primary', event)
+        is_repeated = false
+        @event_list.items.each do |check|
+          if check.summary == participation.bet.name and check.start.date.to_date == participation.bet.deadline.to_date
+            is_repeated = true
+          end
+        end
+        unless is_repeated
+          event = Google::Apis::CalendarV3::Event.new({
+            start: Google::Apis::CalendarV3::EventDateTime.new(date: participation.bet.deadline),
+            end: Google::Apis::CalendarV3::EventDateTime.new(date: participation.bet.deadline + 1),
+            summary: participation.bet.name
+          })
+          service.insert_event('primary', event)
+        end
       end
 
       redirect_to(@user, notice: 'Calendar synced!')
 
+
+  end
+
+  def redirect
+      client = Signet::OAuth2::Client.new({
+        client_id: Rails.application.secrets.google_client_id,
+        client_secret: Rails.application.secrets.google_client_secret,
+        authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
+        scope: Google::Apis::CalendarV3::AUTH_CALENDAR,
+        redirect_uri: callback_user_url
+      })
+
+      redirect_to client.authorization_uri.to_s
+  end
+
+  def callback
+      client = Signet::OAuth2::Client.new({
+        client_id: Rails.application.secrets.google_client_id,
+        client_secret: Rails.application.secrets.google_client_secret,
+        token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
+        redirect_uri: callback_user_url,
+        code: params[:code]
+      })
+
+      response = client.fetch_access_token!
+
+      session[:authorization] = response
+
+      redirect_to sync_calendar_user_url
   end
 
   private

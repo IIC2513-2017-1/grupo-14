@@ -53,7 +53,7 @@
 					<% @user.request_senders.each do |request| %>
 					<p class="request"><%= request.name %>
 					<% if @user == current_user %>
-						<%= accept_friendship_button(request) %> <%= reject_friendship_button(request) %>
+						<%= accept_friendship_button(request) %> | <%= reject_friendship_button(request) %>
 					</p>
 					<% end %>
 					<% end %>

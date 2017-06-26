@@ -27,7 +27,7 @@ module UsersHelper
 			relation.sender_id == user.id
 		end
 		if received_request
-			link_to 'Accept', user_friendships_path(user), method: 'post', class: 'round_button'
+			link_to 'Accept', user_friendships_path(user), method: 'post', class: 'round_button small'
 		end
 	end
 
@@ -39,7 +39,7 @@ module UsersHelper
 			relation.sender_id == user.id
 		end
 		if received_request
-			link_to 'Reject', friendship_request_path(received_request), method: 'delete', class: 'round_button'
+			link_to 'Reject', friendship_request_path(received_request), method: 'delete', class: 'round_button small'
 		end
 	end
 
@@ -50,7 +50,7 @@ module UsersHelper
 			relation.friend_id == user.id
 		end
 		if friendship
-			link_to '(Unfriend)', friendship_path(friendship), method: 'delete', data: {confirm: "Are you sure of unfriend #{user.name}?"}
+			link_to '(Unfriend)', friendship_path(friendship), method: 'delete', data: {confirm: "Are you sure you want to unfriend #{user.name}?"}
 		end
 	end
 

@@ -20,11 +20,19 @@
   border: 1px solid grey;
 }
 
-.profile_content, .requests {
+.profile_content {
 	display: inline-block;
 	vertical-align: top;
 	p {
-		margin: 20px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+}
+
+p.request {
+	margin: 0;
+	a:nth-child(1) {
+		margin-left: 15px;
 	}
 }
 

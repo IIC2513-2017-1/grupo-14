@@ -8,7 +8,7 @@
   <strong>Choices:</strong>
   <ul>
     <% bet.choices.each do |choice| %>
-      <li><%= choice.value %></li>
+      <li><%= choice.value %> <%= percentage_and_winnings(choice) %></li>
     <% end %>
   </ul>
 </p>

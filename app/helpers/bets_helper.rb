@@ -5,7 +5,7 @@ module BetsHelper
 		return unless current_user
 		return if bet.user == current_user
 		return if current_user.role != 'regular'
-		return if bet.deadline.to_date.past? or bet.deadline.today?
+		return if bet.deadline.to_date.past? or bet.deadline == Date.today
 		participation = bet.participations.detect do |participation|
 			participation.user.id == current_user.id
 		end

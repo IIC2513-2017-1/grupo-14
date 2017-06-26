@@ -1,7 +1,8 @@
 class ParticipationsController < ApplicationController
   include Secured
-  before_action :logged_in?, only: %i[new create edit update destroy]
+  before_action :logged_in?, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_participation, only: [:show, :edit, :update, :destroy]
+  # before_action :valid_date, only: [:new, :create, :edit, :upate, :destroy]
 
   # GET /participations
   # GET /participations.json
@@ -82,5 +83,13 @@ class ParticipationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def participation_params
       params.require(:participation).permit(:amount,:user_id,:choice_id,:bet_id)
+    end
+
+    def valid_date
+      bet_date = @participation.bet.deadline
+      unless bet_date.future? or bet_date == Date.today
+        redirect_to @participation.bet, alert: "Bet is no longer active"
+        return
+      end
     end
 end

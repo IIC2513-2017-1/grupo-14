@@ -47,10 +47,11 @@
 
   	<main>
   		<% flash.each do |type, message| %>
-    		<div id="<%= type %>"><%= message %></div>
+    		<div id="<%= type %>", class="flash"><%= message %></div>
     	<% end %>
-
-    	<%= yield %>
+      <div id="content">
+        <%= yield %>
+      </div>
     </main>
 
     <footer>

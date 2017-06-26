@@ -10,4 +10,8 @@ module Secured
   def logged_in?
     redirect_to(root_path, alert: 'Unauthorized access!') unless current_user
   end
+
+  def not_logged_in?
+    redirect_to(root_path, alert: 'Unauthorized access!') if current_user
+  end
 end

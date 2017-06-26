@@ -1,6 +1,7 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .user-image {
   width: 150px;
   height: 150px;
@@ -56,7 +57,7 @@ color: #555;
 	margin-bottom: 10px;
 }
 
-.user_edit_page {
+.user_form_page {
 	text-align: center;
 
 	.form_content {

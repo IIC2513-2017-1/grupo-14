@@ -2,7 +2,7 @@ class ParticipationsController < ApplicationController
   include Secured
   before_action :logged_in?, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_participation, only: [:show, :edit, :update, :destroy]
-  # before_action :valid_date, only: [:new, :create, :edit, :upate, :destroy]
+  before_action :valid_date, only: [:new, :create, :edit, :upate, :destroy]
 
   # GET /participations
   # GET /participations.json
@@ -31,12 +31,8 @@ class ParticipationsController < ApplicationController
     @bet = Bet.find(params[:bet_id])
     params[:participation][:user_id] = current_user.id
     @participation = @bet.participations.build(participation_params)
-
     respond_to do |format|
       if @participation.save
-        user = @participation.user
-        user.balance -= @participation.amount
-        user.save
         format.html { redirect_to bets_url, notice: 'You are now participating in this bet.' }
         format.json { render :show, status: :created, location: @participation }
       else
@@ -64,9 +60,6 @@ class ParticipationsController < ApplicationController
   # DELETE /participations/1.json
   def destroy
     @bet = @participation.bet
-    user = @participation.user
-    user.balance += @participation.amount
-    user.save
     @participation.destroy
     respond_to do |format|
       format.html { redirect_back(fallback_location: @bet, notice: 'You are no longer participating in this bet.') }
@@ -86,9 +79,13 @@ class ParticipationsController < ApplicationController
     end
 
     def valid_date
-      bet_date = @participation.bet.deadline
-      unless bet_date.future? or bet_date == Date.today
-        redirect_to @participation.bet, alert: "Bet is no longer active"
+      if @participation
+        bet = @participation.bet
+      else
+        bet = Bet.find(params[:bet_id])
+      end
+      unless bet.deadline.future? or bet.deadline == Date.today
+        redirect_back(fallback_location: bet, alert: "Bet is no longer active")
         return
       end
     end

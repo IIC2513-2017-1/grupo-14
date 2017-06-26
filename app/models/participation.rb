@@ -7,6 +7,9 @@ class Participation < ApplicationRecord
 	belongs_to :bet
 	validate :amount_range, :valid_user, :valid_choice, :sufficient_balance
 
+	before_destroy :return_balance
+	after_create :remove_balance
+
 	scope :applicable, -> { joins(:bet).where('"bets"."deadline" > ?', [Date.today]) }
 
 	def valid_user
@@ -40,4 +43,17 @@ class Participation < ApplicationRecord
 			errors.add(:user, "has insufficient balance.")
 		end
 	end
+
+	def return_balance
+      user = self.user
+      user.balance += (self.amount/2)
+      user.save
+    end
+
+    def remove_balance
+      user = self.user
+      user.balance -= self.amount
+      user.save
+    end
+
 end

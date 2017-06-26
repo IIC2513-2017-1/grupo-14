@@ -76,6 +76,33 @@ class UsersController < ApplicationController
     end
   end
 
+  def new_event
+      client = Signet::OAuth2::Client.new({
+        client_id: Rails.application.secrets.google_client_id,
+        client_secret: Rails.application.secrets.google_client_secret,
+        token_credential_uri: 'https://accounts.google.com/o/oauth2/token'
+      })
+
+      client.update!(session[:authorization])
+
+      service = Google::Apis::CalendarV3::CalendarService.new
+      service.authorization = client
+
+      
+      today = Date.today
+
+      event = Google::Apis::CalendarV3::Event.new({
+        start: Google::Apis::CalendarV3::EventDateTime.new(date: today),
+        end: Google::Apis::CalendarV3::EventDateTime.new(date: today + 1),
+        summary: 'New event!'
+      })
+
+      calendar = service.list_calendar_lists.items.first
+      service.insert_event('primary', event)
+
+      redirect_to events_url(calendar_id: calendar)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

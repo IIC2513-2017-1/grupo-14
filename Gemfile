@@ -61,3 +61,4 @@ gem "font-awesome-rails"
 
 # To setting environment variables in the Unix shell.
 gem 'figaro'
+gem 'google-api-client', '~> 0.11', require: 'google/apis/calendar_v3'

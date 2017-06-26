@@ -1,0 +1,6 @@
+<ul>
+  <% @event_list.items.each do |calendar| %>
+    <li><%= calendar.summary %> (<%= calendar.id %>) <%= calendar.start.date_time %><%= calendar.end.date_time %></li>
+  <% end %>
+  Holaa
+</ul>

@@ -59,12 +59,10 @@ class WinnersController < ApplicationController
     def sumar_total
       total = 0
       not_amount = 0
-      ganadores = 0
       @bet.participations.each do |participation|
         total = total + participation.amount
         if participation.choice.value == @winner.choice.value
           not_amount = not_amount + participation.amount
-          ganadores = ganadores + 1
         end
       end
       recaudado = total - not_amount

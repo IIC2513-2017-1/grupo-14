@@ -3,10 +3,10 @@ class UsersController < ApplicationController
   helper_method :is_not_regular
   helper_method :is_admin
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :sync_calendar, :edit, :update, :destroy]
   before_action :logged_in?, only: [:index, :show, :edit, :update, :destroy, :new_event]
   before_action :not_logged_in?, only: [:new, :create]
-  before_action :is_current_user?, only: %i[edit update destroy]
+  before_action :is_current_user?, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def new_event
+  def sync_calendar
       client = Signet::OAuth2::Client.new({
         client_id: Rails.application.secrets.google_client_id,
         client_secret: Rails.application.secrets.google_client_secret,
@@ -96,7 +96,6 @@ class UsersController < ApplicationController
           summary: bet.name
         })
         service.insert_event('primary', event)
-
       end
 
       @user.participations.each do |participation|
@@ -107,8 +106,10 @@ class UsersController < ApplicationController
           summary: participation.bet.name
         })
         service.insert_event('primary', event)
-
       end
+
+      redirect_to(@user, notice: 'Calendar synced!')
+
   end
 
   private

@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   resources :users do
   	resources :friendship_requests, only: [:create]
   	resources :friendships, only: [:create]
-    collection do
-      post :new_event
+    member do
+      get :sync_calendar
     end
   end
 

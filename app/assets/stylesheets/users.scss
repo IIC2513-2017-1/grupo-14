@@ -60,6 +60,18 @@ p.friend {
 	margin-bottom: 10px;
 }
 
+#pending_requests {
+	.request {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	#f_request {
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding: 2px 6px;
+	}
+}
+
 .bet_summary {
 	margin-top: 20px;
 	.column {

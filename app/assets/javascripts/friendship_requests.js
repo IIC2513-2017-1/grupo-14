@@ -1,20 +1,20 @@
 $(document).on('turbolinks:load', function () {
   
-  var $button;
-  $button = $('#f_request');
+  var $buttons = $('.f_request');
   $notice = $('#notice');
   $notice.css('display', 'none');
   // procesamiento de la respuesta del request Ajax para seguir/deseguir un usuario
-  $button.on('ajax:success', function (e, data) {
+  $buttons.each(function() {
+    $(this).on('ajax:success', function (e, data) {
     console.log(data);
     $notice.css('display', 'block');
     $notice.text(data.message);
     if (data.request) {
       console.log('created');
-      $button.data('method', 'delete');
-      $button.attr('href', '/friendship_requests/' + data.request.id);
-      $button.text('Cancel friend request');
-      $button.addClass('delete').removeClass('round_button');
+      $(this).data('method', 'delete');
+      $(this).attr('href', '/friendship_requests/' + data.request.id);
+      $(this).text('Cancel friend request');
+      $(this).addClass('delete').removeClass('round_$(this)');
 
       var $received_requests = $('#received_requests');
       if ($received_requests) {
@@ -27,7 +27,7 @@ $(document).on('turbolinks:load', function () {
         $received_requests.html($sorted_requests);
       }
     } else if (data.friendship) {
-      $button.remove();
+      $(this).remove();
       var $friend_list = $('#friend_list');
       $friend_list.append("<p class='friend'><a href='/users/" + data.friendship.id + "'>" + data.friendship.name + "</a></p>");
       var $friends = $('.friend');
@@ -37,24 +37,24 @@ $(document).on('turbolinks:load', function () {
       $friend_list.html($sorted_friends);
       console.log($sorted_friends);
     } else {
-      $parent = $button.parent()
+      $parent = $(this).parent()
       console.log('deleted')
-      $button.data('method', 'post');
-      $button.attr('href', '/users/' + data.unrequest.id + '/friendship_requests');
-      $button.text('Send friend request');
-      $button.removeClass('delete').addClass('round_button');
+      $(this).data('method', 'post');
+      $(this).attr('href', '/users/' + data.unrequest.id + '/friendship_requests');
+      $(this).text('Send friend request');
+      $(this).removeClass('delete').addClass('round_$(this)');
       var $received_requests = $('#received_requests');
-      if ($received_requests) {
+      if ($parent.attr('class') == 'request') {
+        $parent.remove();
+      } else if ($received_requests) {
         console.log('found pending')
         $received_requests.find('p.request').filter( function() {
           return $(this).text().trim() === data.unrequest.name.trim()
         } ).remove();
       }
-      if ($parent.attr('class') == 'request') {
-        $parent.remove();
-      }
     }
-  }).on('ajax:error', function (e, data) {
-    console.log(data);
+    }).on('ajax:error', function (e, data) {
+      console.log(data);
+    })
   });
 });

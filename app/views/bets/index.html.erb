@@ -14,6 +14,32 @@
     <% all_bets = @bets.active %>
   <% end %>
 
+  <% if current_user and current_user.role == 'regular' %>
+  <h2>Private bets</h2>
+    <% private_bets.sort_by {|bet| bet.deadline}.each do |bet| %>  
+      <div class="bet_block">
+        <button class="toggle_details", onclick="toggleblock(<%= bet.id %>)">
+          <div class="summary", id="summary_<%= bet.id %>">
+            <table>
+              <tr>
+              <td class="index_name"><%= bet.name %></td>
+              <td class="index_deadline">Deadline: <%= bet.deadline %></td>
+              <td class="index_slots">Free slots: <%= bet.max_participants - bet.participations.count %></td>
+              <td class="index_min">Min bet: <%= bet.min_bet %></td>
+              <td class="index_max">Max bet: <%= bet.max_bet %></td>
+              <td class="index_author">Created by: <%= bet.user.name %></td>
+              </tr>
+            </table>
+          </div>
+        </button>
+        <div class="details", id="content_<%= bet.id %>">
+          <%= render partial: "show", locals: { bet: bet } %>
+        </div>
+      </div>
+    <% end %>
+    <h2>Public bets</h2>
+  <% end %>
+
   <% all_bets.sort_by {|bet| bet.deadline}[0 .. 9].each do |bet| %>
     <% if current_user and current_user.role == 'admin' %>
       <%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete" %>

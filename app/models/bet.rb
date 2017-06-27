@@ -18,7 +18,7 @@ class Bet < ApplicationRecord
 	scope :active, -> { where("deadline > ?", Date.today) }
 	scope :not_private, -> { where('private': false) }
 	scope :not_owned, lambda { |user| where("user_id != ?", user.id) }
-	scope :friend_owned, lambda { |user| joins(user.friends) }
+	scope :friend_owned, lambda { |dude| not_owned(dude).where(dude.friends.pluck(:id).include?(:user_id)) }
 	scope :bettable, lambda { |user| active.not_owned(user).where('private': false) }
 	scope :bettable_private, lambda { |user| active.friend_owned(user).where('private': true) }
 

@@ -6,8 +6,14 @@ module BetsHelper
 		return if bet.user == current_user
 		return if current_user.role != 'regular'
 		return if bet.deadline.to_date.past? or bet.deadline == Date.today
+		friendship = current_user.friendships.detect do |relation|
+			relation.friend_id == bet.user.id
+		end
 		participation = bet.participations.detect do |participation|
 			participation.user.id == current_user.id
+		end
+		if bet.private and not(friendship)
+			return
 		end
 		if participation
 			link_to 'Withdraw', participation_path(participation), method: 'delete', class: 'delete'

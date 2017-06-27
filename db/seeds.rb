@@ -63,7 +63,8 @@ user_ids = User.pluck(:id)
   	kind: Faker::StarWars.wookie_sentence,
   	min_bet: Faker::Number.digit,
   	max_bet: Faker::Number.number(4),
-    user_id: user_ids.sample
+    user_id: user_ids.sample,
+    private: false
   )
 end
 
@@ -75,7 +76,8 @@ v = Bet.create(
     kind: Faker::StarWars.wookie_sentence,
     min_bet: 10,
     max_bet: 5000,
-    user_id: user_ids.sample
+    user_id: user_ids.sample,
+    private: false
   )
 
 

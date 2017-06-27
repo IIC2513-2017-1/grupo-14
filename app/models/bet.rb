@@ -15,8 +15,10 @@ class Bet < ApplicationRecord
 	accepts_nested_attributes_for :choices
 	has_one :winner
 
-	scope :applicable, -> { where("deadline > ?", Date.today) }
+	scope :active, -> { where("deadline > ?", Date.today) }
 	scope :not_owned, lambda { |user| where("user_id != ?", user.id) unless ['admin', 'mod'].include?(user.role) }
+	scope :friend_owned, lambda { |user| self.joins(user.friends) }
+	scope :bettable, lambda { |user| active.not_owned(user) }
 
 	def deadline_is_in_future
 		if deadline.to_date.past? or deadline.today?

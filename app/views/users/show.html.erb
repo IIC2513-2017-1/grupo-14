@@ -74,7 +74,7 @@
 					Bets participating in
 				</div>
 				<div class="column_content">
-					<% @user.participations.applicable.sort_by {|part| part.bet.name}.each do |part| %>
+					<% @user.participations.active.sort_by {|part| part.bet.name}.each do |part| %>
 						<p class="bet_link"><%= link_to "#{part.bet.name} (#{part.amount} points)", part.bet %></p>
 					<% end %>
 				</div>
@@ -84,7 +84,7 @@
 					Created bets
 				</div>
 				<div class="column_content">
-					<% @user.bets.applicable.sort_by {|bet| [bet.deadline, bet.name]}.each do |bet| %>
+					<% @user.bets.active.sort_by {|bet| [bet.deadline, bet.name]}.each do |bet| %>
 						<p class="bet_link"><%= link_to "#{bet.name} (Deadline: #{bet.deadline})", bet %></p>
 					<% end %>
 				</div>

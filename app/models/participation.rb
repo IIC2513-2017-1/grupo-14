@@ -10,7 +10,7 @@ class Participation < ApplicationRecord
 	before_destroy :return_balance
 	after_create :remove_balance
 
-	scope :applicable, -> { joins(:bet).where('"bets"."deadline" > ?', [Date.today]) }
+	scope :active, -> { joins(:bet).where('"bets"."deadline" > ?', [Date.today]) }
 
 	def valid_user
 		if user_id == self.bet.user.id

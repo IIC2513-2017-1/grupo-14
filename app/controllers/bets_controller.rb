@@ -3,6 +3,7 @@ class BetsController < ApplicationController
   before_action :logged_in?, only: %i[new create edit update destroy]
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
   before_action :is_owner?, only: [:edit, :update]
+  before_action :can_view?
 
   # GET /bets
   # GET /bets.json
@@ -82,5 +83,11 @@ class BetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
       params.require(:bet).permit(:name, :description, :deadline, :max_participants, :kind, :min_bet, :max_bet, :user_id,:private, :value, choices_attributes: [:value])
+    end
+
+    def can_view?
+      if @bet.private
+        redirect_to root_path, alert: "Unauthorized access!" unless current_user and (@bet.user == current_user or current_user.role != 'regular' or @bet.user.friends.include?(current_user))
+      end
     end
 end

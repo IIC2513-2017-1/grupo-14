@@ -14,7 +14,7 @@
     <% all_bets = @bets.active %>
   <% end %>
 
-  <% if current_user and current_user.role == 'regular' %>
+  <% if current_user and current_user.role == 'regular' and private_bets.count > 0 %>
   <h2>Private bets</h2>
     <% private_bets.sort_by {|bet| bet.deadline}.each do |bet| %>  
       <div class="bet_block">

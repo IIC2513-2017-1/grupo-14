@@ -20,7 +20,18 @@ class FriendshipsController < ApplicationController
         request_2 = FriendshipRequest.find_by(sender: user, recipient: current_user)
         request_1.destroy if request_1
         request_2.destroy if request_2
-        redirect_back(fallback_location: root_path, notice: "You and #{user.name} are now friends!")
+        respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path, notice: "You and #{user.name} are now friends!") }
+        format.json do
+          render json: {
+            friendship: {
+              name: current_user.name,
+              id: current_user.id
+            },
+            message: "You and #{user.name} are now friends!"
+          }
+        end
+      end
       else
         friendship.destroy
         redirect_back(fallback_location: root_path, notice: "There was an error creating the friendship")

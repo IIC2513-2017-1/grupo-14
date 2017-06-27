@@ -11,11 +11,11 @@ module UsersHelper
 			relation.sender_id == user.id
 		end
 		if sent_request
-			link_to 'Cancel friend request', friendship_request_path(sent_request), method: 'delete', id: 'f_request' ,class: 'delete', remote: true, data: { type: 'json', 'user-id': user.id }
+			link_to 'Cancel friend request', friendship_request_path(sent_request), method: 'delete', id: 'f_request', class: 'delete', remote: true, data: { type: 'json', 'user-id': user.id }
 		elsif received_request
-			link_to 'Accept friend request', user_friendships_path(user), method: 'post', id: 'f_request', class: 'round_button'
+			link_to 'Accept friend request', user_friendships_path(user), method: 'post', id: 'f_request', class: 'round_button', remote: true, data: { type: 'json', 'user-id': user.id }
 		else
-			link_to 'Send friend request', user_friendship_requests_path(user), method: 'post', id: 'f_request', class: 'round_button'
+			link_to 'Send friend request', user_friendship_requests_path(user), method: 'post', id: 'f_request', class: 'round_button', remote: true, data: { type: 'json', 'user-id': user.id }
 		end
 	end
 
@@ -43,8 +43,9 @@ module UsersHelper
 		end
 	end
 
-	def destroy_friendship_button(user)
+	def destroy_friendship_button(user, shown)
 		return unless current_user
+		return unless current_user == shown
 		return if user == current_user
 		friendship = current_user.friendships.detect do |relation|
 			relation.friend_id == user.id

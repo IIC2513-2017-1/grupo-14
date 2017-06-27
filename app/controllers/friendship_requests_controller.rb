@@ -14,7 +14,22 @@ class FriendshipRequestsController < ApplicationController
     user = User.find(params[:user_id])
     friend_request = user.incoming_requests.build(sender_id: current_user.id)
     if friend_request.save
-      redirect_back(fallback_location: root_path, notice: "Friend request sent to #{user.name}.")
+      if friend_request.sender == current_user
+        respond_to do |format|
+          format.html { redirect_back(fallback_location: root_path, notice: "Friend request sent to #{user.name}.") }
+          format.json do
+            render json: {
+              request: {
+                id: friend_request.id,
+                name: friend_request.sender.name
+              },
+              message: "Friend request sent to #{user.name}."
+            }
+          end
+        end
+      else
+        redirect_back(fallback_location: root_path, notice: "Friend request sent to #{user.name}.")
+      end
     else
       redirect_back(fallback_location: root_path, alert: 'Friend request could not be sent.')
     end
@@ -31,8 +46,10 @@ class FriendshipRequestsController < ApplicationController
         format.json do
           render json: {
             unrequest: {
-              id: request.sender.id
-            }
+              id: request.recipient.id,
+              name: request.sender.name
+            },
+            message: "Friend request to #{request.recipient.name} cancelled."
           }
         end
       end

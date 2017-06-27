@@ -27,13 +27,17 @@
 	}
 }
 
-.friend > a {
-text-decoration: none;
-color: #555;
-	&:hover {
-	color: white;
-	background: #666;
-	}
+p.friend {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	& > a {
+		text-decoration: none;
+		color: #555;
+			&:hover {
+			color: white;
+			background: #666;
+			}
+		}
 }
 
 .profile_content p {

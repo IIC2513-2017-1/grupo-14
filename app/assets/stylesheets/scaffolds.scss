@@ -30,6 +30,9 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+  &:empty {
+    display: none;
+  }
 }
 
 #notice {

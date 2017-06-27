@@ -4,7 +4,17 @@
 <h1>Bets</h1>
 <%= link_to 'New Bet', new_bet_path, class: "round_button" if current_user %>
 <div class="bet_list">
-  <% @bets.bettable(current_user).sort_by {|bet| bet.deadline}[0 .. 9].each do |bet| %>
+
+  <% if not current_user %>
+    <% all_bets = @bets.active.not_private %>
+  <% elsif current_user and current_user.role == 'regular' %>
+    <% all_bets = @bets.bettable(current_user) %>
+    <% private_bets = @bets.bettable_private(current_user) %>
+  <% else %>
+    <% all_bets = @bets.active %>
+  <% end %>
+
+  <% all_bets.sort_by {|bet| bet.deadline}[0 .. 9].each do |bet| %>
     <% if current_user and current_user.role == 'admin' %>
       <%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete" %>
     <% end %>

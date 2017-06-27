@@ -71,7 +71,7 @@ end
 v = Bet.create(
     name: 'Hoollaa',
     description: Faker::StarWars.quote,
-    deadline: Date.yesterday,
+    deadline: Date.tomorrow,
     max_participants: Faker::Number.digit,
     kind: Faker::StarWars.wookie_sentence,
     min_bet: 10,

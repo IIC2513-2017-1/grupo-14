@@ -4,7 +4,7 @@ class Bet < ApplicationRecord
 	validates :deadline, presence: true, allow_blank: false
 	validates :max_participants, presence: true, allow_blank: false, numericality: { greater_than: 1 }
 	validates :min_bet, presence: true, allow_blank: false, numericality: { greater_than: 1 }
-	validates :min_bet, presence: true, allow_blank: false,
+	validates :max_bet, presence: true, allow_blank: false,
 	numericality: { greater_than: 0, greater_than_or_equal_to: :min_bet }
 	validates_uniqueness_of :name, scope: [:deadline]
 	validate :deadline_is_in_future
@@ -16,9 +16,11 @@ class Bet < ApplicationRecord
 	has_one :winner
 
 	scope :active, -> { where("deadline > ?", Date.today) }
-	scope :not_owned, lambda { |user| where("user_id != ?", user.id) unless ['admin', 'mod'].include?(user.role) }
-	scope :friend_owned, lambda { |user| self.joins(user.friends) }
-	scope :bettable, lambda { |user| active.not_owned(user) }
+	scope :not_private, -> { where('private': false) }
+	scope :not_owned, lambda { |user| where("user_id != ?", user.id) }
+	scope :friend_owned, lambda { |user| joins(user.friends) }
+	scope :bettable, lambda { |user| active.not_owned(user).where('private': false) }
+	scope :bettable_private, lambda { |user| active.friend_owned(user).where('private': true) }
 
 	def deadline_is_in_future
 		if deadline.to_date.past? or deadline.today?

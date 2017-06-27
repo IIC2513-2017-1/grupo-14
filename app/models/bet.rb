@@ -21,6 +21,7 @@ class Bet < ApplicationRecord
 	scope :friend_owned, lambda { |dude| not_owned(dude).where(dude.friends.pluck(:id).include?(:user_id)) }
 	scope :bettable, lambda { |user| active.not_owned(user).where('private': false) }
 	scope :bettable_private, lambda { |user| active.friend_owned(user).where('private': true) }
+	scope :accessible, lambda { |user| where(:user == user).or(bettable(user)).or(bettable_private(user)) }
 
 	def deadline_is_in_future
 		if deadline.to_date.past? or deadline.today?

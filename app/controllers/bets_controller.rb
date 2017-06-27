@@ -2,8 +2,8 @@ class BetsController < ApplicationController
   include Secured
   before_action :logged_in?, only: %i[new create edit update destroy]
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
+  before_action :can_view?, only: [:show, :edit, :update, :destroy]
   before_action :is_owner?, only: [:edit, :update]
-  before_action :can_view?
 
   # GET /bets
   # GET /bets.json

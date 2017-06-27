@@ -11,11 +11,11 @@ module UsersHelper
 			relation.sender_id == user.id
 		end
 		if sent_request
-			link_to 'Cancel friend request', friendship_request_path(sent_request), method: 'delete', class: 'delete'
+			link_to 'Cancel friend request', friendship_request_path(sent_request), method: 'delete', id: 'f_request' ,class: 'delete', remote: true, data: { type: 'json', 'user-id': user.id }
 		elsif received_request
-			link_to 'Accept friend request', user_friendships_path(user), method: 'post', class: 'round_button'
+			link_to 'Accept friend request', user_friendships_path(user), method: 'post', id: 'f_request', class: 'round_button'
 		else
-			link_to 'Send friend request', user_friendship_requests_path(user), method: 'post', class: 'round_button'
+			link_to 'Send friend request', user_friendship_requests_path(user), method: 'post', id: 'f_request', class: 'round_button'
 		end
 	end
 

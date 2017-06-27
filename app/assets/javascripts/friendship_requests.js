@@ -2,7 +2,6 @@ $(document).on('turbolinks:load', function () {
   
   var $buttons = $('.f_request');
   $notice = $('#notice');
-  $notice.css('display', 'none');
   // procesamiento de la respuesta del request Ajax para seguir/deseguir un usuario
   $buttons.each(function() {
     $(this).on('ajax:success', function (e, data) {

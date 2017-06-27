@@ -25,8 +25,17 @@ class FriendshipRequestsController < ApplicationController
   def destroy
     request = FriendshipRequest.find(params[:id])
     request.destroy
-    if request.sender == current_user
-      redirect_back(fallback_location: root_path, notice: "Friend request to #{request.recipient.name} cancelled.")
+    if request.sender == current_user      
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path, notice: "Friend request to #{request.recipient.name} cancelled.") }
+        format.json do
+          render json: {
+            unrequest: {
+              id: request.sender.id
+            }
+          }
+        end
+      end
     else
       redirect_back(fallback_location: root_path, notice: "Friend request from #{request.sender.name} rejected.")
     end

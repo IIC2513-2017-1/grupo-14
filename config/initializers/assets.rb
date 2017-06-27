@@ -12,4 +12,3 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( choice_button.js )
 Rails.application.config.assets.precompile += %w( toggle_bet.js )
-Rails.application.config.assets.precompile += %w( bets.scss )

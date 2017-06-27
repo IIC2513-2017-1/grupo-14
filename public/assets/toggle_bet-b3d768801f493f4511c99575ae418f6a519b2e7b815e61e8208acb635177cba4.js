@@ -1,0 +1,1 @@
+function toggleblock(t){var e="block"==document.getElementById("content_"+t).style.display,o=document.getElementById("summary_"+t),d=document.getElementById("content_"+t);0==e?(d.style.display="block",o.style.borderBottomRightRadius="0",o.style.borderBottomLeftRadius="0"):(d.style.display="none",o.style.borderBottomRightRadius="10px",o.style.borderBottomLeftRadius="10px")}

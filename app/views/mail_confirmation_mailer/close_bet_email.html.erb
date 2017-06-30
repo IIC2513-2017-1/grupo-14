@@ -5,9 +5,9 @@
 <p>
   The bet <%= @bet.name %> has been closed<br/>
   <%if @winner == @choice %>
-  	Congratulations!! You win the bet<br/>
+  	Congratulations! Your choice was the winner!<br/>
   <%else%>
-  	Sorry you lose the bet<br/>
+  	Sorry! Your choice was not a winner. Better luck next time!<br/>
   <%end%>
   To login to the site and see the results, just follow this link: <%= @url %>.
 </p>

@@ -4,14 +4,18 @@ Rails.application.routes.draw do
   resources :bets do
     resource :winners
     resources :participations, only: [:new, :create]
+    collection do
+      get :paginate
+      get :partial_bet_show
+    end
   end
 
   resources :participations, only: [:destroy]
   
   resources :choices
   resources :users do
-  	resources :friendship_requests, only: [:create]
-  	resources :friendships, only: [:create]
+    resources :friendship_requests, only: [:create]
+    resources :friendships, only: [:create]
     member do
       get :sync_calendar
       get :redirect
@@ -26,5 +30,6 @@ Rails.application.routes.draw do
 
   get 'home/index'
   root 'home#index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

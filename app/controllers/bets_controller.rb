@@ -9,11 +9,50 @@ class BetsController < ApplicationController
   # GET /bets.json
   def index
     @bets = Bet.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def paginate
+    pp = params[:pp].to_i()-1
+    pl = params[:pl].to_i()
+    first_bet = pp*pl
+    last_bet = first_bet + pl - 1
+    puts 'first'
+    puts first_bet
+    puts 'last'
+    puts last_bet
+
+    @bets = Bet.all
+
+    if not current_user
+      bet_list = @bets.active.not_private.sort_by {|bet| bet.deadline}[first_bet..last_bet]
+    elsif current_user and current_user.role == 'regular'
+      bet_list = @bets.bettable(current_user).sort_by {|bet| bet.deadline}[first_bet..last_bet]
+    else
+      bet_list = @bets.active.sort_by {|bet| bet.deadline}[first_bet..last_bet]
+    end
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: bets_path, notice: "Success") }
+      format.json do
+        render json: {
+          bet_list: bet_list.pluck(:id),
+          page: params[:pp]
+        }
+      end
+    end
   end
 
   # GET /bets/1
   # GET /bets/1.json
   def show
+  end
+
+  def partial_bet_show
+    bets = params[:bets]
+    render(partial: "show", locals: {ids: bets})
   end
 
   # GET /bets/new
@@ -70,6 +109,24 @@ class BetsController < ApplicationController
     end
   end
 
+  def bet_range(page_number, bets_per_page)
+    if not current_user
+      bet_list = @bets.active.not_private.sort_by {|bet| bet.deadline}[page_number-1..page_number*bets_per_page]
+    elsif current_user and current_user.role == 'regular'
+      bet_list = @bets.bettable(current_user).sort_by {|bet| bet.deadline}[page_number-1..page_number*bets_per_page]
+    else
+      bet_list = @bets.active.sort_by {|bet| bet.deadline}[page_number-1..page_number*bets_per_page]
+    end
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: bets_path, notice: "Success") }
+      format.json do
+        render json: {
+          bet_list: bet_list
+        }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bet
@@ -82,7 +139,7 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:name, :description, :deadline, :max_participants, :kind, :min_bet, :max_bet, :user_id,:private, :value, choices_attributes: [:value])
+      params.require(:bet).permit(:name, :description, :deadline, :max_participants, :kind, :min_bet, :max_bet, :user_id,:private, :value, :p, :pl, choices_attributes: [:value])
     end
 
     def can_view?

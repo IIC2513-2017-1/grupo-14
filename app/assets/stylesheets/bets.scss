@@ -6,6 +6,9 @@
 	.bet_block {
 		margin-top: 0px;
 		margin-bottom: 20px;
+		&:last-of-type {
+			margin-bottom: 0px;
+		}
 	}
 	.summary {
 		padding: 5px;
@@ -76,6 +79,22 @@
 	}
 	ul {
 		margin: 10px;
+	}
+}
+
+.page_list {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	.pagination {
+		margin: 0;
+		margin-right: 2px;
+		margin-left: 2px;
+		&:first-of-type {
+			margin-left: 0;
+		}
+		&:last-of-type {
+			margin-right: 0;
+		}
 	}
 }
 

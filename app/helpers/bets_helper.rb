@@ -49,4 +49,27 @@ module BetsHelper
 		'(' + percentage.to_s() + '% of votes, ' + winnings.to_s() + ' points potential winnings)'
 	end
 
+	def page_numbers(bets_per_page=5)
+		if not current_user
+			bet_count = @bets.active.not_private.count
+		elsif current_user and current_user.role == 'regular'
+			bet_count = @bets.bettable(current_user).count
+		else
+			bet_count = @bets.active.count
+		end
+		if bet_count >= 1
+			page_count = 1 + (bet_count-1)/bets_per_page
+			puts 'total bets'
+			puts bet_count
+			final_string = "<div class='page_list'> "
+			final_string += link_to '<<', { controller: 'bets', action: 'paginate', pp: 1, pl: bets_per_page }, remote: true, class: 'round_button pagination', data: { type: 'json' }
+			(1..page_count).each do |page_number|
+				final_string += link_to page_number, { controller: 'bets', action: 'paginate', pp: page_number, pl: bets_per_page }, remote: true, class: 'round_button pagination page_'+page_number.to_s(), data: { type: 'json' }
+			end
+			final_string += link_to '>>', { controller: 'bets', action: 'paginate', pp: page_count, pl: bets_per_page }, remote: true, class: 'round_button pagination', data: { type: 'json' }
+			final_string += "</div>"
+			return raw(final_string)
+		end
+	end
+
 end

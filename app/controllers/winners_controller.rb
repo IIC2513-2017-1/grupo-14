@@ -26,7 +26,7 @@ class WinnersController < ApplicationController
           participation.user.save
       		MailConfirmationMailer.close_bet_email(participation,@bet,@winner).deliver_later
       	end
-        format.html { redirect_to @bet, notice: 'Winner choice was successfully selected .' }
+        format.html { redirect_to @bet, notice: 'Winning choice was successfully selected.' }
         format.json { render :show, status: :created, location: @winner }
       else
         format.html { render :new, status: 422 }

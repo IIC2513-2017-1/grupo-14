@@ -19,7 +19,8 @@ User.destroy_all
    mail: Faker::Internet.unique.email,
    password: Faker::Internet.password,
    role: 'regular',
-   balance: 10000
+   balance: 10000,
+   avatar: ''
   )
 end
 
@@ -28,20 +29,24 @@ x = User.create(
   mail: 'hola@12.cl',
   password: '123456',
   role: 'admin',
-  balance: 10000
+  balance: 10000,
+  avatar: ''
 )
 u = User.create(
   name: 'Juan2',
   mail: 'juanfra.campos2@gmail.com',
   password: '123456',
-  role: 'regular'
+  role: 'regular',
+  balance: 10000,
+  avatar: ''
 )
 m = User.create(
   name: 'Juan4',
   mail: 'jfcampos1@uc.cl',
   password: '123456',
   role: 'regular',
-  balance: 10000
+  balance: 10000,
+  avatar: ''
 )
 
 u = User.create(
@@ -49,7 +54,8 @@ u = User.create(
   mail: 'hola3@12.cl',
   password: 'asdasd',
   role: 'regular',
-  balance: 10000
+  balance: 10000,
+  avatar: ''
 )
 
 # Create bets

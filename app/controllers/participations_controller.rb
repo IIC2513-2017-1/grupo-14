@@ -1,7 +1,7 @@
 class ParticipationsController < ApplicationController
   include Secured
   before_action :logged_in?, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_participation, only: [:show, :edit, :update, :destroy]
+  before_action :set_participation, only: [:show, :edit, :update, :destroy, :winnings]
   before_action :valid_date, only: [:new, :create, :edit, :upate, :destroy]
 
   # GET /participations
@@ -64,6 +64,28 @@ class ParticipationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_back(fallback_location: @bet, notice: 'You are no longer participating in this bet.') }
       format.json { head :no_content }
+    end
+  end
+
+  def self.winnings(participation)
+    if participation.bet.winning_choice
+      bet = participation.bet
+      if participation.choice == bet.winning_choice
+        pool = 0
+        bet.participations.where('participations.choice_id != ?', bet.winning_choice.id).pluck(:amount).each do |amount|
+          pool += amount
+        end
+        winners_sum = 0
+        bet.participations.where(choice: bet.winning_choice).pluck(:amount).each do |amount|
+          winners_sum += amount
+        end
+        participation_winnings = pool.to_f() * (participation.amount.to_f()/winners_sum.to_f())
+        participation_winnings.to_i()
+      else
+        - participation.amount
+      end
+    else
+      - participation.amount
     end
   end
 

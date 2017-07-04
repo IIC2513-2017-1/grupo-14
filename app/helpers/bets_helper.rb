@@ -38,7 +38,7 @@ module BetsHelper
 	def percentage_and_winnings(choice)
 		participants = choice.bet.participations.count
 		return unless participants > 0
-		votes_for_this = choice.bet.participations.where(choice_id: choice.id).count
+		votes_for_this = choice.bet.participations.where(choice: choice).count
 		percentage = (votes_for_this.to_f()/participants.to_f())*100
 		total = 0
 		choice.bet.participations.where.not(choice_id: choice.id).each do |parti|
@@ -46,7 +46,7 @@ module BetsHelper
 		end
 		total
 		winnings = total/(1 + choice.bet.participations.where(choice_id: choice.id).count)
-		'(' + percentage.to_s() + '% of votes, ' + winnings.to_s() + ' points potential winnings)'
+		'(' + percentage.to_i().to_s() + '% of votes, ' + winnings.to_s() + ' points expected winnings)'
 	end
 
 	def page_numbers(bets_per_page=5)

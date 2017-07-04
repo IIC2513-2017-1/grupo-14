@@ -20,26 +20,16 @@ when 'development'
      mail: Faker::Internet.unique.email,
      password: Faker::Internet.password,
      role: 'regular',
-     balance: 10000,
-     avatar: ''
+     balance: 10000
     )
   end
 
-  x = User.create(
-    name: 'Juan',
-    mail: 'hola@12.cl',
-    password: '123456',
-    role: 'admin',
-    balance: 10000,
-    avatar: ''
-  )
   u = User.create(
     name: 'Juan2',
     mail: 'juanfra.campos2@gmail.com',
     password: '123456',
     role: 'regular',
-    balance: 10000,
-    avatar: ''
+    balance: 10000
   )
   m = User.create(
     name: 'Juan4',
@@ -47,16 +37,6 @@ when 'development'
     password: '123456',
     role: 'regular',
     balance: 10000,
-    avatar: ''
-  )
-
-  u = User.create(
-    name: 'Rorro',
-    mail: 'hola3@12.cl',
-    password: 'asdasd',
-    role: 'regular',
-    balance: 10000,
-    avatar: ''
   )
 
   # Create bets
@@ -126,25 +106,23 @@ when 'development'
     bet_id: v.id,
     choice_id: j.id
     )
-  User.all do |user|
-    user.generate_token_and_save
-  end
+end
 
-when 'production'
   User.create(
     name: 'Rorro',
     mail: 'rodancoci@gmail.com',
     password: 'asdasd',
     role: 'admin',
-    balance: 10000,
-    avatar: ''
+    balance: 10000
   )
   User.create(
     name: 'Juan',
     mail: 'hola@12.cl',
     password: '123456',
     role: 'admin',
-    balance: 10000,
-    avatar: ''
+    balance: 10000
   )
+
+User.all do |user|
+    user.generate_token_and_save
 end

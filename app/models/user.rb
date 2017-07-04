@@ -24,17 +24,17 @@ class User < ApplicationRecord
 	has_many :request_targets, through: :outgoing_requests, source: :recipient
 	has_many :request_senders, through: :incoming_requests, source: :sender
 
+    def generate_token_and_save
+	    loop do
+	        self.token = SecureRandom.hex(64)
+	        break if save
+	    end
+	end
+
 	private
 
 		def valid_content_type
 	      errors.add(:avatar, 'is not a valid image file') unless %w(image/jpeg image/png).include? avatar.sanitized_file.content_type
 	    end
-
-	    def generate_token_and_save
-		    loop do
-		        self.token = SecureRandom.hex(64)
-		        break if save
-		    end
-		end
 
 end

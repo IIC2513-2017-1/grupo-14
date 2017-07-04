@@ -10,9 +10,6 @@ module Api::V1
 			@user = User.find(params[:id])
 		end
 
-		def new
-		end
-
 		def create
 			@user = User.new(user_params)
 			@user.role = 'regular'

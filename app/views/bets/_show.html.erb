@@ -44,7 +44,7 @@
     <%= bet.kind %>
   </p>
 
-  <% if bet.participations.count > 0 %>
+  <% if bet.participations.count > 0 and current_user %>
   <p>
     <strong>Participants:</strong>
     <ul>

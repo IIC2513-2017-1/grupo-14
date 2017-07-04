@@ -91,7 +91,11 @@
 						Created bets
 					</div>
 					<div class="column_content">
+						<% if ['admin', 'mod'].include?(current_user.role) %>
+							<% accessible = @user.bets.active %>
+						<% else %>
 						<% accessible = @user.bets.where('user_id = ?', current_user.id) + (@user.bets.bettable(current_user)) + (@user.bets.bettable_private(current_user)) %>
+						<% end %>
 						<% accessible.sort_by {|bet| [bet.deadline, bet.name]}.each do |bet| %>
 							<p class="bet_link"><%= link_to "#{bet.name} (Deadline: #{bet.deadline})", bet %></p>
 						<% end %>

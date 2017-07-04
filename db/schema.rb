@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626103651) do
+ActiveRecord::Schema.define(version: 20170704012846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,8 +76,10 @@ ActiveRecord::Schema.define(version: 20170626103651) do
     t.string   "password_digest"
     t.string   "avatar"
     t.integer  "balance"
+    t.string   "token"
     t.index ["mail"], name: "index_users_on_mail", unique: true, using: :btree
     t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
+    t.index ["token"], name: "index_users_on_token", unique: true, using: :btree
   end
 
   create_table "winners", force: :cascade do |t|

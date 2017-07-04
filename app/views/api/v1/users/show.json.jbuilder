@@ -18,4 +18,30 @@ json.user do
       json.private parti.bet.private
     end
   end
+  if ['admin', 'mod'].include?(current_user.role)
+    accessible = @user.bets.active 
+  else
+    accessible = @user.bets.where('user_id = ?', current_user.id) + (@user.bets.bettable(current_user)) + (@user.bets.bettable_private(current_user))
+  end
+  json.bets_created do
+    json.array! accessible do |bet|
+      json.href api_v1_bet_url(bet)
+      json.name bet.name
+      json.description bet.description
+      json.kind bet.kind
+      json.deadline bet.deadline
+      json.max_participants bet.max_participants
+      json.min_bet bet.min_bet
+      json.max_bet bet.max_bet
+      json.private bet.private
+    end
+  end
+  json.friends do
+    json.array! @user.friends do |friend|
+      json.href api_v1_user_url(friend)
+      json.id friend.id 
+      json.mail friend.mail
+      json.name friend.name
+    end
+  end
 end

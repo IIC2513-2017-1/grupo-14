@@ -11,7 +11,7 @@ Choice.destroy_all
 Bet.destroy_all
 User.destroy_all
 
-case Rail.env
+case Rails.env
 when 'development'
   # Create Users
   5.times do

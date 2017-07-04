@@ -76,4 +76,11 @@ module UsersHelper
 			link_to 'Synchronise calendar', redirect_user_path(@user), class: 'round_button'
 		end
 	end
+
+	def download_csv_button(user)
+		return unless current_user
+			if user == current_user
+				link_to 'Download bet history', user_path(user: user, format: :csv), class: 'round_button'
+			end
+		end
 end

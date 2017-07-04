@@ -1,3 +1,4 @@
+require 'csv'
 class UsersController < ApplicationController
   include Secured
   helper_method :is_not_regular
@@ -20,7 +21,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.json
-      format.csv
+      format.csv {
+        send_data(to_csv(@user), filename: @user.name + '_history.csv')
+      }
     end
   end
 
@@ -162,6 +165,27 @@ class UsersController < ApplicationController
       session[:authorization] = response
 
       redirect_to sync_calendar_user_url
+  end
+
+  def to_csv(user)
+    columns = "Date,Bet,Choice,Points Bet,Winner,Winnings\n"
+    lines = ''
+    user.participations.closed.each do |part|
+      line = ''
+      line += part.bet.deadline.to_s() + ','
+      line += part.bet.name + ','
+      line += part.choice.value + ','
+      line += part.amount.to_s() + ','
+      if part.bet.winning_choice == part.choice
+        line += 'Yes,'
+      else
+        line += 'No,'
+      end
+      line += ParticipationsController.winnings(part).to_s() + ','
+      line += "\n"
+      lines += line
+    end
+    columns + lines
   end
 
   private

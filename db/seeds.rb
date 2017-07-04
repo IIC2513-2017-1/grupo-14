@@ -121,6 +121,9 @@ when 'development'
     bet_id: v.id,
     choice_id: j.id
     )
+  User.all do |user|
+    user.generate_token_and_save
+  end
 
 when 'production'
   User.create(

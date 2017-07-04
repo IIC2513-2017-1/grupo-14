@@ -19,10 +19,19 @@ class WinnersController < ApplicationController
 
     respond_to do |format|
       if @winner.save
-        sumar_total
+        total = 0
+        not_amount = 0
+        @bet.participations.each do |participation|
+          total = total + participation.amount
+          if participation.choice.value == @winner.choice.value
+            not_amount = not_amount + participation.amount
+          end
+        end
+        recaudado = total - not_amount
+        porcentaje = recaudado/total
       	@bet.participations.each do |participation|
           ganado = participation.amount * (porcentaje + 1)
-          participation.user.balance += ganado.round
+          participation.user.balance += ganado.round.to_i()
           participation.user.save
       		MailConfirmationMailer.close_bet_email(participation,@bet,@winner).deliver_later
       	end
@@ -56,17 +65,4 @@ class WinnersController < ApplicationController
       params.require(:winner).permit(:bet_id,:choice_id)
     end
 
-    def sumar_total
-      total = 0
-      not_amount = 0
-      @bet.participations.each do |participation|
-        total = total + participation.amount
-        if participation.choice.value == @winner.choice.value
-          not_amount = not_amount + participation.amount
-        end
-      end
-      recaudado = total - not_amount
-      porcentaje = recaudado/total
-
-    end
 end

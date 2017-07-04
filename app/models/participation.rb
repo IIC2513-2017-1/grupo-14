@@ -11,7 +11,7 @@ class Participation < ApplicationRecord
 	after_create :remove_balance
 
 	scope :active, -> { joins(:bet).where('"bets"."deadline" > ?', [Date.today]) }
-	scope :closed, -> { joins(:bet).merge(Bet.closed) }
+	scope :closed, -> { joins('JOIN winners on participations.bet_id = winners.bet_id') }
 
 	def valid_user
 		if user_id == self.bet.user.id

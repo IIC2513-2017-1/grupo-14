@@ -11,6 +11,23 @@ Choice.destroy_all
 Bet.destroy_all
 User.destroy_all
 
+
+ro = User.create(
+  name: 'Rorro',
+  mail: 'rodancoci@gmail.com',
+  password: 'asdasd',
+  role: 'regular',
+  balance: 10000
+)
+ju = User.create(
+  name: 'Juan',
+  mail: 'hola@12.cl',
+  password: '123456',
+  role: 'admin',
+  balance: 10000
+)
+
+
 case Rails.env
 when 'development'
   # Create Users
@@ -55,6 +72,20 @@ when 'development'
     )
   end
 
+  past_bet = Bet.new(
+      name: Faker::Name.title,
+      description: Faker::StarWars.quote,
+      deadline: Date.yesterday,
+      max_participants: Faker::Number.digit,
+      kind: Faker::StarWars.wookie_sentence,
+      min_bet: Faker::Number.digit,
+      max_bet: Faker::Number.number(4),
+      user_id: ro.id,
+      private: false
+    )
+
+  past_bet.save(validate: false)
+
   v = Bet.create(
       name: 'Hoollaa',
       description: Faker::StarWars.quote,
@@ -68,7 +99,7 @@ when 'development'
     )
 
 
-  bet_ids = Bet.pluck(:id)
+  bet_ids = Bet.where('id != ?', past_bet.id).pluck(:id)
   bet_ids.each do |bet_id|
     3.times do
       Choice.create(
@@ -85,43 +116,32 @@ when 'development'
     )
   end
 
-  n = Choice.create(
+  n = Choice.new(
       value: Faker::Book.title,
-      bet_id: v.id
+      bet: past_bet
     )
-  j = Choice.create(
-      value: Faker::Book.title,
-      bet_id: v.id
-    )
+  n.save(validate: false)
 
-  Participation.create(
+  j = Choice.new(
+      value: Faker::Book.title,
+      bet: past_bet
+    )
+  j.save(validate: false)
+
+  Participation.new(
     amount: 500,
     user_id: u.id,
-    bet_id: v.id,
+    bet: past_bet,
     choice_id: n.id
-    )
-  Participation.create(
+    ) .save(validate: false)
+
+  Participation.new(
     amount: 500,
     user_id: m.id,
-    bet_id: v.id,
+    bet: past_bet,
     choice_id: j.id
-    )
+    ).save(validate: false)
 end
-
-  User.create(
-    name: 'Rorro',
-    mail: 'rodancoci@gmail.com',
-    password: 'asdasd',
-    role: 'admin',
-    balance: 10000
-  )
-  User.create(
-    name: 'Juan',
-    mail: 'hola@12.cl',
-    password: '123456',
-    role: 'admin',
-    balance: 10000
-  )
 
 User.all.each do |user|
     user.generate_token_and_save

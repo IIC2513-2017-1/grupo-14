@@ -7,7 +7,6 @@
       <% sorted = @users.sort_by {|user| user.name} %>
     <% end %>
     <% sorted.each do |user| %>
-      <% json.token = user.token %>
       <%= link_to user do %>
         <div class = "block">
           <img src=<%=profile_picture(user)%> class = "user-image">

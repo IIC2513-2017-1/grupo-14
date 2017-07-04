@@ -123,6 +123,6 @@ end
     balance: 10000
   )
 
-User.all do |user|
+User.all.each do |user|
     user.generate_token_and_save
 end

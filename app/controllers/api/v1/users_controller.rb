@@ -1,5 +1,6 @@
 module Api::V1
 	class UsersController < ApiController
+		# before_action :authenticate
 
 		def index
 			@users = User.all

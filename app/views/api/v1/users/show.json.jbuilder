@@ -3,8 +3,11 @@
 json.user do
   json.href api_v1_user_url(@user)
   json.id @user.id 
-  json.mail @user.mail
   json.name @user.name
+  json.mail @user.mail  
+  if ['admin'].include?(current_user.role)
+    json.role @user.role
+  end
   json.bets_participating do
     json.array! @user.participations do |parti|
       json.href api_v1_bet_url(parti.bet_id)

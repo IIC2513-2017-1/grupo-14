@@ -5,7 +5,7 @@ json.array! @users do |user|
     json.id user.id
     json.name user.name
     json.mail user.mail
- #    if ['admin'].include?(current_user.role)
-	#     json.role @user.role
-	# end
+    if ['admin'].include?(@current_user.role)
+	    json.role user.role
+	end
 end

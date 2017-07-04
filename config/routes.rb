@@ -28,10 +28,15 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
+  # post "api/v1/user" => "api#v1#users#create"
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:index, :show]
-      resources :bets, only: [:index, :show]
+      resources :users, only: [:index, :show, :create]
+      resources :bets, only: [:index, :show, :create, :destroy] do
+        resources :participations, only: [:create]
+      end
+      resources :participations, only: [:destroy]
+      resources :choices, only: [:create, :destroy]
     end
   end
 

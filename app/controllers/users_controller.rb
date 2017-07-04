@@ -46,6 +46,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        @user.generate_token_and_save
         MailConfirmationMailer.new_user_email(@user).deliver_later
         format.html { redirect_to root_path, notice: 'Please check your email inbox for a confirmation mail.' }
         format.json { render :show, status: :created, location: @user }

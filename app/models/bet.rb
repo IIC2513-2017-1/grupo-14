@@ -20,7 +20,8 @@ class Bet < ApplicationRecord
 	scope :not_private, -> { where('bets.private': false) }
 	scope :not_owned, lambda { |dude| where("bets.user_id != ?", dude.id) }
 	scope :bettable, lambda { |dude| active.not_owned(dude).not_private }
-	scope :bettable_private,lambda { |dude| joins('JOIN friendships ON bets.user_id = friendships.user_id').where('friendships.friend_id = ? and bets.private = true', dude.id) }
+	scope :bettable_private, lambda { |dude| joins('JOIN friendships ON bets.user_id = friendships.user_id').where('friendships.friend_id = ? and bets.private = true', dude.id) }
+	# scope :accessible, lambda { |dude| where('user_id = ?', dude.id).merge(bettable(dude)).merge(bettable_private(dude)) }
 
 	def deadline_is_in_future
 		if deadline.to_date.past? or deadline.today?

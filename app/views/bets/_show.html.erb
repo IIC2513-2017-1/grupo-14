@@ -13,7 +13,9 @@
               <td class="index_slots">Free slots: <%= bet.max_participants - bet.participations.count %></td>
               <td class="index_min">Min bet: <%= bet.min_bet %></td>
               <td class="index_max">Max bet: <%= bet.max_bet %></td>
-              <td class="index_author">Created by: <%= bet.user.name %></td>
+              <% if current_user %>
+                <td class="index_author">Created by: <%= bet.user.name %></td>
+              <% end %>
               </tr>
             </table>
           </div>

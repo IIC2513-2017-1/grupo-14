@@ -34,7 +34,8 @@ u = User.create(
   name: 'Juan2',
   mail: 'juanfra.campos2@gmail.com',
   password: '123456',
-  role: 'regular'
+  role: 'regular',
+  balance: 10000
 )
 m = User.create(
   name: 'Juan4',

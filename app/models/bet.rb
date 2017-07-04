@@ -16,13 +16,11 @@ class Bet < ApplicationRecord
 	has_one :winner
 	has_one :winning_choice, through: :winner, source: :choice
 
-	scope :active, -> { where("deadline > ?", Date.today) }
-	scope :not_private, -> { where('private': false) }
-	scope :not_owned, lambda { |user| where("user_id != ?", user.id) }
-	scope :friend_owned, lambda { |user| not_owned(user).where(user.friends.include?('user')) }
-	scope :bettable, lambda { |user| active.not_owned(user).not_private }
-	scope :bettable_private, lambda { |user| active.friend_owned(user).where('private': true) }
-	scope :accessible, lambda { |user| where(:user == user).or(bettable(user)).or(bettable_private(user)) }
+	scope :active, -> { where("bets.deadline > ?", Date.today) }
+	scope :not_private, -> { where('bets.private': false) }
+	scope :not_owned, lambda { |dude| where("bets.user_id != ?", dude.id) }
+	scope :bettable, lambda { |dude| active.not_owned(dude).not_private }
+	scope :bettable_private,lambda { |dude| joins('JOIN friendships ON bets.user_id = friendships.user_id').where('friendships.friend_id = ? and bets.private = true', dude.id) }
 
 	def deadline_is_in_future
 		if deadline.to_date.past? or deadline.today?

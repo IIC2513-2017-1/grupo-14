@@ -28,6 +28,13 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:index, :show]
+      resources :bets, only: [:index, :show]
+    end
+  end
+
   get 'home/index'
   root 'home#index'
 

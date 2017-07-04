@@ -44,18 +44,19 @@ class FriendshipsController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    puts 'callin'
     friendship = Friendship.find(params[:id])
     user = friendship.user
     friend = friendship.friend
     reciprocal_friendship = Friendship.find_by(user: friend, friend: user)
     friendship.destroy
-    if reciprocal_friendship
-      reciprocal_friendship.destroy
-    end
+    reciprocal_friendship.destroy
     respond_to do |format|
-      format.html redirect_back(fallback_location: root_path, notice: "Friendship with #{friend.name} ended.")
+      # format.html do
+      #   { redirect_back(fallback_location: root_path, notice: "Friendship with #{friend.name} ended.") }
       format.json do
         render json: {
+          status: 'deleted',
           notice: "Friendship with #{friend.name} ended."
         }
       end

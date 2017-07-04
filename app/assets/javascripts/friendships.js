@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function () {
 			console.log(data)
 			$notice.text(data.notice);
 			$notice.css('display', 'block');
-			$(this).parent.remove();
+			$(this).parent().remove();
 		}).on('ajax:error', function (e, data) {
       console.log(data);
     	})

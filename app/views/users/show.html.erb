@@ -35,7 +35,7 @@
 				<% @user.friends.sort_by {|friend| friend.name}.each do |friend| %>
 				<p class='friend'>
 				<%= link_to friend.name, friend %>
-				<%= destroy_friendship_button(friend, @user) %>
+				<%= destroy_friendship_button(friend) %>
 				</p>
 				<% end %>
 				</div>

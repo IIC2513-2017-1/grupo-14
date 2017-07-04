@@ -60,6 +60,7 @@ nav#main-menu {
 }
 
 #user-bar {
+  padding-top: 10px;
   font-size: 15px;
   position: absolute;
   vertical-align: middle;
@@ -85,9 +86,12 @@ nav#main-menu {
     }
   }
 }
-#user-bar .name {
+#user-bar {
+  margin-right: 10px;
   color: white;
-  padding-top: 11px;
+}
+.name {
+  padding-top: 3px;
 }
 
 .actions input[type=submit] {

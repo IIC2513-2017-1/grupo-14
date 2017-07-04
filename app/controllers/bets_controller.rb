@@ -48,7 +48,6 @@ class BetsController < ApplicationController
   # GET /bets/1
   # GET /bets/1.json
   def show
-    bets = @user.participations.where()
   end
 
   def partial_bet_show

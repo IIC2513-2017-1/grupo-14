@@ -19,22 +19,15 @@ class WinnersController < ApplicationController
 
     respond_to do |format|
       if @winner.save
-        total = 0
-        not_amount = 0
         @bet.participations.each do |participation|
-          total = total + participation.amount
-          if participation.choice.value == @winner.choice.value
-            not_amount = not_amount + participation.amount
+          if participation.choice == @winner.choice
+            user = participation.user
+            winnings = ParticipationsController.winnings(participation) + participation.amount
+            user.balance += winnings
+            user.save
+      		  MailConfirmationMailer.close_bet_email(participation,@bet,@winner).deliver_later
           end
         end
-        recaudado = total - not_amount
-        porcentaje = recaudado/total
-      	@bet.participations.each do |participation|
-          ganado = participation.amount * (porcentaje + 1)
-          participation.user.balance += ganado.round.to_i()
-          participation.user.save
-      		MailConfirmationMailer.close_bet_email(participation,@bet,@winner).deliver_later
-      	end
         format.html { redirect_to @bet, notice: 'Winning choice was successfully selected.' }
         format.json { render :show, status: :created, location: @winner }
       else

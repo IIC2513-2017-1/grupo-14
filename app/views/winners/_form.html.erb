@@ -12,12 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :choice_id %>
-    <%= f.select :choice_id, @bet.choices.collect { |choice| [ choice.value, choice.id ] }, { include_blank: true }, { required: true } %>
+    <%= f.collection_radio_buttons(:choice_id, @bet.choices, :id, :value, checked: @bet.choices.first.id) do |b| %>
+      <div class="radio">
+        <%= b.radio_button %>
+        <%= b.label do %>
+          <%= b.text %>
+        <% end %>
+        <img src=<%= image_url('check.png') %>></img>
+      </div>
+    <% end %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Select the winner' %>
   </div>
 
 <% end %>

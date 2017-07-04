@@ -104,7 +104,7 @@
 						<% if ['admin', 'mod'].include?(current_user.role) %>
 							<% accessible = @user.bets.active %>
 						<% else %>
-							<% accessible = @user.bets.where(user: current_user) + (@user.bets.bettable(current_user)) + (@user.bets.bettable_private(current_user)) %>
+							<% accessible = @user.bets.active.where(user: current_user) + (@user.bets.bettable(current_user)) + (@user.bets.bettable_private(current_user)) %>
 						<% end %>
 						<% accessible.sort_by {|bet| [bet.deadline, bet.name]}.each do |bet| %>
 							<p class="bet_link"><%= link_to "#{bet.name} (Deadline: #{bet.deadline})", bet %></p>
@@ -112,6 +112,38 @@
 					</div>
 				</div>
 			</div>
+
+			<% if @user == current_user %>
+				<div class="bet_summary">
+					<div class="column">
+						<div class="column_title">
+							Bets you're waiting to close
+						</div>
+						<div class="column_content">
+							<% if ['admin', 'mod'].include?(current_user.role) %>
+								<% accessible = @user.participating_bets %>
+							<% else %>
+								<% accessible = @user.participating_bets.where('bets.deadline <= ?', Date.today).joins('LEFT OUTER JOIN winners ON winners.bet_id = bets.id').where('winners.choice_id IS NULL') %>
+							<% end %>
+							<% accessible.sort_by {|bet| bet.deadline}.each do |bet| %>
+								<p class="bet_link"><%= link_to "#{bet.name} (#{bet.deadline})", bet %></p>
+							<% end %>
+						</div>
+					</div>
+					<div class="column">
+						<div class="column_title">
+							Your bets waiting to close
+						</div>
+						<div class="column_content">
+							<% accessible = @user.bets.where('bets.deadline < ?', Date.tomorrow).joins('LEFT OUTER JOIN winners ON winners.bet_id = bets.id').where('winners.choice_id IS NULL') %>
+							<% accessible.sort_by {|bet| [bet.deadline, bet.name]}.each do |bet| %>
+								<p class="bet_link"><%= link_to "#{bet.name} (Deadline: #{bet.deadline})", bet %></p>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<%end%>
+
 		</div>
 	</div>
 

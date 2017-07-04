@@ -17,7 +17,7 @@ class Bet < ApplicationRecord
 	has_one :winning_choice, through: :winner, source: :choice
 
 	scope :active, -> { where("bets.deadline > ?", Date.today) }
-	scope :closed, -> { joins(:winner).where('winners.choice_id != null') }
+	scope :closed, -> { joins(:winner).where(winner_id: nil) }
 	scope :not_private, -> { where('bets.private': false) }
 	scope :not_owned, lambda { |dude| where("bets.user_id != ?", dude.id) }
 	scope :bettable, lambda { |dude| active.not_owned(dude).not_private }

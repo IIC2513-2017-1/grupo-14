@@ -48,6 +48,7 @@ class BetsController < ApplicationController
   # GET /bets/1
   # GET /bets/1.json
   def show
+    bets = @user.participations.where()
   end
 
   def partial_bet_show
@@ -139,7 +140,7 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:name, :description, :deadline, :max_participants, :kind, :min_bet, :max_bet, :user_id,:private, :value, :p, :pl, choices_attributes: [:value])
+      params.require(:bet).permit(:name, :description, :deadline, :max_participants, :kind, :min_bet, :max_bet, :user_id, :private, :value, :p, :pl, choices_attributes: [:value])
     end
 
     def can_view?

@@ -52,7 +52,14 @@ class FriendshipsController < ApplicationController
     if reciprocal_friendship
       reciprocal_friendship.destroy
     end
-    redirect_back(fallback_location: root_path, notice: "Friendship with #{friend.name} ended.")
+    respond_to do |format|
+      format.html redirect_back(fallback_location: root_path, notice: "Friendship with #{friend.name} ended.")
+      format.json do
+        render json: {
+          notice: "Friendship with #{friend.name} ended."
+        }
+      end
+    end
   end
 
   private

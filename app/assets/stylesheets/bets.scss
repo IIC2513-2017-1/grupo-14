@@ -3,11 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .bet_list {
+	text-align: center;
 	.bet_block {
-		margin-top: 0px;
-		margin-bottom: 20px;
+		margin-top: 20px;
+		margin-bottom: 0px;
 		&:last-of-type {
-			margin-bottom: 0px;
+			margin-bottom: 20px;
 		}
 	}
 	.summary {
@@ -36,7 +37,7 @@
 			border-left: 1px solid #fffee5;
 			&.index_name {
 				width: 12%;
-				text-align: left;
+				text-align: center;
 				border: none
 			}
 			&.index_deadline {
@@ -45,6 +46,7 @@
 		}
 	}
 	.details {
+		padding: 20px;
 		background-color: #f9f9f7;
 		border-left: 1px solid grey;
 		border-bottom: 1px solid grey;
@@ -54,7 +56,8 @@
 		display: none;
 	}
 	.delete {
-		margin-bottom: 2px;
+		margin-top: 2px;
+		margin-bottom: 0px;
 	}
 }
 
@@ -69,22 +72,42 @@
 	}
 }
 
+.bet_block{
+	text-align: center;;
+	a, button {
+		display: inline-block;
+	}
+}
+
 .bet_show {
-	width: 90%;
-	padding-left: 5%;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding: 0px;
+	display: inline-block;
 	p {
-		margin: 10px;
+		margin: 0px;
+	}
+	a {
+		margin: 0;
 	}
 	ul {
 		margin: 10px;
 	}
+	.info {
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		&:first-of-type {
+			margin-top: 0;
+		}
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .page_list {
-	margin-top: 5px;
-	margin-bottom: 5px;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
 	.pagination {
 		margin: 0;
 		margin-right: 2px;
@@ -95,27 +118,5 @@
 		&:last-of-type {
 			margin-right: 0;
 		}
-	}
-}
-
-#new_bet_page {
-	text-align: center;
-
-	.form_content {
-		display: inline-block;
-		label {
-			text-align: left;
-		}
-		.field > input, textarea {
-			text-align: left;
-			width: 100%;
-		}
-	}
-	.extra_choice {
-		width: 100%;
-	 input {
-		display: inline-block;
-		width: auto;	
-	}
 	}
 }

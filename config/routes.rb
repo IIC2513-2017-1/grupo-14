@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get :sync_calendar
       get :redirect
       get :callback
+      get :history
     end
   end
 

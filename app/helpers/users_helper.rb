@@ -51,7 +51,7 @@ module UsersHelper
 			relation.friend_id == user.id
 		end
 		if friendship
-			link_to '(Unfriend)', friendship_path(friendship), method: 'delete', data: {confirm: "Are you sure you want to unfriend #{user.name}?"}
+			link_to '(Unfriend)', friendship_path(friendship), class: 'unfriend', method: 'delete', confirm: "Are you sure you want to unfriend #{user.name}?", data: { type: 'html' }
 		end
 	end
 
@@ -79,8 +79,15 @@ module UsersHelper
 
 	def download_csv_button(user)
 		return unless current_user
-			if user == current_user
-				link_to 'Download bet history', user_path(user: user, format: :csv), class: 'round_button'
-			end
+		if user == current_user
+			link_to 'Download winnings history', user_path(user: user, format: :csv), class: 'round_button'
 		end
+	end
+
+	def history_button(user)
+		return unless current_user
+			if user == current_user
+				link_to 'Bet history', history_user_path(user: user), class: 'round_button'
+		end
+	end
 end

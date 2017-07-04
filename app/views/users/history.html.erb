@@ -1,0 +1,80 @@
+<div class="bet_list">
+<% parts = @user.participations.closed %>
+<% if parts.count == 0 %>
+  <h3>Looks like there's nothing to show here. Show us your inner ludopath and get betting!</h3>
+<% else %>
+  <%= download_csv_button(@user) %>
+  <% parts.sort_by { |part| part.bet.deadline }.each do |part| %>
+  <% bet = part.bet %>
+
+    <div class="bet_block"">
+      <div class="summary", style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" >
+        <%= bet.name %>
+      </div>
+
+        <div class="details" style="display: block;">
+      <div class="bet_show">
+
+          <div class="info">
+            <p>
+              <strong>Created by:</strong>
+              <%= part.bet.user.name %>
+            </p>
+          </div>
+
+          <div class="info">
+            <p>
+              <strong>Description:</strong>
+              <%= bet.description %>
+            </p>
+          </div>
+
+          <div class="info">
+            <p>
+              <strong>Date ended:</strong> <%= bet.deadline %>
+            </p>
+          </div>
+
+          <div class="info">
+            <p>
+              <strong>Participants:</strong>
+              <ul>
+                <% bet.participations.each do |betpart| %>
+                <li><%= link_to betpart.user.name, betpart.user %>
+                <%end%>
+                </li>
+              </ul>
+            </p>
+          </div>
+
+          <div class="info">
+            <p>
+              <strong>Amount bet:</strong> <%= part.amount %>
+            </p>
+          </div>
+
+          <div class="info">
+            <p>
+              <strong>Option chosen:</strong> <%= part.choice.value %>
+            </p>
+          </div>
+
+          <div class="info">
+            <p>
+              <strong>Winning option:</strong> <%= bet.winning_choice.value if bet.winning_choice %>
+            </p>
+          </div>
+
+          <div class="info">
+            <p>
+              <strong>Total earnings:</strong>
+              <%= ParticipationsController.winnings(part) %>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+</div>

@@ -5,7 +5,6 @@ $(document).on('turbolinks:load', function () {
   // procesamiento de la respuesta del request Ajax para seguir/deseguir un usuario
   $buttons.each(function() {
     $(this).on('ajax:success', function (e, data) {
-    console.log(data);
     $notice.css('display', 'block');
     $notice.text(data.message);
     if (data.request) {
@@ -46,7 +45,6 @@ $(document).on('turbolinks:load', function () {
       if ($parent.attr('class') == 'request') {
         $parent.remove();
       } else if ($received_requests) {
-        console.log('found pending')
         $received_requests.find('p.request').filter( function() {
           return $(this).text().trim() === data.unrequest.name.trim()
         } ).remove();

@@ -13,6 +13,7 @@ class User < ApplicationRecord
 	
 	has_many :bets
 	has_many :participations
+	has_many :participating_bets, through: :participations, source: :bet
 
 	has_one :avatar, dependent: :destroy
 

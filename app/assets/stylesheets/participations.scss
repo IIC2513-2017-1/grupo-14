@@ -1,3 +1,141 @@
 // Place all the styles related to the Participations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new_participation {
+	width: 60%;
+	h2 {
+		text-align: left;
+	}
+}
+
+.radio {
+	vertical-align: middle;
+	.radio_content {
+		white-space: nowrap;
+		display: inline-block;
+	}
+	label {
+		display: inline-block;
+		background-color: #1b95e0;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		padding: 10px;
+		vertical-align: middle;
+		border-radius: 10px;
+		color: white;
+	}
+	input[type='radio'] {
+		display: none;
+		margin: 0;
+		vertical-align: middle;
+		&:checked+label {
+			color: #fffee5;
+			background-color: #3f9619;
+		}
+		&~img {
+			display: none;
+			height: 20px;
+			object-fit: scale-down;
+			vertical-align: middle;
+		}
+		&:checked~img {
+			display: inline-block;
+		}
+	}
+}
+
+.field {
+	text-align: left;
+	.bet_amount {
+		display: inline-block;
+		height: auto;
+		vertical-align: middle;
+	}
+	input[type=range] {
+	-webkit-appearance: none;
+	width: 80%;
+	margin: 9.35px 0;
+	background: transparent;
+	}
+	input[type=range]:focus {
+	outline: none;
+	}
+	input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 7.3px;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+	background: #969696;
+	border-radius: 8.1px;
+	border: 1px solid #010101;
+	}
+	input[type=range]::-webkit-slider-thumb {
+	box-shadow: 0.7px 0.7px 1px rgba(0, 0, 0, 0.35), 0px 0px 0.7px rgba(13, 13, 13, 0.35);
+	border: 1px solid #000000;
+	height: 26px;
+	width: 16px;
+	border-radius: 7px;
+	background: #1b95e0;
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin-top: -10.35px;
+	}
+	input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #969696;
+	}
+	input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 7.3px;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+	background: #969696;
+	border-radius: 8.1px;
+	border: 1px solid #010101;
+	}
+	input[type=range]::-moz-range-thumb {
+	box-shadow: 0.7px 0.7px 1px rgba(0, 0, 0, 0.35), 0px 0px 0.7px rgba(13, 13, 13, 0.35);
+	border: 1px solid #000000;
+	height: 26px;
+	width: 16px;
+	border-radius: 7px;
+	background: #1b95e0;
+	cursor: pointer;
+	}
+	input[type=range]::-ms-track {
+	width: 100%;
+	height: 7.3px;
+	cursor: pointer;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+	}
+	input[type=range]::-ms-fill-lower {
+	background: #969696;
+	border: 1px solid #010101;
+	border-radius: 16.2px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+	}
+	input[type=range]::-ms-fill-upper {
+	background: #969696;
+	border: 1px solid #010101;
+	border-radius: 16.2px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+	}
+	input[type=range]::-ms-thumb {
+	box-shadow: 0.7px 0.7px 1px rgba(0, 0, 0, 0.35), 0px 0px 0.7px rgba(13, 13, 13, 0.35);
+	border: 1px solid #000000;
+	height: 26px;
+	width: 16px;
+	border-radius: 7px;
+	background: #1b95e0;
+	cursor: pointer;
+	height: 7.3px;
+	}
+	input[type=range]:focus::-ms-fill-lower {
+	background: #969696;
+	}
+	input[type=range]:focus::-ms-fill-upper {
+	background: #969696;
+	}
+}

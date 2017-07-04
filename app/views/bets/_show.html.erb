@@ -1,8 +1,5 @@
 <% ids.each do |id| %>
   <% bet = Bet.find(id) %>
-      <% if current_user and current_user.role == 'admin' %>
-        <%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete" %>
-      <% end %>
       <div class="bet_block">
         <button class="toggle_details", onclick="toggleblock(<%= bet.id %>)">
           <div class="summary", id="summary_<%= bet.id %>">
@@ -22,11 +19,14 @@
         </button>
         <div class="details", id="content_<%= bet.id %>">
   <div class="bet_show">
+  <div class="info">
   <p>
     <strong>Description:</strong>
     <%= bet.description %>
   </p>
+  </div>
 
+  <div class="info">
   <p>
     <strong>Choices:</strong>
     <ul>
@@ -35,26 +35,33 @@
       <% end %>
     </ul>
   </p>
+  </div>
 
+  <div class="info">
   <p>
     <strong>Max participants:</strong>
     <%= bet.max_participants %>
   </p>
+  </div>
 
+  <div class="info">
   <p>
     <strong>Kind:</strong>
     <%= bet.kind %>
   </p>
+  </div>
 
   <% if bet.participations.count > 0 and current_user %>
+  <div class="info">
   <p>
     <strong>Participants:</strong>
     <ul>
       <% bet.participations.each do |parti| %>
-        <li><%= parti.user.name %> (<%= parti.amount %> points)</li>
+        <li><%= parti.user.name %></li>
       <% end %>
     </ul>
   </p>
+  </div>
   <% end %>
 
   <%= participate_button(bet) %>

@@ -4,10 +4,10 @@ class UsersController < ApplicationController
   helper_method :is_not_regular
   helper_method :is_admin
 
-  before_action :set_user, only: [:show, :sync_calendar, :edit, :update, :destroy]
+  before_action :set_user, except: [:new, :create, :index]
   before_action :logged_in?, only: [:index, :show, :edit, :update, :destroy, :new_event]
   before_action :not_logged_in?, only: [:new, :create]
-  before_action :is_current_user?, only: [:edit, :update, :destroy]
+  before_action :is_current_user?, only: [:edit, :update, :destroy, :history]
 
   # GET /users
   # GET /users.json
@@ -83,6 +83,9 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def history
   end
 
   def sync_calendar
@@ -171,22 +174,25 @@ class UsersController < ApplicationController
   def to_csv(user)
     columns = "Date,Bet,Choice,Points Bet,Winner,Winnings\n"
     lines = ''
-    user.participations.closed.each do |part|
-      line = ''
-      line += part.bet.deadline.to_s() + ','
-      line += part.bet.name + ','
-      line += part.choice.value + ','
-      line += part.amount.to_s() + ','
-      if part.bet.winning_choice == part.choice
-        line += 'Yes,'
-      else
-        line += 'No,'
+    participations = user.participations.closed
+    if participations
+      participations.each do |part|
+        line = ''
+        line += part.bet.deadline.to_s() + ','
+        line += part.bet.name + ','
+        line += part.choice.value + ','
+        line += part.amount.to_s() + ','
+        if part.bet.winning_choice == part.choice
+          line += 'Yes,'
+        else
+          line += 'No,'
+        end
+        line += ParticipationsController.winnings(part).to_s() + ','
+        line += "\n"
+        lines += line
       end
-      line += ParticipationsController.winnings(part).to_s() + ','
-      line += "\n"
-      lines += line
+      columns + lines
     end
-    columns + lines
   end
 
   private
@@ -201,7 +207,7 @@ class UsersController < ApplicationController
     end
 
     def is_current_user?
-      redirect_to(root_path, alert: 'Unauthorized access!') unless @user == current_user or is_admin
+      redirect_back(fallback_location: root_path, alert: 'Unauthorized access!') unless @user == current_user or is_admin
     end
 
     def is_not_regular

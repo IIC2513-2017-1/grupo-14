@@ -23,10 +23,12 @@
     <%= f.email_field :mail, value: '' %>
   </div>
 
+  <% if is_admin %>
   <div class="field">
     <%= f.label :balance %>
     <%= f.number_field :balance %>
   </div>
+  <% end %>
 
   <%= f.label :avatar %>
 </div>

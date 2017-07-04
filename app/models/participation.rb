@@ -7,11 +7,11 @@ class Participation < ApplicationRecord
 	belongs_to :bet
 	validate :amount_range, :valid_user, :valid_choice, :sufficient_balance
 
-	before_destroy :return_balance
+	after_destroy :return_balance
 	after_create :remove_balance
 
 	scope :active, -> { joins(:bet).where('"bets"."deadline" > ?', [Date.today]) }
-	scope :closed, -> { joins(:bet).joins('JOIN "winners" ON "bets"."id" = "winners"."bet_id"') }
+	scope :closed, -> { joins(:bet).merge(Bet.closed) }
 
 	def valid_user
 		if user_id == self.bet.user.id

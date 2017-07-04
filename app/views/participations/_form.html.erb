@@ -11,14 +11,24 @@
     </div>
   <% end %>
 
+  <h2>Choose an amount: <span id="bet_amount"><%= @bet.min_bet %></span></h2>
   <div class="field">
-    <%= f.label 'Amount (min: ' + @bet.min_bet.to_s + ', max: ' + @bet.max_bet.to_s + ')' %>
-    <%= f.number_field :amount, required: true %>
+    <div class="slider">
+      <%= f.range_field :amount, in: @bet.min_bet..@bet.max_bet, oninput: 'update_amount()', value: @bet.min_bet %>
+    </div>
   </div>
 
+  <h2>Make your choice:</h2>
   <div class="field">
-    <%= f.label :choice_id %>
-    <%= f.select :choice_id, @bet.choices.collect { |choice| [ choice.value, choice.id ] }, { include_blank: true }, { required: true } %>
+    <%= f.collection_radio_buttons(:choice_id, @bet.choices, :id, :value, checked: @bet.choices.first.id) do |b| %>
+      <div class="radio">
+        <%= b.radio_button %>
+        <%= b.label do %>
+          <%= b.text %>
+        <% end %>
+        <img src=<%= image_url('check.png') %>></img>
+      </div>
+    <% end %>
   </div>
 
   <div class="actions">

@@ -1,11 +1,11 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
       var value_index
       var max_fields      = 20;
       var wrapper         = $(".values");
       var add_button      = $(".add_form_field");
     
       var x = 1;
-      $(add_button).click(function(e){
+      $('.add_form_field').on('click', function(e){
           e.preventDefault();
           if(x < max_fields){
               x++;

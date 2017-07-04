@@ -26,6 +26,9 @@
   <div id="public_bets">
     <% all_bets.sort_by {|bet| bet.deadline}[0 .. 4].each do |bet| %>
       <%= render partial: "show", locals: { ids: [bet.id] } %>
+      <% if current_user and current_user.role == 'admin' %>
+        <%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete" %>
+      <% end %>
     <% end %>
   </div>
   <%= page_numbers() %>

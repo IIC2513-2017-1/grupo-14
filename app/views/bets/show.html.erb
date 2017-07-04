@@ -1,7 +1,5 @@
 <div class="bet_show">
 
-<%= participate_button(@bet) %>
-
 <p>
   <strong>Name:</strong>
   <%= @bet.name %>
@@ -50,10 +48,11 @@
   <strong>Participants:</strong>
   <ul>
     <% @bet.participations.each do |parti| %>
-      <li><%= parti.user.name %> (<%= parti.amount %> points)</li>
+      <li><%= parti.user.name %></li>
     <% end %>
   </ul>
 </p>
+<%= participate_button(@bet) %>
 
 <% if has_winner(@bet)%>
   <p>

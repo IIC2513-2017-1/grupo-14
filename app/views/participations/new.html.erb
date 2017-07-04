@@ -1,3 +1,8 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "update_amount.js" %>
+<% end %>
+<div class="form_page">
 <h1>Betting on: <%= @participation.bet.name %></h1>
 
 <%= render 'form', participation: @participation %>
+</div>

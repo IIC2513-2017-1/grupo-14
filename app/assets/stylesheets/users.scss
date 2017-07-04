@@ -13,10 +13,11 @@
 	padding-right: 10px;
 }
 
-#profile-avatar {
+.user-image {
   width: 150px;
   height: 150px;
   border: 1px solid grey;
+  border-radius: 5px;
 }
 
 .profile_content, .requests {
@@ -142,12 +143,14 @@ p.request {
 }
 
 .multiimage {
+	display: inline-block;
 	p {
 		text-align: center;
 		margin: 0;
 	}
 	a {
 		text-decoration: none;
+		display: inline-block;
 	}
 	h4 {
 		text-align: center;

@@ -4,7 +4,7 @@
 
 			<div class='profile_container'>
 				<div class="profile_content">
-					<img src=<%= profile_picture(@user) %> id='profile-avatar'>
+					<img src=<%= profile_picture(@user) %> class='user-image'>
 					<p id="username">
 					  <strong><%= @user.name %></strong>
 					</p>
@@ -74,7 +74,7 @@
 			<%= calendar_link(@user) %>
 			<%= edit_profile(@user) %>
 			<%= request_button(@user) %>
-			<%= download_csv_button(@user) %>
+			<%= history_button(@user) %>
 
 			<div class="bet_summary">
 				<div class="column">
@@ -82,8 +82,17 @@
 						Bets participating in
 					</div>
 					<div class="column_content">
-						<% @user.participations.active.sort_by {|part| part.bet.name}.each do |part| %>
-							<p class="bet_link"><%= link_to "#{part.bet.name} (#{part.amount} points)", part.bet %></p>
+						<% if ['admin', 'mod'].include?(current_user.role) %>
+							<% accessible = @user.participating_bets.active %>
+						<% else %>
+							<% bets = @user.participating_bets %>
+							<% public_bets = bets.bettable(current_user) %>
+							<% private_bets = bets.bettable_private(current_user) %>
+							<% own = bets.where(user: current_user) %>
+							<% accessible = public_bets + private_bets + own %>
+						<% end %>
+						<% accessible.sort_by {|bet| bet.deadline}.each do |bet| %>
+							<p class="bet_link"><%= link_to "#{bet.name} (#{bet.deadline})", bet %></p>
 						<% end %>
 					</div>
 				</div>
@@ -95,7 +104,7 @@
 						<% if ['admin', 'mod'].include?(current_user.role) %>
 							<% accessible = @user.bets.active %>
 						<% else %>
-						<% accessible = @user.bets.where('user_id = ?', current_user.id) + (@user.bets.bettable(current_user)) + (@user.bets.bettable_private(current_user)) %>
+							<% accessible = @user.bets.where(user: current_user) + (@user.bets.bettable(current_user)) + (@user.bets.bettable_private(current_user)) %>
 						<% end %>
 						<% accessible.sort_by {|bet| [bet.deadline, bet.name]}.each do |bet| %>
 							<p class="bet_link"><%= link_to "#{bet.name} (Deadline: #{bet.deadline})", bet %></p>
